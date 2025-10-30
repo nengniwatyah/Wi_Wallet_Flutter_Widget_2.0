@@ -44,8 +44,8 @@ A production-ready Flutter foundation with **multi-language support (i18n)**, **
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/flutter_test_app.git
-cd flutter_test_app
+git clone https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0.git
+cd Wi_Wallet_Flutter_Widget_2.0
 
 # Install dependencies
 flutter pub get
@@ -640,9 +640,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: your.email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/flutter_test_app/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/flutter_test_app/discussions)
+- 📧 Email: nengniwatyah@example.com
+- 🐛 Issues: [GitHub Issues](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/discussions)
 
 ---
 
