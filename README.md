@@ -642,7 +642,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - 📧 Email: niwat.yah@wipay.co.th
 - 🐛 Issues: [GitHub Issues](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/discussions)
 
 ---
 
