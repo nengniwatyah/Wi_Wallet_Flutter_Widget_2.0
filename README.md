@@ -645,16 +645,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Add more UI components
-- [ ] Implement navigation routing (go_router)
-- [ ] Add API integration examples
-- [ ] Add unit and integration tests
-- [ ] Add CI/CD pipeline
-- [ ] Add Storybook for components
-- [ ] Add accessibility improvements
-
----
-
 **Made with ❤️ for the Flutter community**
