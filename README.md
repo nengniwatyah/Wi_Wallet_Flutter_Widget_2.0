@@ -399,6 +399,8 @@ lib/
 │   └── app_my.arb          # Myanmar translations
 ├── widgets/
 │   ├── announce/           # Announcement components
+│   ├── card/               # Card components
+│   ├── drawer/             # Drawer components
 │   ├── navigator_bar/      # Bottom navigation
 │   ├── visa/               # Visa card component
 │   ├── full_amount_input.dart
@@ -535,6 +537,63 @@ MobileCodeInput(
 )
 ```
 
+### 7. DrawerReviewTransaction
+
+Bottom sheet drawer for transaction review.
+
+```dart
+DrawerReviewTransaction.show(
+  context,
+  warningTitle: 'Please recheck information',
+  warningDescription: 'Cannot be changed once confirmed.',
+  totalAmount: '5,000.00',
+  // ... other properties
+);
+```
+
+**Features:**
+- Transaction details display
+- Warning message
+- Confirmation flow
+- X button only dismiss (secure)
+
+### 8. DrawerBalanceDetail
+
+Balance breakdown drawer with hold amount details.
+
+```dart
+DrawerBalanceDetail.show(
+  context,
+  totalBalanceAmount: '100,000.00',
+  holdAmountValue: '5,030.20',
+  ledgerBalanceValue: '15,030.20',
+  // ... other properties
+);
+```
+
+**Features:**
+- Balance breakdown display
+- Hold amount explanation
+- Full-wallet image asset
+- Button only dismiss
+
+### 9. DrawerDepositChannel
+
+Bank selection drawer for deposit channels.
+
+```dart
+DrawerDepositChannel(
+  onBankSelected: (bank) => print('Selected: $bank'),
+  onClose: () => Navigator.pop(context),
+)
+```
+
+**Features:**
+- Bank logo display
+- Mobile banking options
+- Scrollable bank list
+- Selection callback
+
 ---
 
 ## 🔧 Configuration
@@ -648,7 +707,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🗺️ Roadmap
 
-- [ ] Add more UI components
+- [x] **Drawer Components** - Transaction review, balance detail, deposit channel drawers
+- [x] **Card Components** - Transaction review card with detailed breakdown
+- [x] **Announcement Components** - Warning messages with custom styling
+- [x] **Organized Folder Structure** - Categorized widgets by functionality
+- [ ] Add more UI components (forms, modals, navigation)
 - [ ] Implement navigation routing (go_router)
 - [ ] Add API integration examples
 - [ ] Add unit and integration tests
