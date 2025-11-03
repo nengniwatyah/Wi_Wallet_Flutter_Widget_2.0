@@ -699,25 +699,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: nengniwatyah@example.com
+- 📧 Email: niwat.yah@wipay.co.th
 - 🐛 Issues: [GitHub Issues](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0/discussions)
-
----
-
-## 🗺️ Roadmap
-
-- [x] **Drawer Components** - Transaction review, balance detail, deposit channel drawers
-- [x] **Card Components** - Transaction review card with detailed breakdown
-- [x] **Announcement Components** - Warning messages with custom styling
-- [x] **Organized Folder Structure** - Categorized widgets by functionality
-- [ ] Add more UI components (forms, modals, navigation)
-- [ ] Implement navigation routing (go_router)
-- [ ] Add API integration examples
-- [ ] Add unit and integration tests
-- [ ] Add CI/CD pipeline
-- [ ] Add Storybook for components
-- [ ] Add accessibility improvements
 
 ---
 
