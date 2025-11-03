@@ -73,4 +73,52 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get amountEnabled => 'ปุ่มจำนวนเงินเปิดใช้งาน';
+
+  @override
+  String get cardReviewPreviewTitle => 'ตัวอย่างตรวจสอบรายการ';
+
+  @override
+  String get cardReviewTotalLabel => 'ยอดรวม';
+
+  @override
+  String get cardReviewTotalAmountMock => '5,000.00';
+
+  @override
+  String get cardReviewCurrencyMock => 'THB';
+
+  @override
+  String get cardReviewFeeLabel => 'ค่าธรรมเนียม';
+
+  @override
+  String get cardReviewFeeAmountMock => '0.00';
+
+  @override
+  String get cardReviewFromLabel => 'จาก';
+
+  @override
+  String get cardReviewFromValueMock => 'กระเป๋าเงินของคุณ';
+
+  @override
+  String get cardReviewMobileLabel => 'เบอร์มือถือ';
+
+  @override
+  String get cardReviewMobileValueMock => '081-141-1234';
+
+  @override
+  String get cardReviewToLabel => 'ไปยัง';
+
+  @override
+  String get cardReviewToValueMock => 'ธนาคารไทยพาณิชย์';
+
+  @override
+  String get cardReviewAccountNameLabel => 'ชื่อบัญชี';
+
+  @override
+  String get cardReviewAccountNameValueMock => 'Victor Von Doom';
+
+  @override
+  String get cardReviewAccountNumberLabel => 'เลขที่บัญชี';
+
+  @override
+  String get cardReviewAccountNumberValueMock => '1234567890';
 }

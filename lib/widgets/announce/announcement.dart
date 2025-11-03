@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/assets/hugeicons/huge_icons.dart';
 import 'package:mcp_test_app/config/themes/theme_constants.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
@@ -87,10 +88,17 @@ class _AnnouncementStackState extends State<AnnouncementStack>
     with TickerProviderStateMixin {
   late List<String> _messages;
 
-  late AnimationController _slideOutController;
-  late Animation<Offset> _slideOutAnimation;
+  late AnimationController _dismissController;
+  late Animation<Offset> _dismissSlideAnimation;
+  late Animation<double> _dismissFadeAnimation;
+  late Animation<double> _dismissScaleAnimation;
+
   late AnimationController _promoteController;
-  late Animation<Offset> _promoteAnimation;
+  late Animation<Offset> _promoteSlideAnimation;
+  late Animation<double> _promoteScaleAnimation;
+  late Animation<double> _middleFadeAnimation;
+  late Animation<double> _backScaleAnimation;
+  late Animation<double> _backFadeAnimation;
   bool _isAnimating = false;
 
   @override
@@ -108,27 +116,65 @@ class _AnnouncementStackState extends State<AnnouncementStack>
             ];
 
     // Initialize animations
-    _slideOutController = AnimationController(
+    _dismissController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 280),
     );
-    _slideOutAnimation = Tween<Offset>(
+    final dismissCurve = CurvedAnimation(
+      parent: _dismissController,
+      curve: Curves.easeInOutCubic,
+    );
+    _dismissSlideAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(-1.2, 0),
+      end: const Offset(-1.0, 0),
+    ).animate(dismissCurve);
+    _dismissFadeAnimation = Tween<double>(
+      begin: 1,
+      end: 0.25,
     ).animate(
-      CurvedAnimation(parent: _slideOutController, curve: Curves.easeInOut),
+      CurvedAnimation(
+        parent: _dismissController,
+        curve: Curves.easeOutQuad,
+      ),
     );
+    _dismissScaleAnimation = Tween<double>(
+      begin: 1,
+      end: 1,
+    ).animate(dismissCurve);
 
     _promoteController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 320),
     );
-    _promoteAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.2),
+    final promoteCurve = CurvedAnimation(
+      parent: _promoteController,
+      curve: Curves.easeOutCubic,
+    );
+    _promoteSlideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.12),
       end: Offset.zero,
+    ).animate(promoteCurve);
+    _promoteScaleAnimation = Tween<double>(
+      begin: 0.95,
+      end: 1,
+    ).animate(promoteCurve);
+    _middleFadeAnimation = Tween<double>(
+      begin: 0.85,
+      end: 1,
     ).animate(
-      CurvedAnimation(parent: _promoteController, curve: Curves.easeOutCubic),
+      CurvedAnimation(
+        parent: _promoteController,
+        curve: const Interval(0.2, 1, curve: Curves.easeOut),
+      ),
     );
+    _backScaleAnimation = Tween<double>(
+      begin: 0.9,
+      end: 0.94,
+    ).animate(promoteCurve);
+    _backFadeAnimation = Tween<double>(
+      begin: 0.6,
+      end: 0.75,
+    ).animate(promoteCurve);
   }
 
   @override
@@ -143,7 +189,7 @@ class _AnnouncementStackState extends State<AnnouncementStack>
 
   @override
   void dispose() {
-    _slideOutController.dispose();
+    _dismissController.dispose();
     _promoteController.dispose();
     super.dispose();
   }
@@ -152,16 +198,23 @@ class _AnnouncementStackState extends State<AnnouncementStack>
     if (_isAnimating || _messages.length <= 1) return;
     _isAnimating = true;
 
-    await _slideOutController.forward();
+    await Future.wait([
+      _dismissController.forward(),
+      _promoteController.forward(),
+    ]);
+
+    _dismissController.reset();
+    _promoteController.reset();
+
+    if (!mounted) {
+      _isAnimating = false;
+      return;
+    }
 
     setState(() {
       final removed = _messages.removeAt(0);
       _messages.add(removed);
     });
-
-    _slideOutController.reset();
-    await _promoteController.forward();
-    _promoteController.reset();
 
     _isAnimating = false;
     widget.onClose?.call();
@@ -176,6 +229,8 @@ class _AnnouncementStackState extends State<AnnouncementStack>
   }
 
   Widget _buildCard(String text, {bool isFront = false, Color? color}) {
+    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    
     return Container(
       constraints: const BoxConstraints(minHeight: 65),
       padding: const EdgeInsets.fromLTRB(
@@ -185,37 +240,45 @@ class _AnnouncementStackState extends State<AnnouncementStack>
         8,
       ),
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? theme.ThemeColors.get(brightnessKey, 'fill/base/100'),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: createHugeIcon(
-              megaphoneIcon,
-              theme.ThemeColors.get('light', 'text/contrast/600'),
-            ),
+          createHugeIcon(
+            megaphoneIcon,
+            brightnessKey == 'light'
+              ? theme.ThemeColors.get('light', 'text/base/600')
+              : theme.ThemeColors.get('dark', 'text/base/600'),
+            width: 16,
+            height: 16,
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 4),
           Expanded(
             child: Text(
               text,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: theme.ThemeColors.get('light', 'text/contrast/600'),
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
+              style: GoogleFonts.notoSans(
+                color: brightnessKey == 'light'
+                  ? theme.ThemeColors.get('light', 'text/base/600')
+                  : theme.ThemeColors.get('dark', 'text/base/600'),
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+                height: 1.45,
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 4),
           if (isFront)
             GestureDetector(
               onTap: _handleClose,
               child: createHugeIcon(
                 cancelIcon,
-                theme.ThemeColors.get('light', 'text/contrast/600'),
+                brightnessKey == 'light'
+                  ? theme.ThemeColors.get('light', 'text/base/600')
+                  : theme.ThemeColors.get('dark', 'text/base/600'),
+                width: 16,
+                height: 16,
               ),
             ),
         ],
@@ -225,6 +288,14 @@ class _AnnouncementStackState extends State<AnnouncementStack>
 
   @override
   Widget build(BuildContext context) {
+    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final displayMessages = _messages.isEmpty
+        ? List<String>.filled(3, '')
+        : List<String>.from(_messages);
+    while (displayMessages.length < 3) {
+      displayMessages.add(displayMessages.last);
+    }
+    
     return SizedBox(
       height: 80,
       child: Stack(
@@ -234,16 +305,19 @@ class _AnnouncementStackState extends State<AnnouncementStack>
           Positioned(
             key: const ValueKey('card_3'),
             top: 0,
-            left: 16,
-            right: 16,
-            child: Transform.scale(
-              scale: 0.9,
-              alignment: Alignment.topCenter,
-              child: Container(
-                constraints: const BoxConstraints(minHeight: 65),
-                decoration: BoxDecoration(
-                  color: theme.ThemeColors.get('light', 'fill/base/300'),
-                  borderRadius: BorderRadius.circular(12),
+            left: 0,
+            right: 0,
+            child: FadeTransition(
+              opacity: _backFadeAnimation,
+              child: ScaleTransition(
+                scale: _backScaleAnimation,
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: const BoxConstraints(minHeight: 65),
+                  decoration: BoxDecoration(
+                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/500'),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
               ),
             ),
@@ -251,28 +325,41 @@ class _AnnouncementStackState extends State<AnnouncementStack>
           Positioned(
             key: const ValueKey('card_2'),
             top: AppSpacing.xs,
-            left: AppSpacing.md,
-            right: AppSpacing.md,
+            left: 0,
+            right: 0,
             child: SlideTransition(
-              position: _promoteAnimation,
-              child: Transform.scale(
-                scale: 0.95,
-                alignment: Alignment.topCenter,
-                child: _buildCard(_messages[1], color: const Color(0xFF141414)),
+              position: _promoteSlideAnimation,
+              child: FadeTransition(
+                opacity: _middleFadeAnimation,
+                child: ScaleTransition(
+                  scale: _promoteScaleAnimation,
+                  alignment: Alignment.topCenter,
+                  child: _buildCard(
+                    displayMessages[1], 
+                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/400'),
+                  ),
+                ),
               ),
             ),
           ),
           Positioned(
             key: const ValueKey('card_1'),
             top: 0,
-            left: 16,
-            right: 16,
-            child: SlideTransition(
-              position: _slideOutAnimation,
-              child: _buildCard(
-                _messages[0],
-                isFront: true,
-                color: const Color(0xFF1A1A1A),
+            left: 0,
+            right: 0,
+            child: FadeTransition(
+              opacity: _dismissFadeAnimation,
+              child: ScaleTransition(
+                scale: _dismissScaleAnimation,
+                alignment: Alignment.topCenter,
+                child: SlideTransition(
+                  position: _dismissSlideAnimation,
+                  child: _buildCard(
+                    displayMessages[0],
+                    isFront: true,
+                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/300'),
+                  ),
+                ),
               ),
             ),
           ),

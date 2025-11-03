@@ -235,6 +235,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Amount Enabled'**
   String get amountEnabled;
+
+  /// No description provided for @cardReviewPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Review Transaction'**
+  String get cardReviewPreviewTitle;
+
+  /// No description provided for @cardReviewTotalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get cardReviewTotalLabel;
+
+  /// No description provided for @cardReviewTotalAmountMock.
+  ///
+  /// In en, this message translates to:
+  /// **'5,000.00'**
+  String get cardReviewTotalAmountMock;
+
+  /// No description provided for @cardReviewCurrencyMock.
+  ///
+  /// In en, this message translates to:
+  /// **'THB'**
+  String get cardReviewCurrencyMock;
+
+  /// No description provided for @cardReviewFeeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee'**
+  String get cardReviewFeeLabel;
+
+  /// No description provided for @cardReviewFeeAmountMock.
+  ///
+  /// In en, this message translates to:
+  /// **'0.00'**
+  String get cardReviewFeeAmountMock;
+
+  /// No description provided for @cardReviewFromLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get cardReviewFromLabel;
+
+  /// No description provided for @cardReviewFromValueMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Wi Wallet'**
+  String get cardReviewFromValueMock;
+
+  /// No description provided for @cardReviewMobileLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Number'**
+  String get cardReviewMobileLabel;
+
+  /// No description provided for @cardReviewMobileValueMock.
+  ///
+  /// In en, this message translates to:
+  /// **'081-141-1234'**
+  String get cardReviewMobileValueMock;
+
+  /// No description provided for @cardReviewToLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get cardReviewToLabel;
+
+  /// No description provided for @cardReviewToValueMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Siam Commercial Bank'**
+  String get cardReviewToValueMock;
+
+  /// No description provided for @cardReviewAccountNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Name'**
+  String get cardReviewAccountNameLabel;
+
+  /// No description provided for @cardReviewAccountNameValueMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Victor Von Doom'**
+  String get cardReviewAccountNameValueMock;
+
+  /// No description provided for @cardReviewAccountNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Number'**
+  String get cardReviewAccountNumberLabel;
+
+  /// No description provided for @cardReviewAccountNumberValueMock.
+  ///
+  /// In en, this message translates to:
+  /// **'1234567890'**
+  String get cardReviewAccountNumberValueMock;
 }
 
 class _AppLocalizationsDelegate
