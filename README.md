@@ -17,6 +17,7 @@ A production-ready Flutter foundation with **multi-language support (i18n)**, **
 - [Project Structure](#-project-structure)
 - [How to Apply to Your Project](#-how-to-apply-to-your-project)
 - [Available Components](#-available-components)
+- [Preview Widgets on External Devices](#-preview-widgets-on-external-devices)
 - [Contributing](#-contributing)
 
 ---
@@ -657,6 +658,101 @@ flutter test test/widget_test.dart
 # Generate coverage
 flutter test --coverage
 ```
+
+---
+
+## 📱 Preview Widgets on External Devices
+
+Test widgets on real devices (phones, tablets) over your local network using Flutter's web server.
+
+### Step 1: Get Your Local IP Address
+
+**macOS/Linux:**
+```bash
+# Get your local IP address
+ipconfig getifaddr en0
+# Example output: 192.168.1.100
+```
+
+**Windows:**
+```cmd
+# Get your local IP address
+ipconfig | findstr "IPv4"
+# Look for your local network IP (usually 192.168.x.x)
+```
+
+### Step 2: Run Preview Widget on Web Server
+
+```bash
+# Run any preview widget on local network
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/<path_to_preview_file>.dart
+```
+
+### Available Preview Widgets
+
+#### Drawer Components
+```bash
+# Balance Detail Drawer
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_balance_detail.dart
+
+# Review Transaction Drawer
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_review_transaction.dart
+
+# Deposit Channel Drawer
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_deposit_channel.dart
+```
+
+#### Card Components
+```bash
+# Review Transaction Card
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/card/preview_card_review_transaction.dart
+```
+
+#### Announcement Components
+```bash
+# Announcement Warning
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/announce/preview_announcement_warning.dart
+```
+
+### Step 3: Access on External Device
+
+1. **Connect your device to the same WiFi network**
+2. **Open browser on your device**
+3. **Navigate to:** `http://[YOUR_IP]:8000`
+   - Example: `http://192.168.1.100:8000`
+
+### Features Available on External Devices
+
+- ✅ **Real touch interactions** - Test actual tap, swipe, scroll behaviors
+- ✅ **Theme switching** - Toggle between light/dark mode
+- ✅ **Responsive design** - See how widgets adapt to different screen sizes
+- ✅ **Performance testing** - Test animations and transitions on real hardware
+- ✅ **Cross-device testing** - Test on multiple devices simultaneously
+
+### Tips for External Device Testing
+
+1. **Use QR Code**: Generate QR code for the URL to easily share with multiple devices
+2. **Network Stability**: Ensure stable WiFi connection for smooth experience
+3. **Hot Reload**: Changes will reflect on all connected devices automatically
+4. **Multiple Ports**: Use different ports (8001, 8002, etc.) to run multiple previews simultaneously
+
+### Example Workflow
+
+```bash
+# Terminal 1: Get IP
+ipconfig getifaddr en0
+# Output: 192.168.1.100
+
+# Terminal 2: Run drawer preview
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_balance_detail.dart
+
+# Terminal 3: Run card preview (different port)
+flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8001 -t lib/widgets/card/preview_card_review_transaction.dart
+```
+
+**Access URLs:**
+- Drawer Preview: `http://192.168.1.100:8000`
+- Card Preview: `http://192.168.1.100:8001`
 
 ---
 
