@@ -21,5 +21,21 @@
   "primaryEnabled": "主按钮启用",
   "secondaryEnabled": "次要按钮启用",
   "secondaryDisabled": "次要按钮禁用",
-  "amountEnabled": "金额按钮启用"
+  "amountEnabled": "金额按钮启用",
+  "cardReviewPreviewTitle": "Card Review Transaction Preview",
+  "cardReviewTotalLabel": "Total",
+  "cardReviewTotalAmountMock": "5,000.00",
+  "cardReviewCurrencyMock": "THB",
+  "cardReviewFeeLabel": "Fee",
+  "cardReviewFeeAmountMock": "0.00",
+  "cardReviewFromLabel": "From",
+  "cardReviewFromValueMock": "Your Wi Wallet",
+  "cardReviewMobileLabel": "Mobile Number",
+  "cardReviewMobileValueMock": "081-141-1234",
+  "cardReviewToLabel": "To",
+  "cardReviewToValueMock": "Siam Commercial Bank",
+  "cardReviewAccountNameLabel": "Account Name",
+  "cardReviewAccountNameValueMock": "Victor Von Doom",
+  "cardReviewAccountNumberLabel": "Account Number",
+  "cardReviewAccountNumberValueMock": "1234567890"
 }

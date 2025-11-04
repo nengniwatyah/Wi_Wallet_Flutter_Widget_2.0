@@ -73,4 +73,52 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get amountEnabled => 'Сумма включена';
+
+  @override
+  String get cardReviewPreviewTitle => 'Card Review Transaction Preview';
+
+  @override
+  String get cardReviewTotalLabel => 'Total';
+
+  @override
+  String get cardReviewTotalAmountMock => '5,000.00';
+
+  @override
+  String get cardReviewCurrencyMock => 'THB';
+
+  @override
+  String get cardReviewFeeLabel => 'Fee';
+
+  @override
+  String get cardReviewFeeAmountMock => '0.00';
+
+  @override
+  String get cardReviewFromLabel => 'From';
+
+  @override
+  String get cardReviewFromValueMock => 'Your Wi Wallet';
+
+  @override
+  String get cardReviewMobileLabel => 'Mobile Number';
+
+  @override
+  String get cardReviewMobileValueMock => '081-141-1234';
+
+  @override
+  String get cardReviewToLabel => 'To';
+
+  @override
+  String get cardReviewToValueMock => 'Siam Commercial Bank';
+
+  @override
+  String get cardReviewAccountNameLabel => 'Account Name';
+
+  @override
+  String get cardReviewAccountNameValueMock => 'Victor Von Doom';
+
+  @override
+  String get cardReviewAccountNumberLabel => 'Account Number';
+
+  @override
+  String get cardReviewAccountNumberValueMock => '1234567890';
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'announcement.dart';
+import 'announcement_warning.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -53,38 +53,15 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: themeProvider.themeMode,
-          home: const AnnouncementPreview(),
+          home: const AnnouncementWarningPreview(),
         );
       },
     );
   }
 }
 
-class AnnouncementPreview extends StatefulWidget {
-  const AnnouncementPreview({super.key});
-
-  @override
-  State<AnnouncementPreview> createState() => _AnnouncementPreviewState();
-}
-
-class _AnnouncementPreviewState extends State<AnnouncementPreview> {
-  late List<String> _messages;
-
-  @override
-  void initState() {
-    super.initState();
-    _messages = [
-      'Your account has been verified successfully. All features are now fully accessible from 01/06/2022 at 8:00 AM (Thailand time).',
-      'We are currently upgrading our security infrastructure. Services will resume by 31/05/2022 at 5:00 PM (Thailand time).',
-      'Your account has been verified successfully. All features are now fully accessible from 01/06/2022 at 8:00 AM (Thailand time).',
-    ];
-  }
-
-  void _updateMessages() {
-    setState(() {
-      _messages = [..._messages.sublist(1), _messages[0]];
-    });
-  }
+class AnnouncementWarningPreview extends StatelessWidget {
+  const AnnouncementWarningPreview({super.key});
 
   DropdownMenuItem<Locale> _buildDropdownItem(BuildContext context, Locale locale, String text, String brightnessKey) {
     return DropdownMenuItem(
@@ -114,7 +91,7 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
       appBar: AppBar(
-        title: const Text('Announcement Preview'),
+        title: const Text('Announcement Warning Preview'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(
@@ -162,9 +139,9 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
                 ),
               ),
               const SizedBox(height: 24),
-              AnnouncementStack(
-                messages: _messages,
-                onClose: _updateMessages,
+              const AnnouncementWarning(
+                title: 'Please recheck information before proceeding',
+                description: 'To prevent wrong account transfers or fraudulent activities. It cannot be changed once confirmed.',
               ),
             ],
           ),

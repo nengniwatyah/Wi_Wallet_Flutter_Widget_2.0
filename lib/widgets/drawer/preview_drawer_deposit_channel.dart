@@ -1,9 +1,8 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/drawer_deposit_channel.dart';
+import 'drawer_deposit_channel.dart';
 import 'package:mcp_test_app/widgets/buttons.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -66,24 +65,14 @@ class PreviewDrawerDepositChannel extends StatelessWidget {
   const PreviewDrawerDepositChannel({super.key});
 
   void _showDrawer(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      barrierColor: const Color(0x80000000),
-      isScrollControlled: true,
-      isDismissible: false,
-      builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: DrawerDepositChannel(
-          onClose: () => Navigator.pop(context),
-          onBankSelected: (bank) {
-            Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Selected: ${bank.name}')),
-            );
-          },
-        ),
-      ),
+    DrawerDepositChannel.show(
+      context,
+      onBankSelected: (bank) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Selected: ${bank.name}')),
+        );
+      },
     );
   }
 

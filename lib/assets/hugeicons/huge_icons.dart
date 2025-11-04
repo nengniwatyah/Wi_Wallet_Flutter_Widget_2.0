@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // Navigation Icons
-const String homeIcon = 'assets/images/home-09.svg';
-const String depositIcon = 'assets/images/wallet-add-02.svg';
-const String convertIcon = 'assets/images/exchange-03.svg';
-const String settingIcon = 'assets/images/list-setting.svg';
-const String irisScanIcon = 'assets/images/iris-scan.svg';
+const String homeIcon = 'lib/assets/images/home-09.svg';
+const String depositIcon = 'lib/assets/images/wallet-add-02.svg';
+const String convertIcon = 'lib/assets/images/exchange-03.svg';
+const String settingIcon = 'lib/assets/images/list-setting.svg';
+const String irisScanIcon = 'lib/assets/images/iris-scan.svg';
 
 // Additional Icons
-const String cancelIcon = 'assets/images/cancel-01.svg';
-const String megaphoneIcon = 'assets/images/megaphone-01.svg';
-const String visaIcon = 'assets/images/logo_visa.svg';
+const String cancelIcon = 'lib/assets/images/cancel-01.svg';
+const String megaphoneIcon = 'lib/assets/images/megaphone-01.svg';
+const String visaIcon = 'lib/assets/images/logo_visa.svg';
 
 // Helper function to create a colored SVG icon
 Widget createHugeIcon(String iconPath, Color color, {double? width, double? height}) {
