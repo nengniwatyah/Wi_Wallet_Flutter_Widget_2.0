@@ -8,6 +8,8 @@ Static warning alert component for displaying important cautionary messages.
 
 ## 🎨 Design Specs (Based on Figma)
 
+https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7089-198760&t=sYCnD6dsF9QpTyn1-4
+
 - **Background Token**: `warning/600`
 - **Text Token**: `text/base/warning`
 - **Icon**: `lib/assets/images/Alert Icon.svg` tinted with `warning/500` at 24×24px

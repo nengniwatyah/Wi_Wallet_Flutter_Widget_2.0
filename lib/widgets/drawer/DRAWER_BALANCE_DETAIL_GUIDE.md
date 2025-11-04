@@ -8,6 +8,8 @@ Bottom sheet drawer for displaying balance details with breakdown.
 
 ## 🎨 Design Specs (Based on Figma)
 
+https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7089-198920&t=sYCnD6dsF9QpTyn1-4
+
 ### Layout
 - **Height**: 75% ของหน้าจอ (0.75 * screen height)
 - **Border Radius**: 16px (top corners only)

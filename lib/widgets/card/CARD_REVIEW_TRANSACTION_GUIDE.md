@@ -9,6 +9,9 @@ A card component that displays transaction review information including total am
 ## 🎨 Design Specs
 
 **From Figma:**
+
+https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7113-199390&t=sYCnD6dsF9QpTyn1-4
+
 - Component: `state=reviewTransaction`
 - Layout width: expands to available width (`double.infinity`). Figma mock uses 343px for reference.
 - Padding: 16px

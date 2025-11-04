@@ -82,7 +82,7 @@ class PreviewDrawerDepositChannel extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Drawer Deposit Channel Preview'),
+        title: const Text('Drawer Deposit Channel'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(
