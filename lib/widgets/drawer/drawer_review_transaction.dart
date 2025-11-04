@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
@@ -79,7 +80,10 @@ class DrawerReviewTransaction extends StatelessWidget {
       backgroundColor: Colors.transparent,
       isDismissible: false,
       enableDrag: false,
-      builder: (context) => DrawerReviewTransaction(
+      barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
+      builder: (context) => BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: DrawerReviewTransaction(
         warningTitle: warningTitle,
         warningDescription: warningDescription,
         totalAmount: totalAmount,
@@ -100,6 +104,7 @@ class DrawerReviewTransaction extends StatelessWidget {
         confirmButtonText: confirmButtonText,
         onConfirm: onConfirm,
         onClose: () => Navigator.pop(context),
+        ),
       ),
     );
   }

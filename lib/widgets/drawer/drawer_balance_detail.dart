@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
@@ -48,7 +49,10 @@ class DrawerBalanceDetail extends StatelessWidget {
       backgroundColor: Colors.transparent,
       isDismissible: false,
       enableDrag: false,
-      builder: (context) => DrawerBalanceDetail(
+      barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
+      builder: (context) => BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: DrawerBalanceDetail(
         totalBalanceLabel: totalBalanceLabel,
         totalBalanceAmount: totalBalanceAmount,
         currency: currency,
@@ -59,6 +63,7 @@ class DrawerBalanceDetail extends StatelessWidget {
         warningText: warningText,
         buttonText: buttonText,
         onClose: () => Navigator.pop(context),
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,25 @@ class DrawerDepositChannel extends StatelessWidget {
     this.onClose,
     this.onBankSelected,
   });
+
+  static Future<void> show(
+    BuildContext context, {
+    Function(BankType)? onBankSelected,
+  }) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
+      builder: (context) => BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: DrawerDepositChannel(
+          onBankSelected: onBankSelected,
+          onClose: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
 
   String _getBankName(BankType bank) {
     switch (bank) {
