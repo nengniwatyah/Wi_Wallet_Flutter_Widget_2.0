@@ -102,8 +102,8 @@ class _ButtonsState extends State<Buttons> {
         scale: _isPressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 100),
         child: Container(
-        height: 48,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        height: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(999),

@@ -13,6 +13,8 @@ Complete guide to using all available widgets in this foundation.
 - [AnnouncementWarning](#announcementwarning)
 - [CardReviewTransaction](#cardreviewtransaction)
 - [DrawerReviewTransaction](#drawerreviewtransaction)
+- [DrawerBalanceDetail](#drawerbalancedetail)
+- [DrawerDepositChannel](#drawerdepositchannel)
 - [ShortcutMenuItem](#shortcutmenuitem)
 - [Buttons](#buttons)
 
@@ -49,9 +51,11 @@ Scaffold(
 
 - 5 menu items: Home, Deposit, Scan, Convert, Setting
 - Floating scan button in center
+- 10px backdrop blur effect (glass-morphism)
 - Theme-aware colors
 - Localized labels
 - Responsive design
+- Fixed scan button clipping issue
 
 ### Customization
 
@@ -510,8 +514,9 @@ DrawerReviewTransaction.show(
 - Transaction details
 - Object information
 - Confirm button
-- Close button
-- Swipe to dismiss
+- Close button (X button only dismiss)
+- 10px backdrop blur effect
+- Overlay with rgba(0,0,0,0.5)
 - Theme-aware
 
 ### Behavior
@@ -524,6 +529,71 @@ DrawerReviewTransaction.show(
 
 ---
 
+## DrawerBalanceDetail
+
+Balance breakdown drawer with hold amount details.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/drawer/drawer_balance_detail.dart';
+```
+
+### Usage
+
+```dart
+DrawerBalanceDetail.show(
+  context,
+  totalBalanceAmount: '100,000.00',
+  holdAmountValue: '5,030.20',
+  ledgerBalanceValue: '15,030.20',
+  availableBalanceValue: '94,969.80',
+  currency: 'THB',
+);
+```
+
+### Features
+
+- Modal bottom sheet (50% height)
+- Balance breakdown display
+- Hold amount explanation
+- Full-wallet image asset
+- Button only dismiss
+- 10px backdrop blur effect
+- Theme-aware styling
+
+---
+
+## DrawerDepositChannel
+
+Bank selection drawer for deposit channels.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/drawer/drawer_deposit_channel.dart';
+```
+
+### Usage
+
+```dart
+DrawerDepositChannel(
+  onBankSelected: (bank) => print('Selected: $bank'),
+  onClose: () => Navigator.pop(context),
+)
+```
+
+### Features
+
+- Bank logo display
+- Mobile banking options
+- Scrollable bank list
+- Selection callback
+- Modal bottom sheet (50% height)
+- 10px backdrop blur effect
+
+---
+
 ## ShortcutMenuItem
 
 Menu item with icon and label.
@@ -531,7 +601,7 @@ Menu item with icon and label.
 ### Import
 
 ```dart
-import 'package:your_app/widgets/shortcut_menu.dart';
+import 'package:your_app/widgets/shortcut_menu/shortcut_menu.dart';
 ```
 
 ### Usage
@@ -589,37 +659,42 @@ Collection of themed buttons.
 ### Import
 
 ```dart
-import 'package:your_app/widgets/buttons.dart';
+import 'package:your_app/widgets/button/buttons.dart';
 ```
 
 ### Primary Button
 
 ```dart
-PrimaryButton(
+Buttons(
   text: 'Submit',
+  type: ButtonType.primary,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
-  isLoading: false,
 )
 ```
 
 ### Secondary Button
 
 ```dart
-SecondaryButton(
+Buttons(
   text: 'Cancel',
+  type: ButtonType.secondary,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
 )
 ```
 
-### Outlined Button
+### Amount Button
 
 ```dart
-OutlinedButton(
-  text: 'Learn More',
+Buttons(
+  text: '฿100',
+  type: ButtonType.amount,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
@@ -631,10 +706,9 @@ OutlinedButton(
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | text | String | required | Button text |
+| type | ButtonType | required | Button type (primary, secondary, amount) |
+| enabled | bool | true | Button enabled state |
 | onPressed | VoidCallback? | null | Press callback |
-| isLoading | bool | false | Show loading indicator |
-| width | double? | null | Button width |
-| height | double | 48 | Button height |
 
 ---
 
