@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
-import 'package:mcp_test_app/widgets/buttons.dart';
+import 'package:mcp_test_app/widgets/button/buttons.dart';
 import 'package:mcp_test_app/widgets/announce/announcement_warning.dart';
 
 class DrawerBalanceDetail extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/base_theme.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/mobile_code_input.dart';
+import 'package:mcp_test_app/widgets/input/mobile_code_input.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -102,7 +102,7 @@ class PreviewMobileCodeInput extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Mobile Code Input Preview'),
+        title: const Text('Mobile Code Input'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(

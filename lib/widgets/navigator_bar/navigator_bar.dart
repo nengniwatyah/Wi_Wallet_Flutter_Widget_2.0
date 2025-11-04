@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mcp_test_app/assets/hugeicons/huge_icons.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
@@ -179,30 +180,39 @@ class NavigatorBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 92.0,
-      decoration: BoxDecoration(
-        color: ThemeColors.get(
-          Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-          'fill/base/300'
-        ).withValues(alpha: opacity),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(16.0),
-          topRight: Radius.circular(16.0),
-        ),
-        border: Border(
-          top: BorderSide(
-            color: ThemeColors.get(
-              Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-              'stroke/contrast/600'
-            ),
-            width: 1,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(16.0),
+            topRight: Radius.circular(16.0),
           ),
-        ),
-      ),
-      child: Stack(
-        children: [
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 92.0,
+              decoration: BoxDecoration(
+                color: ThemeColors.get(
+                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                  'fill/base/300'
+                ).withValues(alpha: opacity),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16.0),
+                  topRight: Radius.circular(16.0),
+                ),
+                border: Border(
+                  top: BorderSide(
+                    color: ThemeColors.get(
+                      Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                      'alt/base/300'
+                    ),
+                    width: 1,
+                  ),
+                ),
+              ),
+              child:
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -338,44 +348,47 @@ class NavigatorBar extends StatelessWidget {
               ),
             ],
           ),
-          Align(
-            alignment: AlignmentDirectional(0.0, -2.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Handle scan button tap
-              },
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(16),
-                backgroundColor: ThemeColors.get(
-                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                  'primary/400'
-                ),
-                foregroundColor: ThemeColors.get(
-                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                  'fill/contrast/600'
-                ),
-                side: BorderSide(
-                  color: ThemeColors.get(
-                    Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                    'stroke/contrast/600'
-                  ),
-                  width: 1,
-                ),
-              ),
-              child: createHugeIcon(
-                irisScanIcon,
-                ThemeColors.get(
-                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                  'fill/contrast/600'
-                ),
-                width: 32.0,
-                height: 32.0,
-              ),
             ),
           ),
-        ],
-      ),
+        ),
+        Positioned(
+          top: -24,
+          left: MediaQuery.of(context).size.width / 2 - 32,
+          child: ElevatedButton(
+            onPressed: () {
+              // Handle scan button tap
+            },
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(16),
+              backgroundColor: ThemeColors.get(
+                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                'primary/400'
+              ),
+              foregroundColor: ThemeColors.get(
+                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                'fill/contrast/600'
+              ),
+              side: BorderSide(
+                color: ThemeColors.get(
+                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                  'stroke/contrast/600'
+                ),
+                width: 1,
+              ),
+            ),
+            child: createHugeIcon(
+              irisScanIcon,
+              ThemeColors.get(
+                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                'fill/contrast/600'
+              ),
+              width: 32.0,
+              height: 32.0,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

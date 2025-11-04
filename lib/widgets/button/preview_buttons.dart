@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/buttons.dart';
+import 'package:mcp_test_app/widgets/button/buttons.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;

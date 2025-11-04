@@ -42,14 +42,15 @@ lib/
 │   └── app_my.arb          # Myanmar translations
 ├── widgets/
 │   ├── announce/           # Announcement components (2 widgets)
+│   ├── button/             # Button components (1 widget + preview)
 │   ├── card/               # Card components (1 widget)
 │   ├── drawer/             # Drawer components (3 widgets)
-│   ├── navigator_bar/      # Bottom navigation (1 widget)
+│   ├── navigator_bar/      # Bottom navigation (1 widget with blur effect)
+│   ├── shortcut_menu/      # Shortcut menu components (1 widget)
 │   ├── visa/               # Visa card component (1 widget)
 │   ├── full_amount_input.dart
 │   ├── mobile_code_input.dart
-│   ├── search_input.dart
-│   └── buttons.dart
+│   └── search_input.dart
 └── main.dart
 ```
 
@@ -107,6 +108,7 @@ lib/
 **Variants:**
 - `base` - Base colors
 - `contrast` - Contrast colors
+- `alt` - Alternative colors
 
 **Intensity:** 100-600 (100=lightest, 600=darkest)
 
@@ -128,7 +130,7 @@ lib/
 - **ThemeColors.get():** Type-safe color access
 - **Material Design 3:** useMaterial3: true
 
-## 🧩 Widget Components (13 Components)
+## 🧩 Widget Components (14 Components)
 
 ### 1. Input Components (3)
 - **FullAmountInput** - Amount input with validation, decimal support
@@ -136,7 +138,7 @@ lib/
 - **SearchInput** - Search input with icon
 
 ### 2. Navigation Components (1)
-- **NavigatorBar** - Bottom navigation with 5 items + floating scan button
+- **NavigatorBar** - Bottom navigation with 5 items + floating scan button + 10px blur effect
 
 ### 3. Card Components (2)
 - **VisaCard** - Gradient visa card display with balance
@@ -151,9 +153,11 @@ lib/
 - **DrawerBalanceDetail** - Balance breakdown drawer with hold amount
 - **DrawerDepositChannel** - Bank selection drawer (50% height)
 
-### 6. Utility Components (2)
-- **Buttons** - Reusable button component with multiple types
-- **ShortcutMenuItem** - Menu item with icon and label
+### 6. Button Components (1)
+- **Buttons** - Reusable button component with 3 types (primary, secondary, amount)
+
+### 7. Menu Components (1)
+- **ShortcutMenuItem** - Menu item with SVG icon manipulation and theme awareness
 
 ## 🏗️ Architecture Patterns
 
@@ -257,12 +261,13 @@ widgets/{feature}/
 
 ## 📊 Project Statistics
 
-- **Total Components:** 13 widgets
+- **Total Components:** 14 widgets
 - **Supported Languages:** 5 languages
-- **Design Tokens:** 100+ color tokens
+- **Design Tokens:** 100+ color tokens (including alt/ variant)
 - **Platform Support:** 6 platforms
 - **Dependencies:** 8 main packages
-- **Documentation Files:** 15+ guide files
+- **Documentation Files:** 18+ guide files
+- **Compliance Scores:** Button (85/100), ShortcutMenu (70/100)
 
 ## 🔧 Development Workflow
 
@@ -312,7 +317,7 @@ flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/
 
 ---
 
-**Last Updated:** December 2024  
+**Last Updated:** November 2025  
 **Maintained By:** Wi Wallet Development Team  
 **Contact:** niwat.yah@wipay.co.th
 
