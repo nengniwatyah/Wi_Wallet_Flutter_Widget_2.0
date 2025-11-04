@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/base_theme.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/search_input.dart';
+import 'package:mcp_test_app/widgets/input/mobile_code_input.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -64,15 +64,15 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: ThemeColors.get('dark', 'fill/base/300'),
           ),
           themeMode: themeProvider.themeMode,
-          home: const PreviewSearchInput(),
+          home: const PreviewMobileCodeInput(),
         );
       },
     );
   }
 }
 
-class PreviewSearchInput extends StatelessWidget {
-  const PreviewSearchInput({super.key});
+class PreviewMobileCodeInput extends StatelessWidget {
+  const PreviewMobileCodeInput({super.key});
 
   DropdownMenuItem<Locale> _buildDropdownItem(BuildContext context, Locale locale, String text, String brightnessKey) {
     return DropdownMenuItem(
@@ -102,7 +102,7 @@ class PreviewSearchInput extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Search Input Preview'),
+        title: const Text('Mobile Code Input'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(
@@ -156,7 +156,13 @@ class PreviewSearchInput extends StatelessWidget {
                   color: ThemeColors.get(brightnessKey, 'fill/base/100'),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: const SearchInput(),
+                child: MobileCodeInput(
+                  onCountryCodeTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Country code selector tapped')),
+                    );
+                  },
+                ),
               ),
             ],
           ),

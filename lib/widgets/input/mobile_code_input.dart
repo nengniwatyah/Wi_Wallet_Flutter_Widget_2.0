@@ -115,6 +115,10 @@ class _MobileCodeInputState extends State<MobileCodeInput> {
                   'lib/assets/images/arrow-down-01.svg',
                   width: 24,
                   height: 24,
+                  colorFilter: ColorFilter.mode(
+                    ThemeColors.get(brightnessKey, 'text/base/600'),
+                    BlendMode.srcIn,
+                  ),
                 ),
               ],
             ),

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/base_theme.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/full_amount_input.dart';
+import 'package:mcp_test_app/widgets/input/full_amount_input.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;

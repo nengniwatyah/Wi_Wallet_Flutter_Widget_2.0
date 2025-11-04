@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/widgets/announce/announcement_warning.dart';
 import 'package:mcp_test_app/widgets/card/card_review_transaction.dart';
-import 'package:mcp_test_app/widgets/buttons.dart';
+import 'package:mcp_test_app/widgets/button/buttons.dart';
 
 class DrawerReviewTransaction extends StatelessWidget {
   final String warningTitle;

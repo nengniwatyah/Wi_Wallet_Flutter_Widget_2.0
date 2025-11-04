@@ -17,6 +17,7 @@ NavigatorBar is a custom bottom navigation bar widget with 5 navigation items (4
 - **Height**: 92.0 pixels (fixed)
 - **Width**: Full screen width
 - **Border Radius**: 16.0 pixels (top corners only)
+- **Blur Effect**: 10px backdrop blur (sigmaX: 10, sigmaY: 10)
 - **Icon Size**: 24.0 x 24.0 pixels (navigation items)
 - **Center Button Icon**: 32.0 x 32.0 pixels
 
@@ -24,7 +25,8 @@ NavigatorBar is a custom bottom navigation bar widget with 5 navigation items (4
 | Token | Usage | Light Mode | Dark Mode |
 |-------|-------|------------|-----------|
 | `fill/base/300` | Background color | #F5F5F5 | #1A1A1A |
-| `stroke/contrast/600` | Top border & center button border | rgba(255,255,255,0.1) | rgba(255,255,255,0.1) |
+| `alt/base/300` | Top border | rgba(255,255,255,0.1) | rgba(255,255,255,0.1) |
+| `stroke/contrast/600` | Center button border | rgba(255,255,255,0.1) | rgba(255,255,255,0.1) |
 | `text/base/600` | Home icon & text (active) | rgba(0,0,0,0.6) | rgba(255,255,255,0.6) |
 | `primary/400` | Center button background | #4CAF50 | #4CAF50 |
 | `fill/contrast/600` | Center button icon & foreground | #FFFFFF | #FFFFFF |
@@ -108,6 +110,7 @@ Copy the entire `NavigatorBar` class from the source file (between `START` and `
 
 ### Step 4: Import Required Packages
 ```dart
+import 'dart:ui'; // Required for ImageFilter.blur
 import 'package:flutter/material.dart';
 import 'package:your_project/config/themes/theme_color.dart';
 import 'package:your_project/assets/hugeicons/huge_icons.dart';
@@ -225,20 +228,22 @@ Container(
 
 ### Container Hierarchy
 ```
-Container (Main wrapper)
-└── Stack
-    ├── Row (Navigation items)
-    │   ├── Expanded (Left section)
-    │   │   └── Row
-    │   │       ├── Column (Home)
-    │   │       └── Column (Deposit)
-    │   ├── SizedBox (72px gap for center button)
-    │   └── Expanded (Right section)
-    │       └── Row
-    │           ├── Column (Convert)
-    │           └── Column (Setting)
-    └── Align (Center button)
-        └── ElevatedButton (Floating action)
+Stack (Main wrapper with clipBehavior: Clip.none)
+├── ClipRRect (Blur container)
+│   └── BackdropFilter (10px blur effect)
+│       └── Container (Background with border)
+│           └── Row (Navigation items)
+│               ├── Expanded (Left section)
+│               │   └── Row
+│               │       ├── Column (Home)
+│               │       └── Column (Deposit)
+│               ├── SizedBox (72px gap for center button)
+│               └── Expanded (Right section)
+│                   └── Row
+│                       ├── Column (Convert)
+│                       └── Column (Setting)
+└── Positioned (Center button - outside ClipRRect)
+    └── ElevatedButton (Floating action)
 ```
 
 ### Padding Values
@@ -331,9 +336,11 @@ SvgPicture.asset(
 
 1. **Use with extendBody**: Set `extendBody: true` in Scaffold for proper overlay effect
 2. **Background Color**: Match Scaffold background with NavigatorBar for seamless look
-3. **Safe Area**: Widget handles safe area automatically with padding
-4. **Responsive**: Widget adapts to screen width automatically
-5. **Accessibility**: Ensure sufficient color contrast for text and icons
+3. **Blur Effect**: 10px backdrop blur creates glass-morphism effect
+4. **Safe Area**: Widget handles safe area automatically with padding
+5. **Responsive**: Widget adapts to screen width automatically
+6. **Accessibility**: Ensure sufficient color contrast for text and icons
+7. **Clipping**: Stack with clipBehavior: Clip.none prevents center button clipping
 
 ## Performance Considerations
 

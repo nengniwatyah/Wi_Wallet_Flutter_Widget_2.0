@@ -779,6 +779,15 @@ dependencies:
 
 ---
 
+## Docs
+
+https://docs.flutter.dev/ui/internationalization
+https://docs.flutter.dev/cookbook/design/themes
+https://docs.flutter.dev/release/breaking-changes/material-3-migration
+https://docs.flutter.dev/ui/advanced/material-3
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

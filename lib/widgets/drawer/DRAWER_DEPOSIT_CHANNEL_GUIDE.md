@@ -8,6 +8,8 @@ Bottom-sheet drawer presenting a list of supported deposit channels (mobile bank
 
 ## 🎨 Layout & Design Tokens
 
+https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7066-12327&t=sYCnD6dsF9QpTyn1-4
+
 - Height: `MediaQuery.of(context).size.height * 0.5` (ครอบครองครึ่งล่างของจอ)
 - Padding: `EdgeInsets.fromLTRB(16, 16, 16, 16)`
 - Border radius: 16 px เฉพาะด้านบน `Radius.circular(16)`

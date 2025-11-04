@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'drawer_deposit_channel.dart';
-import 'package:mcp_test_app/widgets/buttons.dart';
+import 'package:mcp_test_app/widgets/button/buttons.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -82,7 +82,7 @@ class PreviewDrawerDepositChannel extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Drawer Deposit Channel Preview'),
+        title: const Text('Drawer Deposit Channel'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(

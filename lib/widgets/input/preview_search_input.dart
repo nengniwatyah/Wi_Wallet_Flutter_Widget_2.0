@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/base_theme.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'package:mcp_test_app/widgets/mobile_code_input.dart';
+import 'package:mcp_test_app/widgets/input/search_input.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -64,15 +64,15 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: ThemeColors.get('dark', 'fill/base/300'),
           ),
           themeMode: themeProvider.themeMode,
-          home: const PreviewMobileCodeInput(),
+          home: const PreviewSearchInput(),
         );
       },
     );
   }
 }
 
-class PreviewMobileCodeInput extends StatelessWidget {
-  const PreviewMobileCodeInput({super.key});
+class PreviewSearchInput extends StatelessWidget {
+  const PreviewSearchInput({super.key});
 
   DropdownMenuItem<Locale> _buildDropdownItem(BuildContext context, Locale locale, String text, String brightnessKey) {
     return DropdownMenuItem(
@@ -102,7 +102,7 @@ class PreviewMobileCodeInput extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Mobile Code Input Preview'),
+        title: const Text('Search Input'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(
@@ -156,13 +156,7 @@ class PreviewMobileCodeInput extends StatelessWidget {
                   color: ThemeColors.get(brightnessKey, 'fill/base/100'),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: MobileCodeInput(
-                  onCountryCodeTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Country code selector tapped')),
-                    );
-                  },
-                ),
+                child: const SearchInput(),
               ),
             ],
           ),

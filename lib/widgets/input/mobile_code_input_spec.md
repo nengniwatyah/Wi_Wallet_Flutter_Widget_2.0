@@ -3,6 +3,8 @@
 ## Overview
 `MobileCodeInput` เป็น custom Flutter widget สำหรับรับ input เบอร์มือถือ พร้อม country code selector และ visual feedback แบบ real-time รองรับทั้ง dark และ light mode
 
+https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7066-6083&t=sYCnD6dsF9QpTyn1-4
+
 ## Dependencies
 ```yaml
 dependencies:
