@@ -13,7 +13,7 @@ Bottom-sheet drawer presenting a list of supported deposit channels (mobile bank
 - Border radius: 16 px เฉพาะด้านบน `Radius.circular(16)`
 - Background: `ThemeColors.get(brightnessKey, 'fill/base/100')`
 - Header text: `GoogleFonts.notoSansThai` 15 px, weight 700, สี `text/base/600`
-- Label “Mobile Banking”:
+- Label "Mobile Banking":
   - Background: `fill/base/600`
   - Text: 10 px, weight 600, สี `text/base/600`
 - Bank item container:
@@ -27,16 +27,35 @@ Bottom-sheet drawer presenting a list of supported deposit channels (mobile bank
 
 ## 🚀 Usage Example
 
+### Using Static Show Method (Recommended)
+
+```dart
+DrawerDepositChannel.show(
+  context,
+  onBankSelected: (bank) {
+    Navigator.pop(context);
+    // Handle selected bank type
+    print('Selected: ${bank.name}');
+  },
+);
+```
+
+### Manual Implementation
+
 ```dart
 showModalBottomSheet(
   context: context,
   backgroundColor: Colors.transparent,
   isScrollControlled: true,
-  builder: (context) => DrawerDepositChannel(
-    onClose: () => Navigator.pop(context),
-    onBankSelected: (bank) {
-      // Handle selected bank type
-    },
+  barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
+  builder: (context) => BackdropFilter(
+    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+    child: DrawerDepositChannel(
+      onClose: () => Navigator.pop(context),
+      onBankSelected: (bank) {
+        // Handle selected bank type
+      },
+    ),
   ),
 );
 ```
@@ -50,16 +69,26 @@ flutter run lib/widgets/drawer/preview_drawer_deposit_channel.dart
 ```
 
 ไฟล์ preview มี:
-- ปุ่ม “Show Drawer” ที่เปิด modal พร้อม blur พื้นหลัง
+- ปุ่ม "Show Drawer" ที่เรียก `DrawerDepositChannel.show()` method
 - Theme toggle (light/dark) ผ่าน `ThemeProvider`
 - Locale selector ผ่าน `AppLocalizations` (แม้ widget ใช้อังกฤษล้วนในตอนนี้)
+- Overlay style (background blur + barrierColor) จัดการโดย show method
 
 ## 🎯 Properties
+
+### Widget Properties
 
 | Property          | Type                      | Required | Description                                          |
 |-------------------|---------------------------|----------|------------------------------------------------------|
 | `onClose`         | `VoidCallback?`           | No       | เรียกเมื่อผู้ใช้กดไอคอนปิด                          |
 | `onBankSelected`  | `Function(BankType)?`     | No       | คืนค่า enum `BankType` เมื่อเลือกธนาคารแต่ละแถว      |
+
+### Static Show Method
+
+| Parameter         | Type                      | Required | Description                                          |
+|-------------------|---------------------------|----------|------------------------------------------------------|
+| `context`         | `BuildContext`            | Yes      | Build context สำหรับแสดง modal                      |
+| `onBankSelected`  | `Function(BankType)?`     | No       | Callback เมื่อเลือกธนาคาร                           |
 
 ## 🗂️ BankType Enum
 
@@ -82,6 +111,16 @@ enum BankType { scb, kbank, bbl, krungsri }
 - พึ่งพา `GoogleFonts.notoSansThai` เพื่อความคงที่ของ typography
 - อาศัย `SvgPicture.asset` ในการแสดงโลโก้และไอคอนทั้งหมด
 - ความสูงของ drawer ผูกกับความสูงหน้าจอ (50%) ควรทดสอบบนอุปกรณ์จอเล็ก/ใหญ่
+- **Static show method**: มี overlay style (barrierColor + BackdropFilter blur 10px) ตาม Figma specs
+- **Consistent pattern**: ใช้ pattern เดียวกับ DrawerReviewTransaction และ DrawerBalanceDetail
+
+## 🔄 Recent Updates
+
+**v2.0 - Overlay Style Implementation**
+- เพิ่ม static `show()` method พร้อม Figma-compliant overlay style
+- Background: `rgba(0,0,0,0.5)` + `BackdropFilter` blur 10px
+- อัปเดต preview file ให้ใช้ `.show()` method แทน custom implementation
+- Consistent pattern กับ drawer widgets อื่นๆ
 
 ## ✅ Checklist ก่อนใช้งานจริง
 
@@ -89,6 +128,7 @@ enum BankType { scb, kbank, bbl, krungsri }
 2. หากธนาคารมีจำนวนเยอะ ควรดึงข้อมูลจากโมเดลหรือ service แทนการซ้ำโค้ดใน widget
 3. เพิ่ม localization สำหรับชื่อธนาคารหรือหัวข้อหากต้องรองรับหลายภาษา
 4. ทดสอบในธีมมืด/สว่างว่า contrast ของสีอ่านได้ชัดเจน
+5. **แนะนำ**: ใช้ `DrawerDepositChannel.show()` method แทน manual implementation
 
 ---
 
