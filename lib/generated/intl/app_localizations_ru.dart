@@ -121,4 +121,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'Мобильный номер';
+
+  @override
+  String get noResultsFound => 'Результаты не найдены';
+
+  @override
+  String get pleaseTryAgain => 'Пожалуйста, попробуйте еще раз';
 }

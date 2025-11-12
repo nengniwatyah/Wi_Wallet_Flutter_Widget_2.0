@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
+import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
 class MobileCodeInput extends StatefulWidget {
   final TextEditingController? controller;
@@ -140,7 +141,7 @@ class _MobileCodeInputState extends State<MobileCodeInput> {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
                 isDense: true,
-                hintText: 'เบอร์มือถือ',
+                hintText: AppLocalizations.of(context)!.mobileNumberPlaceholder,
                 hintStyle: GoogleFonts.notoSansThai(
                   fontSize: 15,
                   height: 1.33,

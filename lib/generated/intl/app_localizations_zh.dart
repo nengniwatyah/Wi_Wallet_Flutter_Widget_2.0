@@ -121,4 +121,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => '手机号码';
+
+  @override
+  String get noResultsFound => '未找到结果';
+
+  @override
+  String get pleaseTryAgain => '请再试一次';
 }

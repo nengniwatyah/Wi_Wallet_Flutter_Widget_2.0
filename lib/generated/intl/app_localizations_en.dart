@@ -121,4 +121,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'Mobile Number';
+
+  @override
+  String get noResultsFound => 'No results found';
+
+  @override
+  String get pleaseTryAgain => 'Please try again';
 }

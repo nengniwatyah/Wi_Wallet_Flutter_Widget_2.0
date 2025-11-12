@@ -37,5 +37,8 @@
   "cardReviewAccountNameLabel": "ชื่อบัญชี",
   "cardReviewAccountNameValueMock": "Victor Von Doom",
   "cardReviewAccountNumberLabel": "เลขที่บัญชี",
-  "cardReviewAccountNumberValueMock": "1234567890"
+  "cardReviewAccountNumberValueMock": "1234567890",
+  "mobileNumberPlaceholder": "เบอร์มือถือ",
+  "noResultsFound": "ไม่พบผลการค้นหา",
+  "pleaseTryAgain": "กรุณาลองใหม่อีกครั้ง"
 }

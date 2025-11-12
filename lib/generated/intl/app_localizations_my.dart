@@ -121,4 +121,13 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'မိုဘိုလ်ဖုန်းနံတ်';
+
+  @override
+  String get noResultsFound => 'ရန်တွေ့မသိပါဘူ';
+
+  @override
+  String get pleaseTryAgain => 'အမှန်အတွက် တံ့ပေးတွင်းပါ';
 }

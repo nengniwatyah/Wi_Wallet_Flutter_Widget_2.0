@@ -331,6 +331,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1234567890'**
   String get cardReviewAccountNumberValueMock;
+
+  /// No description provided for @mobileNumberPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Number'**
+  String get mobileNumberPlaceholder;
+
+  /// No description provided for @noResultsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get noResultsFound;
+
+  /// No description provided for @pleaseTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Please try again'**
+  String get pleaseTryAgain;
 }
 
 class _AppLocalizationsDelegate

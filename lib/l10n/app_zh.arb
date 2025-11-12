@@ -37,5 +37,8 @@
   "cardReviewAccountNameLabel": "Account Name",
   "cardReviewAccountNameValueMock": "Victor Von Doom",
   "cardReviewAccountNumberLabel": "Account Number",
-  "cardReviewAccountNumberValueMock": "1234567890"
+  "cardReviewAccountNumberValueMock": "1234567890",
+  "mobileNumberPlaceholder": "手机号码",
+  "noResultsFound": "未找到结果",
+  "pleaseTryAgain": "请再试一次"
 }

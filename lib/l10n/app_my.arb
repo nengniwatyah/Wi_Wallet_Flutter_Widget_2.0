@@ -37,5 +37,8 @@
   "cardReviewAccountNameLabel": "Account Name",
   "cardReviewAccountNameValueMock": "Victor Von Doom",
   "cardReviewAccountNumberLabel": "Account Number",
-  "cardReviewAccountNumberValueMock": "1234567890"
+  "cardReviewAccountNumberValueMock": "1234567890",
+  "mobileNumberPlaceholder": "မိုဘိုလ်ဖုန်းနံတ်",
+  "noResultsFound": "ရန်တွေ့မသိပါဘူ",
+  "pleaseTryAgain": "အမှန်အတွက် တံ့ပေးတွင်းပါ"
 }
