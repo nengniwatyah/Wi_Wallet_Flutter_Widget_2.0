@@ -1,44 +1,175 @@
 {
   "@@locale": "th",
   "welcome_message": "ยินดีต้อนรับ",
+  "@welcome_message": {
+    "description": "Greeting headline on the home screen"
+  },
   "greeting": "สวัสดีครับ/ค่ะ",
+  "@greeting": {
+    "description": "Short greeting text"
+  },
   "farewell": "ลาก่อนครับ/ค่ะ",
+  "@farewell": {
+    "description": "Farewell text"
+  },
   "app_name": "แอปทดสอบ",
+  "@app_name": {
+    "description": "Application name shown in titles"
+  },
   "light_theme": "สว่าง",
+  "@light_theme": {
+    "description": "Label for light theme option"
+  },
   "dark_theme": "มืด",
+  "@dark_theme": {
+    "description": "Label for dark theme option"
+  },
   "navigatorHome": "หน้าหลัก",
+  "@navigatorHome": {
+    "description": "Navigation label for Home tab"
+  },
   "navigatorHomeDeposit": "ฝากเงิน",
+  "@navigatorHomeDeposit": {
+    "description": "Navigation label for Deposit tab"
+  },
   "navigatorHomeConvert": "แปลงเงิน",
+  "@navigatorHomeConvert": {
+    "description": "Navigation label for Convert tab"
+  },
   "navigatorHomeSetting": "ตั้งค่า",
+  "@navigatorHomeSetting": {
+    "description": "Navigation label for Setting tab"
+  },
   "transfer": "โอนเงิน",
+  "@transfer": {
+    "description": "Action label for transferring funds"
+  },
   "top_up": "เติมเงิน",
+  "@top_up": {
+    "description": "Action label for topping up balance"
+  },
   "bill": "บิล",
+  "@bill": {
+    "description": "Action label for paying bills"
+  },
   "announcement": "ประกาศ",
+  "@announcement": {
+    "description": "Section title for announcements"
+  },
   "viewAll": "ดูทั้งหมด",
+  "@viewAll": {
+    "description": "Button text to view all items"
+  },
+  "labelHomeTotalBalance": "ยอดคงเหลือ",
+  "@labelHomeTotalBalance": {
+    "description": "Label for available balance section"
+  },
+  "homeDrawerDetailTotalBalance": "ยอดคงเหลือ",
+  "@homeDrawerDetailTotalBalance": {
+    "description": "Label for total balance section"
+  },
   "availableBalance": "ยอดคงเหลือ",
+  "@availableBalance": {
+    "description": "Label for available balance section"
+  },
   "primaryButton": "ปุ่มหลัก",
+  "@primaryButton": {
+    "description": "Label for primary button examples"
+  },
   "secondaryButton": "ปุ่มรอง",
+  "@secondaryButton": {
+    "description": "Label for secondary button examples"
+  },
   "primaryEnabled": "ปุ่มหลักเปิดใช้งาน",
+  "@primaryEnabled": {
+    "description": "Label for enabled primary button"
+  },
   "secondaryEnabled": "ปุ่มรองเปิดใช้งาน",
+  "@secondaryEnabled": {
+    "description": "Label for enabled secondary button"
+  },
   "secondaryDisabled": "ปุ่มรองปิดใช้งาน",
+  "@secondaryDisabled": {
+    "description": "Label for disabled secondary button"
+  },
   "amountEnabled": "ปุ่มจำนวนเงินเปิดใช้งาน",
+  "@amountEnabled": {
+    "description": "Label for amount entry enabled state"
+  },
   "cardReviewPreviewTitle": "ตัวอย่างตรวจสอบรายการ",
+  "@cardReviewPreviewTitle": {
+    "description": "Title for card review transaction preview"
+  },
   "cardReviewTotalLabel": "ยอดรวม",
+  "@cardReviewTotalLabel": {
+    "description": "Label for total amount"
+  },
   "cardReviewTotalAmountMock": "5,000.00",
+  "@cardReviewTotalAmountMock": {
+    "description": "Mock total amount value"
+  },
   "cardReviewCurrencyMock": "THB",
+  "@cardReviewCurrencyMock": {
+    "description": "Mock currency code"
+  },
   "cardReviewFeeLabel": "ค่าธรรมเนียม",
+  "@cardReviewFeeLabel": {
+    "description": "Label for fee amount"
+  },
   "cardReviewFeeAmountMock": "0.00",
+  "@cardReviewFeeAmountMock": {
+    "description": "Mock fee amount value"
+  },
   "cardReviewFromLabel": "จาก",
+  "@cardReviewFromLabel": {
+    "description": "Label for source account"
+  },
   "cardReviewFromValueMock": "กระเป๋าเงินของคุณ",
+  "@cardReviewFromValueMock": {
+    "description": "Mock source account value"
+  },
   "cardReviewMobileLabel": "เบอร์มือถือ",
+  "@cardReviewMobileLabel": {
+    "description": "Label for mobile number"
+  },
   "cardReviewMobileValueMock": "081-141-1234",
+  "@cardReviewMobileValueMock": {
+    "description": "Mock mobile number value"
+  },
   "cardReviewToLabel": "ไปยัง",
+  "@cardReviewToLabel": {
+    "description": "Label for destination account"
+  },
   "cardReviewToValueMock": "ธนาคารไทยพาณิชย์",
+  "@cardReviewToValueMock": {
+    "description": "Mock destination account value"
+  },
   "cardReviewAccountNameLabel": "ชื่อบัญชี",
+  "@cardReviewAccountNameLabel": {
+    "description": "Label for account name"
+  },
   "cardReviewAccountNameValueMock": "Victor Von Doom",
+  "@cardReviewAccountNameValueMock": {
+    "description": "Mock account name value"
+  },
   "cardReviewAccountNumberLabel": "เลขที่บัญชี",
+  "@cardReviewAccountNumberLabel": {
+    "description": "Label for account number"
+  },
   "cardReviewAccountNumberValueMock": "1234567890",
+  "@cardReviewAccountNumberValueMock": {
+    "description": "Mock account number value"
+  },
   "mobileNumberPlaceholder": "เบอร์มือถือ",
+  "@mobileNumberPlaceholder": {
+    "description": "Placeholder for mobile number input"
+  },
   "noResultsFound": "ไม่พบผลการค้นหา",
-  "pleaseTryAgain": "กรุณาลองใหม่อีกครั้ง"
+  "@noResultsFound": {
+    "description": "Empty state text when no results are found"
+  },
+  "pleaseTryAgain": "กรุณาลองใหม่อีกครั้ง",
+  "@pleaseTryAgain": {
+    "description": "Prompt to retry after a failure"
+  }
 }

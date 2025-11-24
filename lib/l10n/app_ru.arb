@@ -1,44 +1,175 @@
 {
   "@@locale": "ru",
   "welcome_message": "Добро пожаловать",
+  "@welcome_message": {
+    "description": "Greeting headline on the home screen"
+  },
   "greeting": "Привет",
+  "@greeting": {
+    "description": "Short greeting text"
+  },
   "farewell": "До свидания",
+  "@farewell": {
+    "description": "Farewell text"
+  },
   "app_name": "Тестовое приложение",
+  "@app_name": {
+    "description": "Application name shown in titles"
+  },
   "light_theme": "Светлая",
+  "@light_theme": {
+    "description": "Label for light theme option"
+  },
   "dark_theme": "Темная",
+  "@dark_theme": {
+    "description": "Label for dark theme option"
+  },
   "navigatorHome": "Главная",
+  "@navigatorHome": {
+    "description": "Navigation label for Home tab"
+  },
   "navigatorHomeDeposit": "Депозит",
+  "@navigatorHomeDeposit": {
+    "description": "Navigation label for Deposit tab"
+  },
   "navigatorHomeConvert": "Конв",
+  "@navigatorHomeConvert": {
+    "description": "Navigation label for Convert tab"
+  },
   "navigatorHomeSetting": "Настройки",
+  "@navigatorHomeSetting": {
+    "description": "Navigation label for Setting tab"
+  },
   "transfer": "Перевод",
+  "@transfer": {
+    "description": "Action label for transferring funds"
+  },
   "top_up": "Пополнение",
+  "@top_up": {
+    "description": "Action label for topping up balance"
+  },
   "bill": "Счет",
+  "@bill": {
+    "description": "Action label for paying bills"
+  },
   "announcement": "Объявление",
+  "@announcement": {
+    "description": "Section title for announcements"
+  },
   "viewAll": "Посмотреть все",
+  "@viewAll": {
+    "description": "Button text to view all items"
+  },
+  "labelHomeTotalBalance": "Доступный баланс",
+  "@labelHomeTotalBalance": {
+    "description": "Label for available balance section"
+  },
+  "homeDrawerDetailTotalBalance": "Доступный баланс",
+  "@homeDrawerDetailTotalBalance": {
+    "description": "Label for total balance section"
+  },
   "availableBalance": "Доступный баланс",
+  "@availableBalance": {
+    "description": "Label for available balance section"
+  },
   "primaryButton": "Основная кнопка",
+  "@primaryButton": {
+    "description": "Label for primary button examples"
+  },
   "secondaryButton": "Вторичная кнопка",
+  "@secondaryButton": {
+    "description": "Label for secondary button examples"
+  },
   "primaryEnabled": "Основная включена",
+  "@primaryEnabled": {
+    "description": "Label for enabled primary button"
+  },
   "secondaryEnabled": "Вторичная включена",
+  "@secondaryEnabled": {
+    "description": "Label for enabled secondary button"
+  },
   "secondaryDisabled": "Вторичная отключена",
+  "@secondaryDisabled": {
+    "description": "Label for disabled secondary button"
+  },
   "amountEnabled": "Сумма включена",
+  "@amountEnabled": {
+    "description": "Label for amount entry enabled state"
+  },
   "cardReviewPreviewTitle": "Card Review Transaction Preview",
+  "@cardReviewPreviewTitle": {
+    "description": "Title for card review transaction preview"
+  },
   "cardReviewTotalLabel": "Total",
+  "@cardReviewTotalLabel": {
+    "description": "Label for total amount"
+  },
   "cardReviewTotalAmountMock": "5,000.00",
+  "@cardReviewTotalAmountMock": {
+    "description": "Mock total amount value"
+  },
   "cardReviewCurrencyMock": "THB",
+  "@cardReviewCurrencyMock": {
+    "description": "Mock currency code"
+  },
   "cardReviewFeeLabel": "Fee",
+  "@cardReviewFeeLabel": {
+    "description": "Label for fee amount"
+  },
   "cardReviewFeeAmountMock": "0.00",
+  "@cardReviewFeeAmountMock": {
+    "description": "Mock fee amount value"
+  },
   "cardReviewFromLabel": "From",
+  "@cardReviewFromLabel": {
+    "description": "Label for source account"
+  },
   "cardReviewFromValueMock": "Your Wi Wallet",
+  "@cardReviewFromValueMock": {
+    "description": "Mock source account value"
+  },
   "cardReviewMobileLabel": "Mobile Number",
+  "@cardReviewMobileLabel": {
+    "description": "Label for mobile number"
+  },
   "cardReviewMobileValueMock": "081-141-1234",
+  "@cardReviewMobileValueMock": {
+    "description": "Mock mobile number value"
+  },
   "cardReviewToLabel": "To",
+  "@cardReviewToLabel": {
+    "description": "Label for destination account"
+  },
   "cardReviewToValueMock": "Siam Commercial Bank",
+  "@cardReviewToValueMock": {
+    "description": "Mock destination account value"
+  },
   "cardReviewAccountNameLabel": "Account Name",
+  "@cardReviewAccountNameLabel": {
+    "description": "Label for account name"
+  },
   "cardReviewAccountNameValueMock": "Victor Von Doom",
+  "@cardReviewAccountNameValueMock": {
+    "description": "Mock account name value"
+  },
   "cardReviewAccountNumberLabel": "Account Number",
+  "@cardReviewAccountNumberLabel": {
+    "description": "Label for account number"
+  },
   "cardReviewAccountNumberValueMock": "1234567890",
+  "@cardReviewAccountNumberValueMock": {
+    "description": "Mock account number value"
+  },
   "mobileNumberPlaceholder": "Мобильный номер",
+  "@mobileNumberPlaceholder": {
+    "description": "Placeholder for mobile number input"
+  },
   "noResultsFound": "Результаты не найдены",
-  "pleaseTryAgain": "Пожалуйста, попробуйте еще раз"
+  "@noResultsFound": {
+    "description": "Empty state text when no results are found"
+  },
+  "pleaseTryAgain": "Пожалуйста, попробуйте еще раз",
+  "@pleaseTryAgain": {
+    "description": "Prompt to retry after a failure"
+  }
 }

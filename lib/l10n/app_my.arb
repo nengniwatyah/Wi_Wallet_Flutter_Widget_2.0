@@ -1,44 +1,175 @@
 {
   "@@locale": "my",
   "welcome_message": "ကြိုဆိုပါတယ်",
+  "@welcome_message": {
+    "description": "Greeting headline on the home screen"
+  },
   "greeting": "မင်္ဂလာပါ",
+  "@greeting": {
+    "description": "Short greeting text"
+  },
   "farewell": "ပြန်ဆုံမယ်နော်",
+  "@farewell": {
+    "description": "Farewell text"
+  },
   "app_name": "စမ်းသပ်အက်ပ်",
+  "@app_name": {
+    "description": "Application name shown in titles"
+  },
   "light_theme": "အလင်း",
+  "@light_theme": {
+    "description": "Label for light theme option"
+  },
   "dark_theme": "အမှောင်",
+  "@dark_theme": {
+    "description": "Label for dark theme option"
+  },
   "navigatorHome": "ပင်မစာမျက်နှာ",
+  "@navigatorHome": {
+    "description": "Navigation label for Home tab"
+  },
   "navigatorHomeDeposit": "အပ်ငွေ",
+  "@navigatorHomeDeposit": {
+    "description": "Navigation label for Deposit tab"
+  },
   "navigatorHomeConvert": "ပြောင်းလဲရန်",
+  "@navigatorHomeConvert": {
+    "description": "Navigation label for Convert tab"
+  },
   "navigatorHomeSetting": "ချိန်ညှိချက်",
+  "@navigatorHomeSetting": {
+    "description": "Navigation label for Setting tab"
+  },
   "transfer": "လွှဲပြောင်းခြင်း",
+  "@transfer": {
+    "description": "Action label for transferring funds"
+  },
   "top_up": "ငွေဖြည့်ခြင်း",
+  "@top_up": {
+    "description": "Action label for topping up balance"
+  },
   "bill": "ဘေလ်",
+  "@bill": {
+    "description": "Action label for paying bills"
+  },
   "announcement": "ကြော်ကြားချက်",
+  "@announcement": {
+    "description": "Section title for announcements"
+  },
   "viewAll": "အလုံးစုံကြည့်",
+  "@viewAll": {
+    "description": "Button text to view all items"
+  },
+  "labelHomeTotalBalance": "ရရှိပါးပြီး",
+  "@labelHomeTotalBalance": {
+    "description": "Label for available balance section"
+  },
+  "homeDrawerDetailTotalBalance": "ရရှိပါးပြီး",
+  "@homeDrawerDetailTotalBalance": {
+    "description": "Label for total balance section"
+  },
   "availableBalance": "ရရှိပါးပြီး",
+  "@availableBalance": {
+    "description": "Label for available balance section"
+  },
   "primaryButton": "ပရိမါရီဘတံန်",
+  "@primaryButton": {
+    "description": "Label for primary button examples"
+  },
   "secondaryButton": "ဒုတိယဘတံန်",
+  "@secondaryButton": {
+    "description": "Label for secondary button examples"
+  },
   "primaryEnabled": "ပရိမါရီဖွင့်ပေး",
+  "@primaryEnabled": {
+    "description": "Label for enabled primary button"
+  },
   "secondaryEnabled": "ဒုတိယဖွင့်ပေး",
+  "@secondaryEnabled": {
+    "description": "Label for enabled secondary button"
+  },
   "secondaryDisabled": "ဒုတိယပစ်ပေး",
+  "@secondaryDisabled": {
+    "description": "Label for disabled secondary button"
+  },
   "amountEnabled": "အရေကြေးဖွင့်ပေး",
+  "@amountEnabled": {
+    "description": "Label for amount entry enabled state"
+  },
   "cardReviewPreviewTitle": "Card Review Transaction Preview",
+  "@cardReviewPreviewTitle": {
+    "description": "Title for card review transaction preview"
+  },
   "cardReviewTotalLabel": "Total",
+  "@cardReviewTotalLabel": {
+    "description": "Label for total amount"
+  },
   "cardReviewTotalAmountMock": "5,000.00",
+  "@cardReviewTotalAmountMock": {
+    "description": "Mock total amount value"
+  },
   "cardReviewCurrencyMock": "THB",
+  "@cardReviewCurrencyMock": {
+    "description": "Mock currency code"
+  },
   "cardReviewFeeLabel": "Fee",
+  "@cardReviewFeeLabel": {
+    "description": "Label for fee amount"
+  },
   "cardReviewFeeAmountMock": "0.00",
+  "@cardReviewFeeAmountMock": {
+    "description": "Mock fee amount value"
+  },
   "cardReviewFromLabel": "From",
+  "@cardReviewFromLabel": {
+    "description": "Label for source account"
+  },
   "cardReviewFromValueMock": "Your Wi Wallet",
+  "@cardReviewFromValueMock": {
+    "description": "Mock source account value"
+  },
   "cardReviewMobileLabel": "Mobile Number",
+  "@cardReviewMobileLabel": {
+    "description": "Label for mobile number"
+  },
   "cardReviewMobileValueMock": "081-141-1234",
+  "@cardReviewMobileValueMock": {
+    "description": "Mock mobile number value"
+  },
   "cardReviewToLabel": "To",
+  "@cardReviewToLabel": {
+    "description": "Label for destination account"
+  },
   "cardReviewToValueMock": "Siam Commercial Bank",
+  "@cardReviewToValueMock": {
+    "description": "Mock destination account value"
+  },
   "cardReviewAccountNameLabel": "Account Name",
+  "@cardReviewAccountNameLabel": {
+    "description": "Label for account name"
+  },
   "cardReviewAccountNameValueMock": "Victor Von Doom",
+  "@cardReviewAccountNameValueMock": {
+    "description": "Mock account name value"
+  },
   "cardReviewAccountNumberLabel": "Account Number",
+  "@cardReviewAccountNumberLabel": {
+    "description": "Label for account number"
+  },
   "cardReviewAccountNumberValueMock": "1234567890",
+  "@cardReviewAccountNumberValueMock": {
+    "description": "Mock account number value"
+  },
   "mobileNumberPlaceholder": "မိုဘိုလ်ဖုန်းနံတ်",
+  "@mobileNumberPlaceholder": {
+    "description": "Placeholder for mobile number input"
+  },
   "noResultsFound": "ရန်တွေ့မသိပါဘူ",
-  "pleaseTryAgain": "အမှန်အတွက် တံ့ပေးတွင်းပါ"
+  "@noResultsFound": {
+    "description": "Empty state text when no results are found"
+  },
+  "pleaseTryAgain": "အမှန်အတွက် တံ့ပေးတွင်းပါ",
+  "@pleaseTryAgain": {
+    "description": "Prompt to retry after a failure"
+  }
 }

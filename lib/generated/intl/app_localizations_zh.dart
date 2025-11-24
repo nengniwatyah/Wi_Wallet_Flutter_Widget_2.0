@@ -57,6 +57,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get availableBalance => '可用余额';
 
   @override
+  String get labelHomeTotalBalance => '可用余额';
+
+  @override
+  String get homeDrawerDetailTotalBalance => '可用余额';
+
+  @override
   String get primaryButton => '主按钮';
 
   @override

@@ -57,6 +57,12 @@ class AppLocalizationsMy extends AppLocalizations {
   String get availableBalance => 'ရရှိပါးပြီး';
 
   @override
+  String get labelHomeTotalBalance => 'ရရှိပါးပြီး';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'ရရှိပါးပြီး';
+
+  @override
   String get primaryButton => 'ပရိမါရီဘတံန်';
 
   @override

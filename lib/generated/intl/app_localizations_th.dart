@@ -57,6 +57,12 @@ class AppLocalizationsTh extends AppLocalizations {
   String get availableBalance => 'ยอดคงเหลือ';
 
   @override
+  String get labelHomeTotalBalance => 'ยอดคงเหลือ';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'ยอดคงเหลือ';
+
+  @override
   String get primaryButton => 'ปุ่มหลัก';
 
   @override

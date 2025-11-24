@@ -80,7 +80,6 @@ class DrawerBalanceDetailPreview extends StatelessWidget {
                 onPressed: () {
                   DrawerBalanceDetail.show(
                     context,
-                    totalBalanceLabel: 'Total Balance',
                     totalBalanceAmount: '100,000,000,000.00',
                     currency: 'THB',
                     holdAmountLabel: 'Hold Amount',

@@ -57,6 +57,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get availableBalance => 'Доступный баланс';
 
   @override
+  String get labelHomeTotalBalance => 'Доступный баланс';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'Доступный баланс';
+
+  @override
   String get primaryButton => 'Основная кнопка';
 
   @override

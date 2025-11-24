@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
 import 'package:mcp_test_app/widgets/button/buttons.dart';
 import 'package:mcp_test_app/widgets/announce/announcement_warning.dart';
+import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
 class DrawerBalanceDetail extends StatelessWidget {
-  final String totalBalanceLabel;
   final String totalBalanceAmount;
   final String currency;
   final String holdAmountLabel;
@@ -19,7 +19,6 @@ class DrawerBalanceDetail extends StatelessWidget {
 
   const DrawerBalanceDetail({
     super.key,
-    required this.totalBalanceLabel,
     required this.totalBalanceAmount,
     this.currency = 'THB',
     required this.holdAmountLabel,
@@ -33,7 +32,6 @@ class DrawerBalanceDetail extends StatelessWidget {
 
   static Future<void> show(
     BuildContext context, {
-    required String totalBalanceLabel,
     required String totalBalanceAmount,
     String currency = 'THB',
     required String holdAmountLabel,
@@ -53,7 +51,6 @@ class DrawerBalanceDetail extends StatelessWidget {
       builder: (context) => BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: DrawerBalanceDetail(
-        totalBalanceLabel: totalBalanceLabel,
         totalBalanceAmount: totalBalanceAmount,
         currency: currency,
         holdAmountLabel: holdAmountLabel,
@@ -70,6 +67,7 @@ class DrawerBalanceDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -129,7 +127,7 @@ class DrawerBalanceDetail extends StatelessWidget {
                       children: [
                         // Total Balance
                         Text(
-                          totalBalanceLabel,
+                          l10n.homeDrawerDetailTotalBalance,
                           style: GoogleFonts.notoSansThai(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,

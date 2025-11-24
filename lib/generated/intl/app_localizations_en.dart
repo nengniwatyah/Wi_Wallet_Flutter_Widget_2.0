@@ -57,6 +57,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get availableBalance => 'Available Balance';
 
   @override
+  String get labelHomeTotalBalance => 'Available Balance';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'Available Balance';
+
+  @override
   String get primaryButton => 'Primary Button';
 
   @override

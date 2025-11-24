@@ -174,7 +174,6 @@ Widget buildDrawerBalanceDetail(BuildContext context) {
       const Align(
         alignment: Alignment.bottomCenter,
         child: DrawerBalanceDetail(
-          totalBalanceLabel: 'Total Balance',
           totalBalanceAmount: '1,000.00',
           holdAmountLabel: 'Hold Amount',
           holdAmountValue: '100.00',

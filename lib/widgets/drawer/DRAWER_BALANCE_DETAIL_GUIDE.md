@@ -48,7 +48,6 @@ import 'package:mcp_test_app/widgets/drawer/drawer_balance_detail.dart';
 ```dart
 DrawerBalanceDetail.show(
   context,
-  totalBalanceLabel: 'Total Balance',
   totalBalanceAmount: '100,000,000,000.00',
   currency: 'THB',
   holdAmountLabel: 'Hold Amount',
@@ -75,7 +74,6 @@ DrawerBalanceDetail.show(
 
 | Property              | Type            | Required | Default | Description                           |
 |-----------------------|-----------------|----------|---------|------------------------------------- -|
-| `totalBalanceLabel`   | `String`        | Yes      | -       | Label "Total Balance"                 |
 | `totalBalanceAmount`  | `String`        | Yes      | -       | จำนวนเงินรวม                          |
 | `currency`            | `String`        | No       | 'THB'   | สกุลเงิน                              |
 | `holdAmountLabel`     | `String`        | Yes      | -       | Label "Hold Amount"                   |
@@ -172,7 +170,6 @@ final l10n = AppLocalizations.of(context)!;
 
 DrawerBalanceDetail.show(
   context,
-  totalBalanceLabel: l10n.homeDrawerDetailTotalBalance,
   totalBalanceAmount: '100,000.00',
   holdAmountLabel: l10n.homeDrawerDetailHoldAmount,
   holdAmountValue: '5,030.20',
