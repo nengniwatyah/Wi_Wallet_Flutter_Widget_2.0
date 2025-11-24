@@ -32,7 +32,7 @@ class WidgetbookApp extends StatelessWidget {
               ).copyWith(
                 scaffoldBackgroundColor: ThemeColors.get(
                   'light',
-                  'fill/base/300',
+                  'fill/base/100',
                 ),
               ),
             ),
@@ -44,7 +44,7 @@ class WidgetbookApp extends StatelessWidget {
               ).copyWith(
                 scaffoldBackgroundColor: ThemeColors.get(
                   'dark',
-                  'fill/base/300',
+                  'fill/base/100',
                 ),
               ),
             ),
