@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:mcp_test_app/widgets/item_list/item_list.dart';
@@ -160,16 +161,27 @@ Widget buildNavigatorBar(BuildContext context) {
 @widgetbook.UseCase(name: 'Balance Detail', type: DrawerBalanceDetail)
 Widget buildDrawerBalanceDetail(BuildContext context) {
   return Stack(
-    children: const [
-      Positioned.fill(child: ColoredBox(color: Colors.grey)),
-      DrawerBalanceDetail(
-        totalBalanceLabel: 'Total Balance',
-        totalBalanceAmount: '1,000.00',
-        holdAmountLabel: 'Hold Amount',
-        holdAmountValue: '100.00',
-        ledgerBalanceLabel: 'Ledger Balance',
-        ledgerBalanceValue: '900.00',
-        warningText: '*Hold Amount is the amount that cannot be used.',
+    children: [
+      Positioned.fill(
+        child: GestureDetector(
+          onTap: () {},
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(color: Colors.black.withValues(alpha: 0.5)),
+          ),
+        ),
+      ),
+      const Align(
+        alignment: Alignment.bottomCenter,
+        child: DrawerBalanceDetail(
+          totalBalanceLabel: 'Total Balance',
+          totalBalanceAmount: '1,000.00',
+          holdAmountLabel: 'Hold Amount',
+          holdAmountValue: '100.00',
+          ledgerBalanceLabel: 'Ledger Balance',
+          ledgerBalanceValue: '900.00',
+          warningText: '*Hold Amount is the amount that cannot be used.',
+        ),
       ),
     ],
   );
@@ -197,9 +209,20 @@ Widget buildDrawerCountryCode(BuildContext context) {
 @widgetbook.UseCase(name: 'Deposit Channel', type: DrawerDepositChannel)
 Widget buildDrawerDepositChannel(BuildContext context) {
   return Stack(
-    children: const [
-      Positioned.fill(child: ColoredBox(color: Colors.grey)),
-      DrawerDepositChannel(),
+    children: [
+      Positioned.fill(
+        child: GestureDetector(
+          onTap: () {},
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(color: Colors.black.withValues(alpha: 0.5)),
+          ),
+        ),
+      ),
+      const Align(
+        alignment: Alignment.bottomCenter,
+        child: DrawerDepositChannel(),
+      ),
     ],
   );
 }
@@ -207,24 +230,35 @@ Widget buildDrawerDepositChannel(BuildContext context) {
 @widgetbook.UseCase(name: 'Review Transaction', type: DrawerReviewTransaction)
 Widget buildDrawerReviewTransaction(BuildContext context) {
   return Stack(
-    children: const [
-      Positioned.fill(child: ColoredBox(color: Colors.grey)),
-      DrawerReviewTransaction(
-        warningTitle: 'Warning',
-        warningDescription: 'Please review your transaction.',
-        totalAmount: '100.00',
-        fromLabel: 'From',
-        fromValue: 'John Doe',
-        mobileLabel: 'Mobile',
-        mobileValue: '0812345678',
-        toLabel: 'To',
-        toValue: 'Jane Smith',
-        accountNameLabel: 'Account Name',
-        accountNameValue: 'Jane Smith',
-        accountNumberLabel: 'Account Number',
-        accountNumberValue: '123-4-56789-0',
-        objectLabel: 'Note',
-        objectValue: 'Payment for services',
+    children: [
+      Positioned.fill(
+        child: GestureDetector(
+          onTap: () {},
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(color: Colors.black.withValues(alpha: 0.5)),
+          ),
+        ),
+      ),
+      const Align(
+        alignment: Alignment.bottomCenter,
+        child: DrawerReviewTransaction(
+          warningTitle: 'Warning',
+          warningDescription: 'Please review your transaction.',
+          totalAmount: '100.00',
+          fromLabel: 'From',
+          fromValue: 'John Doe',
+          mobileLabel: 'Mobile',
+          mobileValue: '0812345678',
+          toLabel: 'To',
+          toValue: 'Jane Smith',
+          accountNameLabel: 'Account Name',
+          accountNameValue: 'Jane Smith',
+          accountNumberLabel: 'Account Number',
+          accountNumberValue: '123-4-56789-0',
+          objectLabel: 'Note',
+          objectValue: 'Payment for services',
+        ),
       ),
     ],
   );
