@@ -27,16 +27,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dark_theme => 'Темная';
 
   @override
-  String get home => 'Главная';
+  String get navigatorHome => 'Главная';
 
   @override
-  String get deposit => 'Депозит';
+  String get navigatorHomeDeposit => 'Депозит';
 
   @override
-  String get convert => 'Конв';
+  String get navigatorHomeConvert => 'Конв';
 
   @override
-  String get setting => 'Настройки';
+  String get navigatorHomeSetting => 'Настройки';
 
   @override
   String get transfer => 'Перевод';

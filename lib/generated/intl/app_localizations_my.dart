@@ -27,16 +27,16 @@ class AppLocalizationsMy extends AppLocalizations {
   String get dark_theme => 'အမှောင်';
 
   @override
-  String get home => 'ပင်မစာမျက်နှာ';
+  String get navigatorHome => 'ပင်မစာမျက်နှာ';
 
   @override
-  String get deposit => 'အပ်ငွေ';
+  String get navigatorHomeDeposit => 'အပ်ငွေ';
 
   @override
-  String get convert => 'ပြောင်းလဲရန်';
+  String get navigatorHomeConvert => 'ပြောင်းလဲရန်';
 
   @override
-  String get setting => 'ချိန်ညှိချက်';
+  String get navigatorHomeSetting => 'ချိန်ညှိချက်';
 
   @override
   String get transfer => 'လွှဲပြောင်းခြင်း';

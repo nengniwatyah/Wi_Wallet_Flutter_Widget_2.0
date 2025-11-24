@@ -140,29 +140,29 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get dark_theme;
 
-  /// No description provided for @home.
+  /// No description provided for @navigatorHome.
   ///
   /// In en, this message translates to:
   /// **'Home'**
-  String get home;
+  String get navigatorHome;
 
-  /// No description provided for @deposit.
+  /// No description provided for @navigatorHomeDeposit.
   ///
   /// In en, this message translates to:
   /// **'Deposit'**
-  String get deposit;
+  String get navigatorHomeDeposit;
 
-  /// No description provided for @convert.
+  /// No description provided for @navigatorHomeConvert.
   ///
   /// In en, this message translates to:
   /// **'Convert'**
-  String get convert;
+  String get navigatorHomeConvert;
 
-  /// No description provided for @setting.
+  /// No description provided for @navigatorHomeSetting.
   ///
   /// In en, this message translates to:
   /// **'Setting'**
-  String get setting;
+  String get navigatorHomeSetting;
 
   /// No description provided for @transfer.
   ///

@@ -177,22 +177,38 @@ class NavigatorBar extends StatelessWidget {
   const NavigatorBar({super.key, this.opacity = 0.9});
 
   final double opacity; // 0.0 to 1.0
+  
+  // Scan button constants
+  static const double _scanButtonSize = 56.0; // Total button diameter
+  static const double _scanButtonPadding = 12.0; // Button padding
+  static const double _scanIconSize = 32.0; // Icon size
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
+    final mediaQuery = MediaQuery.of(context);
+    final bottomPadding = mediaQuery.viewPadding.bottom > 0 
+        ? mediaQuery.viewPadding.bottom 
+        : mediaQuery.padding.bottom;
+    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16.0),
-            topRight: Radius.circular(16.0),
-          ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 92.0,
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16.0),
+              topRight: Radius.circular(16.0),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 62.0,
               decoration: BoxDecoration(
                 color: ThemeColors.get(
                   Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
@@ -213,181 +229,178 @@ class NavigatorBar extends StatelessWidget {
                 ),
               ),
               child:
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 0.0, 34.0),
-                  child: Row(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            createHugeIcon(homeIcon, ThemeColors.get(
-                              Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                              'text/base/600'
-                            ), width: 24.0, height: 24.0),
-                            Text(
-                              AppLocalizations.of(context)!.home,
-                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
-                                color: ThemeColors.get(
-                                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                  'text/base/600'
-                                ),
-                                letterSpacing: 0.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            createHugeIcon(
-                              depositIcon,
-                              ThemeColors.get(
-                                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                'stroke/contrast/600'
-                              ),
-                              width: 24.0,
-                              height: 24.0,
-                            ),
-                            Text(
-                              AppLocalizations.of(context)!.deposit,
-                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
-                                color: ThemeColors.get(
-                                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                  'stroke/contrast/600'
-                                ),
-                                letterSpacing: 0.0,
-                              ),
-                            ),
-                          ],
+                      createHugeIcon(homeIcon, ThemeColors.get(
+                        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                        'text/base/600'
+                      ), width: 24.0, height: 24.0),
+                      Text(
+                        AppLocalizations.of(context)!.navigatorHome,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
+                          color: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'text/base/600'
+                          ),
+                          letterSpacing: 0.0,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              const SizedBox(width: 72.0),
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 20.0, 34.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              createHugeIcon(
-                                convertIcon,
-                                ThemeColors.get(
-                                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                  'stroke/contrast/600'
-                                ),
-                                width: 24.0,
-                                height: 24.0,
-                              ),
-                              Text(
-                                AppLocalizations.of(context)!.convert,
-                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
-                                  color: ThemeColors.get(
-                                    Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                    'stroke/contrast/600'
-                                  ),
-                                  letterSpacing: 0.0,
-                                ),
-                              ),
-                            ],
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      createHugeIcon(
+                        depositIcon,
+                        ThemeColors.get(
+                          Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                          'stroke/contrast/600'
+                        ),
+                        width: 24.0,
+                        height: 24.0,
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.navigatorHomeDeposit,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
+                          color: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'stroke/contrast/600'
+                          ),
+                          letterSpacing: 0.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 72.0),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      createHugeIcon(
+                        convertIcon,
+                        ThemeColors.get(
+                          Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                          'stroke/contrast/600'
+                        ),
+                        width: 24.0,
+                        height: 24.0,
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.navigatorHomeConvert,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
+                          color: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'stroke/contrast/600'
+                          ),
+                          letterSpacing: 0.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      createHugeIcon(
+                        settingIcon,
+                        ThemeColors.get(
+                          Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                          'stroke/contrast/600'
+                        ),
+                        width: 24.0,
+                        height: 24.0,
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.navigatorHomeSetting,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
+                          color: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'stroke/contrast/600'
+                          ),
+                          letterSpacing: 0.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+            ),
+          ),
+        ),
+                Positioned(
+                  bottom: 18,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: SizedBox(
+                      width: _scanButtonSize,
+                      height: _scanButtonSize,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Handle scan button tap
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(_scanButtonPadding),
+                          backgroundColor: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'primary/400'
+                          ),
+                          foregroundColor: ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'fill/contrast/600'
+                          ),
+                          side: BorderSide(
+                            color: ThemeColors.get(
+                              Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                              'stroke/contrast/600'
+                            ),
+                            width: 1,
                           ),
                         ),
-                        Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              createHugeIcon(
-                                settingIcon,
-                                ThemeColors.get(
-                                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                  'stroke/contrast/600'
-                                ),
-                                width: 24.0,
-                                height: 24.0,
-                              ),
-                              Text(
-                                AppLocalizations.of(context)!.setting,
-                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
-                                  color: ThemeColors.get(
-                                    Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                                    'stroke/contrast/600'
-                                  ),
-                                  letterSpacing: 0.0,
-                                ),
-                              ),
-                            ],
+                        child: createHugeIcon(
+                          irisScanIcon,
+                          ThemeColors.get(
+                            Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
+                            'fill/contrast/600'
                           ),
+                          width: _scanIconSize,
+                          height: _scanIconSize,
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-            ),
-          ),
+              ],
+            );
+          },
         ),
-        Positioned(
-          top: -24,
-          left: MediaQuery.of(context).size.width / 2 - 32,
-          child: ElevatedButton(
-            onPressed: () {
-              // Handle scan button tap
-            },
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              padding: const EdgeInsets.all(16),
-              backgroundColor: ThemeColors.get(
-                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                'primary/400'
+        if (bottomPadding > 0)
+          ClipRRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Container(
+                height: bottomPadding,
+                color: ThemeColors.get(brightnessKey, 'fill/base/300').withValues(alpha: opacity),
               ),
-              foregroundColor: ThemeColors.get(
-                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                'fill/contrast/600'
-              ),
-              side: BorderSide(
-                color: ThemeColors.get(
-                  Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                  'stroke/contrast/600'
-                ),
-                width: 1,
-              ),
-            ),
-            child: createHugeIcon(
-              irisScanIcon,
-              ThemeColors.get(
-                Theme.of(context).brightness == Brightness.light ? 'light' : 'dark',
-                'fill/contrast/600'
-              ),
-              width: 32.0,
-              height: 32.0,
             ),
           ),
-        ),
       ],
     );
   }

@@ -27,16 +27,16 @@ class AppLocalizationsTh extends AppLocalizations {
   String get dark_theme => 'มืด';
 
   @override
-  String get home => 'หน้าหลัก';
+  String get navigatorHome => 'หน้าหลัก';
 
   @override
-  String get deposit => 'ฝากเงิน';
+  String get navigatorHomeDeposit => 'ฝากเงิน';
 
   @override
-  String get convert => 'แปลงเงิน';
+  String get navigatorHomeConvert => 'แปลงเงิน';
 
   @override
-  String get setting => 'ตั้งค่า';
+  String get navigatorHomeSetting => 'ตั้งค่า';
 
   @override
   String get transfer => 'โอนเงิน';

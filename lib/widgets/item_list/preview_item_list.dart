@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
-import 'announcement.dart';
+import 'package:mcp_test_app/widgets/item_list/item_list.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -54,38 +54,15 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: themeProvider.themeMode,
-          home: const AnnouncementPreview(),
+          home: const PreviewItemList(),
         );
       },
     );
   }
 }
 
-class AnnouncementPreview extends StatefulWidget {
-  const AnnouncementPreview({super.key});
-
-  @override
-  State<AnnouncementPreview> createState() => _AnnouncementPreviewState();
-}
-
-class _AnnouncementPreviewState extends State<AnnouncementPreview> {
-  late List<String> _messages;
-
-  @override
-  void initState() {
-    super.initState();
-    _messages = [
-      'Your account has been verified successfully. All features are now fully accessible from 01/06/2022 at 8:00 AM (Thailand time).',
-      'We are currently upgrading our security infrastructure. Services will resume by 31/05/2022 at 5:00 PM (Thailand time).',
-      'This is a very long announcement message that is intended to test the text truncation functionality of the widget. It should be long enough to exceed three lines when displayed on a standard mobile screen width. If it works correctly, you should see an ellipsis at the end of the third line.',
-    ];
-  }
-
-  void _updateMessages() {
-    setState(() {
-      _messages = [..._messages.sublist(1), _messages[0]];
-    });
-  }
+class PreviewItemList extends StatelessWidget {
+  const PreviewItemList({super.key});
 
   DropdownMenuItem<Locale> _buildDropdownItem(
     BuildContext context,
@@ -119,9 +96,9 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
     final brightnessKey =
         Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     return Scaffold(
-      backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
+      backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
       appBar: AppBar(
-        title: const Text('Announcement Preview'),
+        title: const Text('Item List Preview'),
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
         actions: [
           Consumer<ThemeProvider>(
@@ -140,7 +117,7 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             children: [
               Container(
@@ -174,24 +151,6 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
                         'ภาษาไทย',
                         brightnessKey,
                       ),
-                      _buildDropdownItem(
-                        context,
-                        const Locale('zh'),
-                        '中文',
-                        brightnessKey,
-                      ),
-                      _buildDropdownItem(
-                        context,
-                        const Locale('ru'),
-                        'Русский',
-                        brightnessKey,
-                      ),
-                      _buildDropdownItem(
-                        context,
-                        const Locale('my'),
-                        'မြန်မာ',
-                        brightnessKey,
-                      ),
                     ],
                     onChanged: (Locale? newLocale) {
                       if (newLocale != null) {
@@ -204,8 +163,69 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-              AnnouncementStack(messages: _messages, onClose: _updateMessages),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: ThemeColors.get(brightnessKey, 'fill/base/100'),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Default State',
+                      style: TextStyle(
+                        color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ItemList(
+                      title: 'History',
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('History tapped')),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Text State',
+                      style: TextStyle(
+                        color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ItemList(
+                      title: 'Language',
+                      trailingText: 'English',
+                      onTap: () {},
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Radio Button State',
+                      style: TextStyle(
+                        color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ItemList(
+                      title: 'Option 1 (Selected)',
+                      isSelected: true,
+                      onTap: () {},
+                    ),
+                    const SizedBox(height: 8),
+                    ItemList(
+                      title: 'Option 2 (Unselected)',
+                      isSelected: false,
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

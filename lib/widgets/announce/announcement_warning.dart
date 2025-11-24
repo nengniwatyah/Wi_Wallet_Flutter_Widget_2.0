@@ -17,7 +17,8 @@ class AnnouncementWarning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     final backgroundColor = theme.ThemeColors.get(brightnessKey, 'warning/600');
     final textColor = theme.ThemeColors.get(brightnessKey, 'text/base/warning');
     final iconColor = theme.ThemeColors.get(brightnessKey, 'warning/500');
@@ -48,36 +49,38 @@ class AnnouncementWarning extends StatelessWidget {
                 if (title.isNotEmpty) ...[
                   Text(
                     title,
-                    style: GoogleFonts.notoSansThaiTextTheme().bodySmall?.copyWith(
-                      color: textColor,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      height: 1.27,
-                    ),
+                    style: GoogleFonts.notoSansThaiTextTheme().bodySmall
+                        ?.copyWith(
+                          color: textColor,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          height: 1.27,
+                        ),
                   ),
                   const SizedBox(height: 4),
                 ],
                 descriptionSpans != null
                     ? RichText(
-                        text: TextSpan(
-                          style: GoogleFonts.notoSansThai(
-                            color: textColor,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w500,
-                            height: 1.45,
-                          ),
-                          children: descriptionSpans,
-                        ),
-                      )
-                    : Text(
-                        description,
-                        style: GoogleFonts.notoSansThaiTextTheme().bodySmall?.copyWith(
+                      text: TextSpan(
+                        style: GoogleFonts.notoSansThai(
                           color: textColor,
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                           height: 1.45,
                         ),
+                        children: descriptionSpans,
                       ),
+                    )
+                    : Text(
+                      description,
+                      style: GoogleFonts.notoSansThaiTextTheme().bodySmall
+                          ?.copyWith(
+                            color: textColor,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                            height: 1.45,
+                          ),
+                    ),
               ],
             ),
           ),

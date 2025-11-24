@@ -27,16 +27,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dark_theme => 'Dark';
 
   @override
-  String get home => 'Home';
+  String get navigatorHome => 'Home';
 
   @override
-  String get deposit => 'Deposit';
+  String get navigatorHomeDeposit => 'Deposit';
 
   @override
-  String get convert => 'Convert';
+  String get navigatorHomeConvert => 'Convert';
 
   @override
-  String get setting => 'Setting';
+  String get navigatorHomeSetting => 'Setting';
 
   @override
   String get transfer => 'Transfer';

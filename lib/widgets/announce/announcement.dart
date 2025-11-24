@@ -5,7 +5,6 @@ import 'package:mcp_test_app/config/themes/theme_constants.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
-
 // Preview widget for AnnouncementStack
 void main() {
   runApp(const MyApp());
@@ -18,14 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Announcement Preview',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         backgroundColor: Colors.grey[200],
-        body: const Center(
-          child: AnnouncementStackPreview(),
-        ),
+        body: const Center(child: AnnouncementStackPreview()),
       ),
     );
   }
@@ -70,10 +65,10 @@ class AnnouncementStackPreview extends StatelessWidget {
 
 class AnnouncementStack extends StatefulWidget {
   const AnnouncementStack({
-    super.key, 
-    this.messages = const [], 
+    super.key,
+    this.messages = const [],
     this.onClose,
-    this.debugMode = false
+    this.debugMode = false,
   });
 
   final List<String> messages;
@@ -128,14 +123,8 @@ class _AnnouncementStackState extends State<AnnouncementStack>
       begin: Offset.zero,
       end: const Offset(-1.0, 0),
     ).animate(dismissCurve);
-    _dismissFadeAnimation = Tween<double>(
-      begin: 1,
-      end: 0.25,
-    ).animate(
-      CurvedAnimation(
-        parent: _dismissController,
-        curve: Curves.easeOutQuad,
-      ),
+    _dismissFadeAnimation = Tween<double>(begin: 1, end: 0.25).animate(
+      CurvedAnimation(parent: _dismissController, curve: Curves.easeOutQuad),
     );
     _dismissScaleAnimation = Tween<double>(
       begin: 1,
@@ -158,10 +147,7 @@ class _AnnouncementStackState extends State<AnnouncementStack>
       begin: 0.95,
       end: 1,
     ).animate(promoteCurve);
-    _middleFadeAnimation = Tween<double>(
-      begin: 0.85,
-      end: 1,
-    ).animate(
+    _middleFadeAnimation = Tween<double>(begin: 0.85, end: 1).animate(
       CurvedAnimation(
         parent: _promoteController,
         curve: const Interval(0.2, 1, curve: Curves.easeOut),
@@ -229,16 +215,12 @@ class _AnnouncementStackState extends State<AnnouncementStack>
   }
 
   Widget _buildCard(String text, {bool isFront = false, Color? color}) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+
     return Container(
       constraints: const BoxConstraints(minHeight: 65),
-      padding: const EdgeInsets.fromLTRB(
-        16,
-        8,
-        16,
-        8,
-      ),
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       decoration: BoxDecoration(
         color: color ?? theme.ThemeColors.get(brightnessKey, 'fill/base/100'),
         borderRadius: BorderRadius.circular(12),
@@ -249,8 +231,8 @@ class _AnnouncementStackState extends State<AnnouncementStack>
           createHugeIcon(
             megaphoneIcon,
             brightnessKey == 'light'
-              ? theme.ThemeColors.get('light', 'text/base/600')
-              : theme.ThemeColors.get('dark', 'text/base/600'),
+                ? theme.ThemeColors.get('light', 'text/base/600')
+                : theme.ThemeColors.get('dark', 'text/base/600'),
             width: 16,
             height: 16,
           ),
@@ -258,10 +240,13 @@ class _AnnouncementStackState extends State<AnnouncementStack>
           Expanded(
             child: Text(
               text,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               style: GoogleFonts.notoSans(
-                color: brightnessKey == 'light'
-                  ? theme.ThemeColors.get('light', 'text/base/600')
-                  : theme.ThemeColors.get('dark', 'text/base/600'),
+                color:
+                    brightnessKey == 'light'
+                        ? theme.ThemeColors.get('light', 'text/base/600')
+                        : theme.ThemeColors.get('dark', 'text/base/600'),
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
                 height: 1.45,
@@ -275,8 +260,8 @@ class _AnnouncementStackState extends State<AnnouncementStack>
               child: createHugeIcon(
                 cancelIcon,
                 brightnessKey == 'light'
-                  ? theme.ThemeColors.get('light', 'text/base/600')
-                  : theme.ThemeColors.get('dark', 'text/base/600'),
+                    ? theme.ThemeColors.get('light', 'text/base/danger')
+                    : theme.ThemeColors.get('dark', 'text/base/danger'),
                 width: 16,
                 height: 16,
               ),
@@ -288,14 +273,16 @@ class _AnnouncementStackState extends State<AnnouncementStack>
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    final displayMessages = _messages.isEmpty
-        ? List<String>.filled(3, '')
-        : List<String>.from(_messages);
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final displayMessages =
+        _messages.isEmpty
+            ? List<String>.filled(3, '')
+            : List<String>.from(_messages);
     while (displayMessages.length < 3) {
       displayMessages.add(displayMessages.last);
     }
-    
+
     return SizedBox(
       height: 80,
       child: Stack(
@@ -315,7 +302,10 @@ class _AnnouncementStackState extends State<AnnouncementStack>
                 child: Container(
                   constraints: const BoxConstraints(minHeight: 65),
                   decoration: BoxDecoration(
-                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/500'),
+                    color: theme.ThemeColors.get(
+                      brightnessKey,
+                      'fill/base/500',
+                    ),
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
@@ -335,8 +325,11 @@ class _AnnouncementStackState extends State<AnnouncementStack>
                   scale: _promoteScaleAnimation,
                   alignment: Alignment.topCenter,
                   child: _buildCard(
-                    displayMessages[1], 
-                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/400'),
+                    displayMessages[1],
+                    color: theme.ThemeColors.get(
+                      brightnessKey,
+                      'fill/base/400',
+                    ),
                   ),
                 ),
               ),
@@ -357,7 +350,10 @@ class _AnnouncementStackState extends State<AnnouncementStack>
                   child: _buildCard(
                     displayMessages[0],
                     isFront: true,
-                    color: theme.ThemeColors.get(brightnessKey, 'fill/base/300'),
+                    color: theme.ThemeColors.get(
+                      brightnessKey,
+                      'fill/base/300',
+                    ),
                   ),
                 ),
               ),

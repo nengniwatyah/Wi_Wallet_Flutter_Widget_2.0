@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:mcp_test_app/config/themes/base_theme.dart';
 import 'package:mcp_test_app/widgets/navigator_bar/navigator_bar.dart';
 import 'package:mcp_test_app/widgets/shortcut_menu/shortcut_menu.dart';
+import 'package:mcp_test_app/widgets/announce/announcement.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -15,7 +16,8 @@ class ThemeProvider extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode;
 
   void toggleTheme() {
-    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    _themeMode =
+        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 }
@@ -73,18 +75,20 @@ class MyApp extends StatelessWidget {
             colorScheme: BaseTheme.lightColorScheme,
             useMaterial3: true,
           ).copyWith(
-            textTheme: localeProvider.locale?.languageCode == 'th'
-                ? GoogleFonts.notoSansThaiTextTheme()
-                : GoogleFonts.notoSansTextTheme(),
+            textTheme:
+                localeProvider.locale?.languageCode == 'th'
+                    ? GoogleFonts.notoSansThaiTextTheme()
+                    : GoogleFonts.notoSansTextTheme(),
             scaffoldBackgroundColor: ThemeColors.get('light', 'fill/base/300'),
           ),
           darkTheme: ThemeData.from(
             colorScheme: BaseTheme.darkColorScheme,
             useMaterial3: true,
           ).copyWith(
-            textTheme: localeProvider.locale?.languageCode == 'th'
-                ? GoogleFonts.notoSansThaiTextTheme()
-                : GoogleFonts.notoSansTextTheme(),
+            textTheme:
+                localeProvider.locale?.languageCode == 'th'
+                    ? GoogleFonts.notoSansThaiTextTheme()
+                    : GoogleFonts.notoSansTextTheme(),
             scaffoldBackgroundColor: ThemeColors.get('dark', 'fill/base/300'),
           ),
           themeMode: themeProvider.themeMode,
@@ -99,7 +103,12 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   // Helper to build dropdown items with consistent style
-  DropdownMenuItem<Locale> _buildDropdownItem(BuildContext context, Locale locale, String text, String brightnessKey) {
+  DropdownMenuItem<Locale> _buildDropdownItem(
+    BuildContext context,
+    Locale locale,
+    String text,
+    String brightnessKey,
+  ) {
     return DropdownMenuItem(
       value: locale,
       child: Text(
@@ -124,7 +133,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
@@ -149,7 +159,10 @@ class HomePage extends StatelessWidget {
         child: SafeArea(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 1.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 0.0,
+                vertical: 1.0,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -173,8 +186,13 @@ class HomePage extends StatelessWidget {
                           const SizedBox(width: 8.0),
                           Text(
                             AppLocalizations.of(context)!.light_theme,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.copyWith(
+                              color: ThemeColors.get(
+                                brightnessKey,
+                                'text/base/600',
+                              ),
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
@@ -183,20 +201,39 @@ class HomePage extends StatelessWidget {
                           Consumer<ThemeProvider>(
                             builder: (context, themeProvider, _) {
                               return Switch(
-                                value: themeProvider.themeMode == ThemeMode.dark,
-                                onChanged: (value) => themeProvider.toggleTheme(),
-                                activeColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
-                                activeTrackColor: ThemeColors.get(brightnessKey, 'success/400'),
-                                inactiveThumbColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
-                                inactiveTrackColor: ThemeColors.get(brightnessKey, 'warning/400'),
+                                value:
+                                    themeProvider.themeMode == ThemeMode.dark,
+                                onChanged:
+                                    (value) => themeProvider.toggleTheme(),
+                                activeColor: ThemeColors.get(
+                                  brightnessKey,
+                                  'fill/base/100',
+                                ),
+                                activeTrackColor: ThemeColors.get(
+                                  brightnessKey,
+                                  'success/400',
+                                ),
+                                inactiveThumbColor: ThemeColors.get(
+                                  brightnessKey,
+                                  'fill/base/100',
+                                ),
+                                inactiveTrackColor: ThemeColors.get(
+                                  brightnessKey,
+                                  'warning/400',
+                                ),
                               );
                             },
                           ),
                           const SizedBox(width: 8.0),
                           Text(
                             AppLocalizations.of(context)!.dark_theme,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.copyWith(
+                              color: ThemeColors.get(
+                                brightnessKey,
+                                'text/base/600',
+                              ),
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
@@ -220,24 +257,61 @@ class HomePage extends StatelessWidget {
                       child: DropdownButton<Locale>(
                         value: _getCurrentLocale(context),
                         isExpanded: true,
-                        icon: Icon(Icons.language, color: ThemeColors.get(brightnessKey, 'text/base/600')),
-                        dropdownColor: ThemeColors.get(brightnessKey, 'fill/base/200'),
+                        icon: Icon(
+                          Icons.language,
+                          color: ThemeColors.get(
+                            brightnessKey,
+                            'text/base/600',
+                          ),
+                        ),
+                        dropdownColor: ThemeColors.get(
+                          brightnessKey,
+                          'fill/base/200',
+                        ),
                         items: [
-                          _buildDropdownItem(context, const Locale('en'), 'English', brightnessKey),
-                          _buildDropdownItem(context, const Locale('th'), 'ภาษาไทย', brightnessKey),
-                          _buildDropdownItem(context, const Locale('zh'), '中文', brightnessKey),
-                          _buildDropdownItem(context, const Locale('ru'), 'Русский', brightnessKey),
-                          _buildDropdownItem(context, const Locale('my'), 'မြန်မာ', brightnessKey),
+                          _buildDropdownItem(
+                            context,
+                            const Locale('en'),
+                            'English',
+                            brightnessKey,
+                          ),
+                          _buildDropdownItem(
+                            context,
+                            const Locale('th'),
+                            'ภาษาไทย',
+                            brightnessKey,
+                          ),
+                          _buildDropdownItem(
+                            context,
+                            const Locale('zh'),
+                            '中文',
+                            brightnessKey,
+                          ),
+                          _buildDropdownItem(
+                            context,
+                            const Locale('ru'),
+                            'Русский',
+                            brightnessKey,
+                          ),
+                          _buildDropdownItem(
+                            context,
+                            const Locale('my'),
+                            'မြန်မာ',
+                            brightnessKey,
+                          ),
                         ],
                         onChanged: (Locale? newLocale) {
                           if (newLocale != null) {
-                            Provider.of<LocaleProvider>(context, listen: false).setLocale(newLocale);
+                            Provider.of<LocaleProvider>(
+                              context,
+                              listen: false,
+                            ).setLocale(newLocale);
                           }
                         },
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
+
                   // Shortcut Menu Section
                   Container(
                     decoration: BoxDecoration(
@@ -248,15 +322,32 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     height: screenHeight * 0.55, // Responsive height
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Column(
                       children: [
-                        ShortcutMenuItem(label: AppLocalizations.of(context)!.transfer),
-                        const SizedBox(width: 56),
-                        ShortcutMenuItem(label: AppLocalizations.of(context)!.top_up),
-                        const SizedBox(width: 56),
-                        ShortcutMenuItem(label: AppLocalizations.of(context)!.bill),
+                        const SizedBox(height: 24),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: AnnouncementStack(),
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ShortcutMenuItem(
+                                label: AppLocalizations.of(context)!.transfer,
+                              ),
+                              const SizedBox(width: 56),
+                              ShortcutMenuItem(
+                                label: AppLocalizations.of(context)!.top_up,
+                              ),
+                              const SizedBox(width: 56),
+                              ShortcutMenuItem(
+                                label: AppLocalizations.of(context)!.bill,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
