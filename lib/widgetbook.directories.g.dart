@@ -183,6 +183,11 @@ final directories = <_widgetbook.WidgetbookNode>[
                     _mcp_test_app_widgetbook_use_cases.buildItemListSelected,
               ),
               _widgetbook.WidgetbookUseCase(
+                name: 'With Radio Button (Unselected)',
+                builder:
+                    _mcp_test_app_widgetbook_use_cases.buildItemListUnselected,
+              ),
+              _widgetbook.WidgetbookUseCase(
                 name: 'With Trailing Text',
                 builder:
                     _mcp_test_app_widgetbook_use_cases.buildItemListWithText,

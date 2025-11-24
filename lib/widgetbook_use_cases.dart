@@ -32,6 +32,11 @@ Widget buildItemListSelected(BuildContext context) {
   return ItemList(title: 'English', isSelected: true, onTap: () {});
 }
 
+@widgetbook.UseCase(name: 'With Radio Button (Unselected)', type: ItemList)
+Widget buildItemListUnselected(BuildContext context) {
+  return ItemList(title: 'Thai', isSelected: false, onTap: () {});
+}
+
 // Announcement
 @widgetbook.UseCase(name: 'Default', type: AnnouncementStack)
 Widget buildAnnouncementStack(BuildContext context) {
