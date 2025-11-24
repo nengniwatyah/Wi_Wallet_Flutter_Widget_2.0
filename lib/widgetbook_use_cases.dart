@@ -157,14 +157,23 @@ Widget buildNavigatorBar(BuildContext context) {
 // Drawer
 @widgetbook.UseCase(name: 'Balance Detail', type: DrawerBalanceDetail)
 Widget buildDrawerBalanceDetail(BuildContext context) {
-  return const DrawerBalanceDetail(
-    totalBalanceLabel: 'Total Balance',
-    totalBalanceAmount: '1,000.00',
-    holdAmountLabel: 'Hold Amount',
-    holdAmountValue: '100.00',
-    ledgerBalanceLabel: 'Ledger Balance',
-    ledgerBalanceValue: '900.00',
-    warningText: '*Hold Amount is the amount that cannot be used.',
+  return MaterialApp(
+    home: Scaffold(
+      body: Stack(
+        children: [
+          const Positioned.fill(child: ColoredBox(color: Colors.grey)),
+          const DrawerBalanceDetail(
+            totalBalanceLabel: 'Total Balance',
+            totalBalanceAmount: '1,000.00',
+            holdAmountLabel: 'Hold Amount',
+            holdAmountValue: '100.00',
+            ledgerBalanceLabel: 'Ledger Balance',
+            ledgerBalanceValue: '900.00',
+            warningText: '*Hold Amount is the amount that cannot be used.',
+          ),
+        ],
+      ),
+    ),
   );
 }
 
@@ -189,26 +198,44 @@ Widget buildDrawerCountryCode(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Deposit Channel', type: DrawerDepositChannel)
 Widget buildDrawerDepositChannel(BuildContext context) {
-  return const DrawerDepositChannel();
+  return MaterialApp(
+    home: Scaffold(
+      body: Stack(
+        children: const [
+          Positioned.fill(child: ColoredBox(color: Colors.grey)),
+          DrawerDepositChannel(),
+        ],
+      ),
+    ),
+  );
 }
 
 @widgetbook.UseCase(name: 'Review Transaction', type: DrawerReviewTransaction)
 Widget buildDrawerReviewTransaction(BuildContext context) {
-  return const DrawerReviewTransaction(
-    warningTitle: 'Warning',
-    warningDescription: 'Please review your transaction.',
-    totalAmount: '100.00',
-    fromLabel: 'From',
-    fromValue: 'John Doe',
-    mobileLabel: 'Mobile',
-    mobileValue: '0812345678',
-    toLabel: 'To',
-    toValue: 'Jane Smith',
-    accountNameLabel: 'Account Name',
-    accountNameValue: 'Jane Smith',
-    accountNumberLabel: 'Account Number',
-    accountNumberValue: '123-4-56789-0',
-    objectLabel: 'Note',
-    objectValue: 'Payment for services',
+  return MaterialApp(
+    home: Scaffold(
+      body: Stack(
+        children: const [
+          Positioned.fill(child: ColoredBox(color: Colors.grey)),
+          DrawerReviewTransaction(
+            warningTitle: 'Warning',
+            warningDescription: 'Please review your transaction.',
+            totalAmount: '100.00',
+            fromLabel: 'From',
+            fromValue: 'John Doe',
+            mobileLabel: 'Mobile',
+            mobileValue: '0812345678',
+            toLabel: 'To',
+            toValue: 'Jane Smith',
+            accountNameLabel: 'Account Name',
+            accountNameValue: 'Jane Smith',
+            accountNumberLabel: 'Account Number',
+            accountNumberValue: '123-4-56789-0',
+            objectLabel: 'Note',
+            objectValue: 'Payment for services',
+          ),
+        ],
+      ),
+    ),
   );
 }
