@@ -16,6 +16,8 @@ import 'package:mcp_test_app/widgets/drawer/drawer_country_code.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_deposit_channel.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_review_transaction.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
+import 'package:mcp_test_app/config/themes/base_theme.dart';
+import 'package:mcp_test_app/config/themes/theme_color.dart';
 
 // ItemList
 @widgetbook.UseCase(name: 'Default', type: ItemList)
@@ -111,6 +113,18 @@ Widget buildMobileCodeInput(BuildContext context) {
     debugShowCheckedModeBanner: false,
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
+    theme: ThemeData.from(
+      colorScheme: BaseTheme.lightColorScheme,
+      useMaterial3: true,
+    ).copyWith(
+      scaffoldBackgroundColor: ThemeColors.get('light', 'fill/base/300'),
+    ),
+    darkTheme: ThemeData.from(
+      colorScheme: BaseTheme.darkColorScheme,
+      useMaterial3: true,
+    ).copyWith(
+      scaffoldBackgroundColor: ThemeColors.get('dark', 'fill/base/300'),
+    ),
     home: Scaffold(
       body: Center(
         child: Padding(
@@ -142,11 +156,19 @@ Widget buildVisaCard(BuildContext context) {
 // Navigator Bar
 @widgetbook.UseCase(name: 'Default', type: NavigatorBar)
 Widget buildNavigatorBar(BuildContext context) {
-  return const MaterialApp(
+  return MaterialApp(
     debugShowCheckedModeBanner: false,
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
-    home: Scaffold(
+    theme: ThemeData.from(
+      colorScheme: BaseTheme.lightColorScheme,
+      useMaterial3: true,
+    ),
+    darkTheme: ThemeData.from(
+      colorScheme: BaseTheme.darkColorScheme,
+      useMaterial3: true,
+    ),
+    home: const Scaffold(
       extendBody: true,
       body: Center(child: Text('Navigator Bar Preview')),
       bottomNavigationBar: NavigatorBar(),
