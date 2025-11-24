@@ -15,6 +15,7 @@ import 'package:mcp_test_app/widgets/drawer/drawer_balance_detail.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_country_code.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_deposit_channel.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_review_transaction.dart';
+import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
 // ItemList
 @widgetbook.UseCase(name: 'Default', type: ItemList)
@@ -108,11 +109,8 @@ Widget buildFullAmountInput(BuildContext context) {
 Widget buildMobileCodeInput(BuildContext context) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
-    localizationsDelegates: const [
-      DefaultWidgetsLocalizations.delegate,
-      DefaultMaterialLocalizations.delegate,
-    ],
-    supportedLocales: const [Locale('en'), Locale('th')],
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
     home: Scaffold(
       body: Center(
         child: Padding(
@@ -146,11 +144,8 @@ Widget buildVisaCard(BuildContext context) {
 Widget buildNavigatorBar(BuildContext context) {
   return const MaterialApp(
     debugShowCheckedModeBanner: false,
-    localizationsDelegates: [
-      DefaultWidgetsLocalizations.delegate,
-      DefaultMaterialLocalizations.delegate,
-    ],
-    supportedLocales: [Locale('en'), Locale('th')],
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
     home: Scaffold(
       extendBody: true,
       body: Center(child: Text('Navigator Bar Preview')),
