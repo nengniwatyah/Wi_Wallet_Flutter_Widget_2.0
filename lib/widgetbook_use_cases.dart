@@ -106,10 +106,19 @@ Widget buildFullAmountInput(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Default', type: MobileCodeInput)
 Widget buildMobileCodeInput(BuildContext context) {
-  return const MaterialApp(
+  return MaterialApp(
+    debugShowCheckedModeBanner: false,
+    localizationsDelegates: const [
+      DefaultWidgetsLocalizations.delegate,
+      DefaultMaterialLocalizations.delegate,
+    ],
+    supportedLocales: const [Locale('en'), Locale('th')],
     home: Scaffold(
       body: Center(
-        child: Padding(padding: EdgeInsets.all(16.0), child: MobileCodeInput()),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: MobileCodeInput(onCountryCodeTap: () {}),
+        ),
       ),
     ),
   );
@@ -136,6 +145,12 @@ Widget buildVisaCard(BuildContext context) {
 @widgetbook.UseCase(name: 'Default', type: NavigatorBar)
 Widget buildNavigatorBar(BuildContext context) {
   return const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    localizationsDelegates: [
+      DefaultWidgetsLocalizations.delegate,
+      DefaultMaterialLocalizations.delegate,
+    ],
+    supportedLocales: [Locale('en'), Locale('th')],
     home: Scaffold(
       extendBody: true,
       body: Center(child: Text('Navigator Bar Preview')),
