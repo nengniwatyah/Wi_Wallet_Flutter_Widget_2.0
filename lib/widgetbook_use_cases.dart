@@ -106,7 +106,13 @@ Widget buildFullAmountInput(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Default', type: MobileCodeInput)
 Widget buildMobileCodeInput(BuildContext context) {
-  return const MobileCodeInput();
+  return const MaterialApp(
+    home: Scaffold(
+      body: Center(
+        child: Padding(padding: EdgeInsets.all(16.0), child: MobileCodeInput()),
+      ),
+    ),
+  );
 }
 
 @widgetbook.UseCase(name: 'Default', type: SearchInput)
@@ -129,7 +135,13 @@ Widget buildVisaCard(BuildContext context) {
 // Navigator Bar
 @widgetbook.UseCase(name: 'Default', type: NavigatorBar)
 Widget buildNavigatorBar(BuildContext context) {
-  return const NavigatorBar();
+  return const MaterialApp(
+    home: Scaffold(
+      extendBody: true,
+      body: Center(child: Text('Navigator Bar Preview')),
+      bottomNavigationBar: NavigatorBar(),
+    ),
+  );
 }
 
 // Drawer
