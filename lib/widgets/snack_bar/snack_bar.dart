@@ -97,7 +97,7 @@ class SnackBarWidget extends StatelessWidget {
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Icon
           SvgPicture.asset(
@@ -109,21 +109,14 @@ class SnackBarWidget extends StatelessWidget {
           const SizedBox(width: 12),
           // Content
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.notoSansThaiTextTheme().bodySmall
-                      ?.copyWith(
-                        color: textColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        height: 1.4,
-                      ),
-                ),
-              ],
+            child: Text(
+              title,
+              style: GoogleFonts.notoSansThaiTextTheme().bodySmall?.copyWith(
+                color: textColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                height: 1.4,
+              ),
             ),
           ),
         ],
