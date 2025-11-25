@@ -16,6 +16,7 @@ import 'package:mcp_test_app/widgets/drawer/drawer_balance_detail.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_country_code.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_deposit_channel.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_review_transaction.dart';
+import 'package:mcp_test_app/widgets/snack_bar/snack_bar.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
 // ItemList
@@ -260,5 +261,54 @@ Widget buildDrawerReviewTransaction(BuildContext context) {
         ),
       ),
     ],
+  );
+}
+
+// SnackBar
+@widgetbook.UseCase(name: 'Success', type: SnackBarWidget)
+Widget buildSnackBarSuccess(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: SnackBarWidget(
+      title: 'Success',
+      description: 'Your transaction has been completed successfully.',
+      type: SnackBarType.success,
+    ),
+  );
+}
+
+@widgetbook.UseCase(name: 'Warning', type: SnackBarWidget)
+Widget buildSnackBarWarning(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: SnackBarWidget(
+      title: 'Warning',
+      description: 'Please check your internet connection.',
+      type: SnackBarType.warning,
+    ),
+  );
+}
+
+@widgetbook.UseCase(name: 'Error', type: SnackBarWidget)
+Widget buildSnackBarError(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: SnackBarWidget(
+      title: 'Error',
+      description: 'Something went wrong. Please try again later.',
+      type: SnackBarType.error,
+    ),
+  );
+}
+
+@widgetbook.UseCase(name: 'Info', type: SnackBarWidget)
+Widget buildSnackBarInfo(BuildContext context) {
+  return const Padding(
+    padding: EdgeInsets.all(16.0),
+    child: SnackBarWidget(
+      title: 'Info',
+      description: 'System maintenance scheduled for tonight.',
+      type: SnackBarType.info,
+    ),
   );
 }
