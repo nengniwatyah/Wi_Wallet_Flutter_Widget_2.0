@@ -30,7 +30,6 @@ The `SnackBarType` enum defines the visual style of the SnackBar:
 | `SnackBarType.success` | Used for successful operations. | Check Circle | Green |
 | `SnackBarType.warning` | Used for warnings or alerts. | Alert Triangle | Amber |
 | `SnackBarType.error` | Used for errors or failures. | Cancel Circle | Red |
-| `SnackBarType.info` | Used for informational messages. | Info Circle | Blue/Teal |
 
 ## Properties
 

@@ -300,15 +300,3 @@ Widget buildSnackBarError(BuildContext context) {
     ),
   );
 }
-
-@widgetbook.UseCase(name: 'Info', type: SnackBarWidget)
-Widget buildSnackBarInfo(BuildContext context) {
-  return const Padding(
-    padding: EdgeInsets.all(16.0),
-    child: SnackBarWidget(
-      title: 'Info',
-      description: 'System maintenance scheduled for tonight.',
-      type: SnackBarType.info,
-    ),
-  );
-}

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
 
-enum SnackBarType { success, warning, error, info }
+enum SnackBarType { success, warning, error }
 
 class SnackBarWidget extends StatelessWidget {
   const SnackBarWidget({
@@ -47,13 +47,11 @@ class SnackBarWidget extends StatelessWidget {
   String get _iconPath {
     switch (type) {
       case SnackBarType.success:
-        return 'lib/assets/images/radio_button_check.svg'; // Using check icon for success
+        return 'lib/assets/images/checkmark-circle-01.svg';
       case SnackBarType.warning:
         return 'lib/assets/images/Alert Icon.svg';
       case SnackBarType.error:
-        return 'lib/assets/images/cancel-circle.svg'; // Using cancel circle for error
-      case SnackBarType.info:
-        return 'lib/assets/images/Alert Icon.svg'; // Placeholder, ideally need an info icon
+        return 'lib/assets/images/cancel-circle.svg';
     }
   }
 
@@ -65,8 +63,6 @@ class SnackBarWidget extends StatelessWidget {
         return 'warning/600';
       case SnackBarType.error:
         return 'danger/600';
-      case SnackBarType.info:
-        return 'info/600'; // Assuming info/600 exists or similar
     }
   }
 
@@ -78,8 +74,6 @@ class SnackBarWidget extends StatelessWidget {
         return 'text/base/warning';
       case SnackBarType.error:
         return 'text/base/danger';
-      case SnackBarType.info:
-        return 'text/base/info';
     }
   }
 
@@ -91,8 +85,6 @@ class SnackBarWidget extends StatelessWidget {
         return 'warning/500';
       case SnackBarType.error:
         return 'danger/500';
-      case SnackBarType.info:
-        return 'info/500';
     }
   }
 

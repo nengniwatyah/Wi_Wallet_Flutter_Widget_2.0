@@ -183,7 +183,7 @@ class SnackBarPreview extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
+              Buttons(
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
@@ -193,10 +193,11 @@ class SnackBarPreview extends StatelessWidget {
                     type: SnackBarType.success,
                   );
                 },
-                child: const Text('Show Success SnackBar'),
+                text: 'Show Success SnackBar',
+                type: ButtonType.primary,
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
+              Buttons(
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
@@ -205,10 +206,11 @@ class SnackBarPreview extends StatelessWidget {
                     type: SnackBarType.warning,
                   );
                 },
-                child: const Text('Show Warning SnackBar'),
+                text: 'Show Warning SnackBar',
+                type: ButtonType.primary,
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
+              Buttons(
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
@@ -218,19 +220,8 @@ class SnackBarPreview extends StatelessWidget {
                     type: SnackBarType.error,
                   );
                 },
-                child: const Text('Show Error SnackBar'),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  SnackBarWidget.show(
-                    context,
-                    title: 'Info',
-                    description: 'System maintenance scheduled for tonight.',
-                    type: SnackBarType.info,
-                  );
-                },
-                child: const Text('Show Info SnackBar'),
+                text: 'Show Error SnackBar',
+                type: ButtonType.primary,
               ),
             ],
           ),
