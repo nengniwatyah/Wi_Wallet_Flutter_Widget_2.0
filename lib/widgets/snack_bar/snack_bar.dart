@@ -34,7 +34,7 @@ class SnackBarWidget extends StatelessWidget {
         elevation: 0,
         behavior: SnackBarBehavior.floating,
         padding: EdgeInsets.zero,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 6),
       ),
     );
   }
