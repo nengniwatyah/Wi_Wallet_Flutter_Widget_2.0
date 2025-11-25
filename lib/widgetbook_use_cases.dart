@@ -269,11 +269,7 @@ Widget buildDrawerReviewTransaction(BuildContext context) {
 Widget buildSnackBarSuccess(BuildContext context) {
   return const Padding(
     padding: EdgeInsets.all(16.0),
-    child: SnackBarWidget(
-      title: 'Success',
-      description: 'Your transaction has been completed successfully.',
-      type: SnackBarType.success,
-    ),
+    child: SnackBarWidget(title: 'Success', type: SnackBarType.success),
   );
 }
 
@@ -281,11 +277,7 @@ Widget buildSnackBarSuccess(BuildContext context) {
 Widget buildSnackBarWarning(BuildContext context) {
   return const Padding(
     padding: EdgeInsets.all(16.0),
-    child: SnackBarWidget(
-      title: 'Warning',
-      description: 'Please check your internet connection.',
-      type: SnackBarType.warning,
-    ),
+    child: SnackBarWidget(title: 'Warning', type: SnackBarType.warning),
   );
 }
 
@@ -293,10 +285,6 @@ Widget buildSnackBarWarning(BuildContext context) {
 Widget buildSnackBarError(BuildContext context) {
   return const Padding(
     padding: EdgeInsets.all(16.0),
-    child: SnackBarWidget(
-      title: 'Error',
-      description: 'Something went wrong. Please try again later.',
-      type: SnackBarType.error,
-    ),
+    child: SnackBarWidget(title: 'Error', type: SnackBarType.error),
   );
 }

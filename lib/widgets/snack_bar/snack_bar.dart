@@ -6,30 +6,19 @@ import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
 enum SnackBarType { success, warning, error }
 
 class SnackBarWidget extends StatelessWidget {
-  const SnackBarWidget({
-    super.key,
-    required this.title,
-    this.description,
-    required this.type,
-  });
+  const SnackBarWidget({super.key, required this.title, required this.type});
 
   final String title;
-  final String? description;
   final SnackBarType type;
 
   static void show(
     BuildContext context, {
     required String title,
-    String? description,
     required SnackBarType type,
   }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: SnackBarWidget(
-          title: title,
-          description: description,
-          type: type,
-        ),
+        content: SnackBarWidget(title: title, type: type),
         backgroundColor: Colors.transparent,
         elevation: 0,
         behavior: SnackBarBehavior.floating,
@@ -134,19 +123,6 @@ class SnackBarWidget extends StatelessWidget {
                         height: 1.4,
                       ),
                 ),
-                if (description != null) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    description!,
-                    style: GoogleFonts.notoSansThaiTextTheme().bodySmall
-                        ?.copyWith(
-                          color: textColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          height: 1.4,
-                        ),
-                  ),
-                ],
               ],
             ),
           ),

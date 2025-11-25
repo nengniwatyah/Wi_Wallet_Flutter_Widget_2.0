@@ -36,7 +36,6 @@ The `SnackBarType` enum defines the visual style of the SnackBar:
 | Property | Type | Description |
 |---|---|---|
 | `title` | `String` | The main title of the notification. |
-| `description` | `String?` | The detailed message of the notification. (Optional) |
 | `type` | `SnackBarType` | The variant of the SnackBar. |
 | `onClose` | `VoidCallback?` | Optional callback when the close button is tapped. (Handled automatically in `show` method) |
 

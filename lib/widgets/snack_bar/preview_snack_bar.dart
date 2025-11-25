@@ -189,7 +189,6 @@ class SnackBarPreview extends StatelessWidget {
                   SnackBarWidget.show(
                     context,
                     title: 'Receipt saved successfully',
-                    description: 'Receipt saved successfully',
                     type: SnackBarType.success,
                   );
                 },
@@ -202,7 +201,6 @@ class SnackBarPreview extends StatelessWidget {
                   SnackBarWidget.show(
                     context,
                     title: 'Warning',
-                    description: 'Please check your internet connection.',
                     type: SnackBarType.warning,
                   );
                 },
@@ -215,8 +213,6 @@ class SnackBarPreview extends StatelessWidget {
                   SnackBarWidget.show(
                     context,
                     title: 'Error',
-                    description:
-                        'Sorry, system has encountered error. Please try again.',
                     type: SnackBarType.error,
                   );
                 },
