@@ -9,18 +9,18 @@ class SnackBarWidget extends StatelessWidget {
   const SnackBarWidget({
     super.key,
     required this.title,
-    required this.description,
+    this.description,
     required this.type,
   });
 
   final String title;
-  final String description;
+  final String? description;
   final SnackBarType type;
 
   static void show(
     BuildContext context, {
     required String title,
-    required String description,
+    String? description,
     required SnackBarType type,
   }) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -134,17 +134,19 @@ class SnackBarWidget extends StatelessWidget {
                         height: 1.4,
                       ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  description,
-                  style: GoogleFonts.notoSansThaiTextTheme().bodySmall
-                      ?.copyWith(
-                        color: textColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.4,
-                      ),
-                ),
+                if (description != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    description!,
+                    style: GoogleFonts.notoSansThaiTextTheme().bodySmall
+                        ?.copyWith(
+                          color: textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          height: 1.4,
+                        ),
+                  ),
+                ],
               ],
             ),
           ),

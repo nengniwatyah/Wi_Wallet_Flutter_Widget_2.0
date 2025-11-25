@@ -188,9 +188,8 @@ class SnackBarPreview extends StatelessWidget {
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
-                    title: 'Success',
-                    description:
-                        'Your transaction has been completed successfully.',
+                    title: 'Receipt saved successfully',
+                    description: 'Receipt saved successfully',
                     type: SnackBarType.success,
                   );
                 },
@@ -217,11 +216,23 @@ class SnackBarPreview extends StatelessWidget {
                     context,
                     title: 'Error',
                     description:
-                        'Something went wrong. Please try again later.',
+                        'Sorry, system has encountered error. Please try again.',
                     type: SnackBarType.error,
                   );
                 },
                 text: 'Show Error SnackBar',
+                type: ButtonType.primary,
+              ),
+              const SizedBox(height: 16),
+              Buttons(
+                onPressed: () {
+                  SnackBarWidget.show(
+                    context,
+                    title: 'No Description',
+                    type: SnackBarType.success,
+                  );
+                },
+                text: 'Show No Description SnackBar',
                 type: ButtonType.primary,
               ),
             ],
