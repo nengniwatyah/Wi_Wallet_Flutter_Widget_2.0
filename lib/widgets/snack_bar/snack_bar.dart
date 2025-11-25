@@ -11,13 +11,11 @@ class SnackBarWidget extends StatelessWidget {
     required this.title,
     required this.description,
     required this.type,
-    this.onClose,
   });
 
   final String title;
   final String description;
   final SnackBarType type;
-  final VoidCallback? onClose;
 
   static void show(
     BuildContext context, {
@@ -31,9 +29,6 @@ class SnackBarWidget extends StatelessWidget {
           title: title,
           description: description,
           type: type,
-          onClose: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -51,18 +46,18 @@ class SnackBarWidget extends StatelessWidget {
       case SnackBarType.warning:
         return 'lib/assets/images/Alert Icon.svg';
       case SnackBarType.error:
-        return 'lib/assets/images/cancel-circle.svg';
+        return 'lib/assets/images/outline-cancel-circle.svg';
     }
   }
 
   String get _backgroundColorKey {
     switch (type) {
       case SnackBarType.success:
-        return 'success/600';
+        return 'success/300';
       case SnackBarType.warning:
-        return 'warning/600';
+        return 'warning/300';
       case SnackBarType.error:
-        return 'danger/600';
+        return 'danger/300';
     }
   }
 
@@ -80,11 +75,11 @@ class SnackBarWidget extends StatelessWidget {
   String get _iconColorKey {
     switch (type) {
       case SnackBarType.success:
-        return 'success/500';
+        return 'text/base/success';
       case SnackBarType.warning:
-        return 'warning/500';
+        return 'text/base/warning';
       case SnackBarType.error:
-        return 'danger/500';
+        return 'text/base/danger';
     }
   }
 
@@ -153,17 +148,6 @@ class SnackBarWidget extends StatelessWidget {
               ],
             ),
           ),
-          // Close Button
-          if (onClose != null)
-            GestureDetector(
-              onTap: onClose,
-              child: SvgPicture.asset(
-                'lib/assets/images/cancel-01.svg',
-                width: 20,
-                height: 20,
-                colorFilter: ColorFilter.mode(textColor, BlendMode.srcIn),
-              ),
-            ),
         ],
       ),
     );
