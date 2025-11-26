@@ -4,22 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 
-enum BankType {
-  scb,
-  kbank,
-  bbl,
-  krungsri,
-}
+enum BankType { scb, kbank, bbl, krungsri }
 
 class DrawerDepositChannel extends StatelessWidget {
   final VoidCallback? onClose;
   final Function(BankType)? onBankSelected;
 
-  const DrawerDepositChannel({
-    super.key,
-    this.onClose,
-    this.onBankSelected,
-  });
+  const DrawerDepositChannel({super.key, this.onClose, this.onBankSelected});
 
   static Future<void> show(
     BuildContext context, {
@@ -30,13 +21,14 @@ class DrawerDepositChannel extends StatelessWidget {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
-      builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: DrawerDepositChannel(
-          onBankSelected: onBankSelected,
-          onClose: () => Navigator.pop(context),
-        ),
-      ),
+      builder:
+          (context) => BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: DrawerDepositChannel(
+              onBankSelected: onBankSelected,
+              onClose: () => Navigator.pop(context),
+            ),
+          ),
     );
   }
 
@@ -68,13 +60,19 @@ class DrawerDepositChannel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    final screenHeight = MediaQuery.of(context).size.height;
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final mediaQuery = MediaQuery.of(context);
+    final screenHeight = mediaQuery.size.height;
+    final bottomPadding =
+        mediaQuery.viewPadding.bottom > 0
+            ? mediaQuery.viewPadding.bottom
+            : mediaQuery.padding.bottom;
 
     return Container(
       width: double.infinity,
-      height: screenHeight * 0.5,
-      padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
+      height: screenHeight * 0.80,
+      padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 0),
       decoration: BoxDecoration(
         color: ThemeColors.get(brightnessKey, 'fill/base/100'),
         borderRadius: const BorderRadius.only(
@@ -112,6 +110,19 @@ class DrawerDepositChannel extends StatelessWidget {
               ),
             ),
           ),
+          if (bottomPadding > 0)
+            ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  height: bottomPadding,
+                  color: ThemeColors.get(
+                    brightnessKey,
+                    'fill/base/100',
+                  ).withValues(alpha: 0.9),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -190,11 +201,7 @@ class DrawerDepositChannel extends StatelessWidget {
         ),
         child: Row(
           children: [
-            SvgPicture.asset(
-              _getBankLogo(bank),
-              width: 26,
-              height: 26,
-            ),
+            SvgPicture.asset(_getBankLogo(bank), width: 26, height: 26),
             const SizedBox(width: 16),
             Expanded(
               child: Text(

@@ -48,31 +48,38 @@ class DrawerBalanceDetail extends StatelessWidget {
       isDismissible: false,
       enableDrag: false,
       barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
-      builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: DrawerBalanceDetail(
-        totalBalanceAmount: totalBalanceAmount,
-        currency: currency,
-        holdAmountLabel: holdAmountLabel,
-        holdAmountValue: holdAmountValue,
-        ledgerBalanceLabel: ledgerBalanceLabel,
-        ledgerBalanceValue: ledgerBalanceValue,
-        warningText: warningText,
-        buttonText: buttonText,
-        onClose: () => Navigator.pop(context),
-        ),
-      ),
+      builder:
+          (context) => BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: DrawerBalanceDetail(
+              totalBalanceAmount: totalBalanceAmount,
+              currency: currency,
+              holdAmountLabel: holdAmountLabel,
+              holdAmountValue: holdAmountValue,
+              ledgerBalanceLabel: ledgerBalanceLabel,
+              ledgerBalanceValue: ledgerBalanceValue,
+              warningText: warningText,
+              buttonText: buttonText,
+              onClose: () => Navigator.pop(context),
+            ),
+          ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    final screenHeight = MediaQuery.of(context).size.height;
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final mediaQuery = MediaQuery.of(context);
+    final screenHeight = mediaQuery.size.height;
+    final bottomPadding =
+        mediaQuery.viewPadding.bottom > 0
+            ? mediaQuery.viewPadding.bottom
+            : mediaQuery.padding.bottom;
 
     return Container(
-      height: screenHeight * 0.75,
+      height: screenHeight * 0.80,
       decoration: BoxDecoration(
         color: theme.ThemeColors.get(brightnessKey, 'fill/base/100'),
         borderRadius: const BorderRadius.only(
@@ -108,10 +115,14 @@ class DrawerBalanceDetail extends StatelessWidget {
                     width: 144,
                     height: 144,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
-                      height: 144,
-                      color: theme.ThemeColors.get(brightnessKey, 'fill/base/300'),
-                    ),
+                    errorBuilder:
+                        (_, __, ___) => Container(
+                          height: 144,
+                          color: theme.ThemeColors.get(
+                            brightnessKey,
+                            'fill/base/300',
+                          ),
+                        ),
                   ),
                   const SizedBox(height: 16),
 
@@ -120,7 +131,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: theme.ThemeColors.get(brightnessKey, 'fill/base/300'),
+                      color: theme.ThemeColors.get(
+                        brightnessKey,
+                        'fill/base/300',
+                      ),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -132,7 +146,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
                             height: 1.51,
-                            color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                            color: theme.ThemeColors.get(
+                              brightnessKey,
+                              'text/base/600',
+                            ),
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -142,14 +159,20 @@ class DrawerBalanceDetail extends StatelessWidget {
                             fontSize: 22,
                             fontWeight: FontWeight.w700,
                             height: 1.27,
-                            color: theme.ThemeColors.get(brightnessKey, 'success/500'),
+                            color: theme.ThemeColors.get(
+                              brightnessKey,
+                              'success/500',
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
                         // Divider
                         Container(
                           height: 1,
-                          color: theme.ThemeColors.get(brightnessKey, 'stroke/base/200'),
+                          color: theme.ThemeColors.get(
+                            brightnessKey,
+                            'stroke/base/200',
+                          ),
                         ),
                         const SizedBox(height: 16),
                         // Hold Amount
@@ -164,7 +187,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     height: 1.23,
-                                    color: theme.ThemeColors.get(brightnessKey, 'text/base/400'),
+                                    color: theme.ThemeColors.get(
+                                      brightnessKey,
+                                      'text/base/400',
+                                    ),
                                   ),
                                 ),
                                 Text(
@@ -187,7 +213,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     height: 1.23,
-                                    color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                                    color: theme.ThemeColors.get(
+                                      brightnessKey,
+                                      'text/base/600',
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 4),
@@ -197,7 +226,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     height: 1.23,
-                                    color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                                    color: theme.ThemeColors.get(
+                                      brightnessKey,
+                                      'text/base/600',
+                                    ),
                                   ),
                                 ),
                               ],
@@ -215,7 +247,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
                                 height: 1.23,
-                                color: theme.ThemeColors.get(brightnessKey, 'text/base/400'),
+                                color: theme.ThemeColors.get(
+                                  brightnessKey,
+                                  'text/base/400',
+                                ),
                               ),
                             ),
                             Row(
@@ -227,7 +262,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     height: 1.23,
-                                    color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                                    color: theme.ThemeColors.get(
+                                      brightnessKey,
+                                      'text/base/600',
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 4),
@@ -237,7 +275,10 @@ class DrawerBalanceDetail extends StatelessWidget {
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     height: 1.23,
-                                    color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                                    color: theme.ThemeColors.get(
+                                      brightnessKey,
+                                      'text/base/600',
+                                    ),
                                   ),
                                 ),
                               ],
@@ -251,14 +292,20 @@ class DrawerBalanceDetail extends StatelessWidget {
                   // Warning
                   Builder(
                     builder: (context) {
-                      final textColor = theme.ThemeColors.get(brightnessKey, 'text/base/warning');
+                      final textColor = theme.ThemeColors.get(
+                        brightnessKey,
+                        'text/base/warning',
+                      );
                       return AnnouncementWarning(
                         title: '',
                         description: '',
                         descriptionSpans: [
                           TextSpan(
                             text: '*Hold Amount',
-                            style: TextStyle(color: textColor, fontWeight: FontWeight.w700),
+                            style: TextStyle(
+                              color: textColor,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                           TextSpan(
                             text: warningText.replaceFirst('*Hold Amount', ''),
@@ -275,13 +322,26 @@ class DrawerBalanceDetail extends StatelessWidget {
           ),
           // OK Button
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
             child: Buttons(
               text: buttonText,
               type: ButtonType.primary,
               onPressed: onClose,
             ),
           ),
+          if (bottomPadding > 0)
+            ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  height: bottomPadding,
+                  color: theme.ThemeColors.get(
+                    brightnessKey,
+                    'fill/base/100',
+                  ).withValues(alpha: 0.9),
+                ),
+              ),
+            ),
         ],
       ),
     );

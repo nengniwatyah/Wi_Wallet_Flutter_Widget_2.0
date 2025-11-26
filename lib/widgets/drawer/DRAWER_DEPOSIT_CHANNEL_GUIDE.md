@@ -10,7 +10,7 @@ Bottom-sheet drawer presenting a list of supported deposit channels (mobile bank
 
 https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7066-12327&t=sYCnD6dsF9QpTyn1-4
 
-- Height: `MediaQuery.of(context).size.height * 0.5` (ครอบครองครึ่งล่างของจอ)
+- Height: `MediaQuery.of(context).size.height * 0.80` (ครอบครอง 80% ของจอ)
 - Padding: `EdgeInsets.fromLTRB(16, 16, 16, 16)`
 - Border radius: 16 px เฉพาะด้านบน `Radius.circular(16)`
 - Background: `ThemeColors.get(brightnessKey, 'fill/base/100')`
@@ -112,9 +112,42 @@ enum BankType { scb, kbank, bbl, krungsri }
 - ใช้ `ThemeColors` เพื่อให้สอดคล้องกับ design tokens ของโปรเจกต์
 - พึ่งพา `GoogleFonts.notoSansThai` เพื่อความคงที่ของ typography
 - อาศัย `SvgPicture.asset` ในการแสดงโลโก้และไอคอนทั้งหมด
-- ความสูงของ drawer ผูกกับความสูงหน้าจอ (50%) ควรทดสอบบนอุปกรณ์จอเล็ก/ใหญ่
+- ความสูงของ drawer ผูกกับความสูงหน้าจอ (80%) ควรทดสอบบนอุปกรณ์จอเล็ก/ใหญ่
 - **Static show method**: มี overlay style (barrierColor + BackdropFilter blur 10px) ตาม Figma specs
 - **Consistent pattern**: ใช้ pattern เดียวกับ DrawerReviewTransaction และ DrawerBalanceDetail
+- **Height**: 80% ของหน้าจอ (0.80 * screen height)
+
+## 📱 Edge-to-Edge & Gesture Navigation Support
+
+Widget นี้รองรับการแสดงผลแบบ **Edge-to-Edge** บนอุปกรณ์ทั้ง Android และ iOS:
+
+1.  **Gesture Navigation Bar (Android) / Home Indicator (iOS)**:
+    - มีการคำนวณ `bottomPadding` จาก `MediaQuery.of(context).viewPadding.bottom`
+    - เพิ่มพื้นที่ด้านล่างสุดของ Drawer เพื่อไม่ให้ปุ่มกดทับซ้อนกับ System Navigation Bar
+    - พื้นที่นี้ใช้สี `fill/base/100` (สีเดียวกับ Background) พร้อม `BackdropFilter` (Blur 10px) เพื่อความสวยงามและ Seamless
+
+2.  **Safe Area**:
+    - เนื้อหาและปุ่มกดจะถูกดันขึ้นมาจากขอบล่างโดยอัตโนมัติเมื่ออยู่บนอุปกรณ์ที่มี Notch หรือ Gesture Bar
+
+```dart
+// ตัวอย่างการคำนวณในโค้ด
+final bottomPadding = mediaQuery.viewPadding.bottom > 0
+    ? mediaQuery.viewPadding.bottom
+    : mediaQuery.padding.bottom;
+
+// ...
+
+if (bottomPadding > 0)
+  ClipRRect(
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: Container(
+        height: bottomPadding,
+        color: ThemeColors.get(brightnessKey, 'fill/base/100').withValues(alpha: 0.9),
+      ),
+    ),
+  ),
+```
 
 ## 🔄 Recent Updates
 

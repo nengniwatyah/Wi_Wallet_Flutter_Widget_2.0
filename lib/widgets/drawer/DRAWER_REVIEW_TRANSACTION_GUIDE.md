@@ -11,7 +11,7 @@ Bottom sheet drawer for reviewing transaction details before confirmation.
 https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7089-198814&t=sYCnD6dsF9QpTyn1-4
 
 ### Layout
-- **Height**: 75% ของหน้าจอ (0.75 * screen height)
+- **Height**: 80% ของหน้าจอ (0.80 * screen height)
 - **Border Radius**: 16px (top corners only)
 - **Background**: `fill/base/100`
 - **Padding**: 16px horizontal, 16px top, 40px bottom
@@ -89,7 +89,7 @@ DrawerReviewTransaction(
 ## 🌟 Behaviour
 
 - แสดงเป็น modal bottom sheet จากด้านล่างของหน้าจอ
-- ความสูงคงที่ 75% ของหน้าจอ
+- ความสูงคงที่ 80% ของหน้าจอ
 - เนื้อหาภายในสามารถ scroll ได้
 - กดปุ่ม X เพื่อปิด (ไม่สามารถ swipe down หรือกดนอก area เพื่อปิดได้)
 - กดปุ่ม Confirm เพื่อยืนยันธุรกรรม
@@ -173,12 +173,45 @@ Widget นี้ปฏิบัติตาม Material Design guidelines สำ
 - **Tap outside to dismiss** (disabled)
 - Backdrop overlay
 - Rounded top corners
-- Fixed height (75% of screen)
+- Fixed height (80% of screen)
 - Scrollable content
+
+## 📱 Edge-to-Edge & Gesture Navigation Support
+
+Widget นี้รองรับการแสดงผลแบบ **Edge-to-Edge** บนอุปกรณ์ทั้ง Android และ iOS:
+
+1.  **Gesture Navigation Bar (Android) / Home Indicator (iOS)**:
+    - มีการคำนวณ `bottomPadding` จาก `MediaQuery.of(context).viewPadding.bottom`
+    - เพิ่มพื้นที่ด้านล่างสุดของ Drawer เพื่อไม่ให้ปุ่มกดทับซ้อนกับ System Navigation Bar
+    - พื้นที่นี้ใช้สี `fill/base/100` (สีเดียวกับ Background) พร้อม `BackdropFilter` (Blur 10px) เพื่อความสวยงามและ Seamless
+
+2.  **Safe Area**:
+    - เนื้อหาและปุ่มกดจะถูกดันขึ้นมาจากขอบล่างโดยอัตโนมัติเมื่ออยู่บนอุปกรณ์ที่มี Notch หรือ Gesture Bar
+    - ปุ่ม Confirm จะมี Padding ด้านล่าง 16px (จากเดิม 40px) เมื่อมี Gesture Bar เพื่อความสมดุล
+
+```dart
+// ตัวอย่างการคำนวณในโค้ด
+final bottomPadding = mediaQuery.viewPadding.bottom > 0
+    ? mediaQuery.viewPadding.bottom
+    : mediaQuery.padding.bottom;
+
+// ...
+
+if (bottomPadding > 0)
+  ClipRRect(
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: Container(
+        height: bottomPadding,
+        color: ThemeColors.get(brightnessKey, 'fill/base/100').withValues(alpha: 0.9),
+      ),
+    ),
+  ),
+```
 
 ## ⚠️ Notes & Recommendations
 
-1. **Height**: ใช้ 75% ของหน้าจอ เหมาะสำหรับเนื้อหาปานกลาง
+1. **Height**: ใช้ 80% ของหน้าจอ เหมาะสำหรับเนื้อหาปานกลาง
 2. **Scrollable**: เนื้อหาภายใน scroll ได้ รองรับข้อมูลยาว
 3. **Theme Support**: รองรับ light/dark mode อัตโนมัติ
 4. **Reusable Components**: ใช้ AnnouncementWarning, CardReviewTransaction, Buttons

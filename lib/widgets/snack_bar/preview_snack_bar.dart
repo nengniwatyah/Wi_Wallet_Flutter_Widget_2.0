@@ -200,7 +200,7 @@ class SnackBarPreview extends StatelessWidget {
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
-                    title: 'Warning',
+                    title: 'Show Warning SnackBar',
                     type: SnackBarType.warning,
                   );
                 },
@@ -212,23 +212,12 @@ class SnackBarPreview extends StatelessWidget {
                 onPressed: () {
                   SnackBarWidget.show(
                     context,
-                    title: 'Error',
+                    title:
+                        'Sorry, system has encountered error. Please try again.',
                     type: SnackBarType.error,
                   );
                 },
                 text: 'Show Error SnackBar',
-                type: ButtonType.primary,
-              ),
-              const SizedBox(height: 16),
-              Buttons(
-                onPressed: () {
-                  SnackBarWidget.show(
-                    context,
-                    title: 'No Description',
-                    type: SnackBarType.success,
-                  );
-                },
-                text: 'Show No Description SnackBar',
                 type: ButtonType.primary,
               ),
             ],
