@@ -11,7 +11,7 @@ Bottom sheet drawer for country code selection with search functionality.
 https://www.figma.com/design/D7WVaC8n3foVLo6S3HuPn8/New-Wi-Wallet-2.0?node-id=7066-12739
 
 ### Layout
-- **Height**: 80% ของหน้าจอ (0.80 * screen height)
+- **Height**: 75% ของหน้าจอ (0.75 * screen height)
 - **Border Radius**: 16px (top corners only)
 - **Background**: `fill/base/100`
 - **Padding**: 16px all sides
@@ -88,7 +88,7 @@ DrawerCountryCode.show(
 ## 🌟 Behaviour
 
 - แสดงเป็น modal bottom sheet จากด้านล่างของหน้าจอ
-- ความสูงคงที่ 80% ของหน้าจอ
+- ความสูงคงที่ 75% ของหน้าจอ
 - **ปิดได้เฉพาะจากปุ่ม X เท่านั้น** (isDismissible: false, enableDrag: false)
 - กดนอก area หรือ swipe down จะไม่มีผลอะไร
 - Background มืดโปร่งใสด้านหลัง drawer พร้อม 10px blur effect
@@ -143,7 +143,7 @@ DrawerCountryCode.show(
 ```
 DrawerCountryCode
 ├── Backdrop (blur + overlay)
-└── Container (80% height)
+└── Container (75% height)
     ├── Header
     │   ├── Invisible Icon (spacing)
     │   ├── Title (center)
@@ -181,44 +181,12 @@ Widget นี้ปฏิบัติตาม Material Design guidelines สำ
 - **No tap outside to dismiss** (requires explicit button action)
 - Backdrop overlay with blur effect
 - Rounded top corners
-- Fixed height (80% of screen)
+- Fixed height (75% of screen)
 - Scrollable content
-
-## 📱 Edge-to-Edge & Gesture Navigation Support
-
-Widget นี้รองรับการแสดงผลแบบ **Edge-to-Edge** บนอุปกรณ์ทั้ง Android และ iOS:
-
-1.  **Gesture Navigation Bar (Android) / Home Indicator (iOS)**:
-    - มีการคำนวณ `bottomPadding` จาก `MediaQuery.of(context).viewPadding.bottom`
-    - เพิ่มพื้นที่ด้านล่างสุดของ Drawer เพื่อไม่ให้ปุ่มกดทับซ้อนกับ System Navigation Bar
-    - พื้นที่นี้ใช้สี `fill/base/100` (สีเดียวกับ Background) พร้อม `BackdropFilter` (Blur 10px) เพื่อความสวยงามและ Seamless
-
-2.  **Safe Area**:
-    - เนื้อหาและปุ่มกดจะถูกดันขึ้นมาจากขอบล่างโดยอัตโนมัติเมื่ออยู่บนอุปกรณ์ที่มี Notch หรือ Gesture Bar
-
-```dart
-// ตัวอย่างการคำนวณในโค้ด
-final bottomPadding = mediaQuery.viewPadding.bottom > 0
-    ? mediaQuery.viewPadding.bottom
-    : mediaQuery.padding.bottom;
-
-// ...
-
-if (bottomPadding > 0)
-  ClipRRect(
-    child: BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-      child: Container(
-        height: bottomPadding,
-        color: ThemeColors.get(brightnessKey, 'fill/base/100').withValues(alpha: 0.9),
-      ),
-    ),
-  ),
-```
 
 ## ⚠️ Notes & Recommendations
 
-1. **Height**: ใช้ 80% ของหน้าจอ เหมาะสำหรับรายการปานกลาง
+1. **Height**: ใช้ 75% ของหน้าจอ เหมาะสำหรับรายการปานกลาง
 2. **Search**: ค้นหาแบบ real-time ทั้งชื่อและรหัสประเทศ
 3. **Empty State**: แสดงอัตโนมัติเมื่อไม่พบผลการค้นหา
 4. **Theme Support**: รองรับ light/dark mode อัตโนมัติ
@@ -367,7 +335,7 @@ void initState() {
 | **Empty State**          | Yes (with image)         | No                      | No                      |
 | **List Items**           | Selectable countries     | Static info             | Static info             |
 | **Dismiss Behavior**     | Button + selection       | Button only             | Button + swipe/tap      |
-| **Height**               | 80%                      | 80%                     | 80%                     |
+| **Height**               | 75%                      | 75%                     | 75%                     |
 
 ---
 

@@ -113,8 +113,8 @@ class SnackBarWidget extends StatelessWidget {
               title,
               style: GoogleFonts.notoSansThaiTextTheme().bodySmall?.copyWith(
                 color: textColor,
-                fontSize: 10,
-                fontWeight: FontWeight.w600,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
                 height: 1.4,
               ),
             ),

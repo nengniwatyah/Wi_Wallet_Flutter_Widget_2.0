@@ -225,30 +225,6 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
-        name: 'snack_bar',
-        children: [
-          _widgetbook.WidgetbookComponent(
-            name: 'SnackBarWidget',
-            useCases: [
-              _widgetbook.WidgetbookUseCase(
-                name: 'Error',
-                builder: _mcp_test_app_widgetbook_use_cases.buildSnackBarError,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Success',
-                builder:
-                    _mcp_test_app_widgetbook_use_cases.buildSnackBarSuccess,
-              ),
-              _widgetbook.WidgetbookUseCase(
-                name: 'Warning',
-                builder:
-                    _mcp_test_app_widgetbook_use_cases.buildSnackBarWarning,
-              ),
-            ],
-          ),
-        ],
-      ),
-      _widgetbook.WidgetbookFolder(
         name: 'visa',
         children: [
           _widgetbook.WidgetbookComponent(

@@ -44,13 +44,12 @@ class DrawerCountryCode extends StatefulWidget {
       isDismissible: false,
       enableDrag: false,
       backgroundColor: Colors.transparent,
-      builder:
-          (context) => DrawerCountryCode(
-            title: title,
-            countries: countries,
-            onCountrySelected: onCountrySelected,
-            onClose: onClose,
-          ),
+      builder: (context) => DrawerCountryCode(
+        title: title,
+        countries: countries,
+        onCountrySelected: onCountrySelected,
+        onClose: onClose,
+      ),
     );
   }
 
@@ -79,25 +78,18 @@ class _DrawerCountryCodeState extends State<DrawerCountryCode> {
       if (query.isEmpty) {
         _filteredCountries = widget.countries;
       } else {
-        _filteredCountries =
-            widget.countries.where((country) {
-              return country.name.toLowerCase().contains(query.toLowerCase()) ||
-                  country.code.toLowerCase().contains(query.toLowerCase());
-            }).toList();
+        _filteredCountries = widget.countries.where((country) {
+          return country.name.toLowerCase().contains(query.toLowerCase()) ||
+              country.code.toLowerCase().contains(query.toLowerCase());
+        }).toList();
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey =
-        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    final mediaQuery = MediaQuery.of(context);
-    final screenHeight = mediaQuery.size.height;
-    final bottomPadding =
-        mediaQuery.viewPadding.bottom > 0
-            ? mediaQuery.viewPadding.bottom
-            : mediaQuery.padding.bottom;
+    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Stack(
       children: [
@@ -106,14 +98,16 @@ class _DrawerCountryCodeState extends State<DrawerCountryCode> {
             onTap: () {},
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(color: Colors.black.withValues(alpha: 0.5)),
+              child: Container(
+                color: Colors.black.withValues(alpha: 0.5),
+              ),
             ),
           ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: screenHeight * 0.80,
+            height: screenHeight * 0.75,
             decoration: BoxDecoration(
               color: ThemeColors.get(brightnessKey, 'fill/base/100'),
               borderRadius: const BorderRadius.only(
@@ -125,24 +119,10 @@ class _DrawerCountryCodeState extends State<DrawerCountryCode> {
               children: [
                 _buildHeader(context, brightnessKey),
                 Expanded(
-                  child:
-                      _filteredCountries.isEmpty
-                          ? _buildEmptyState(context, brightnessKey)
-                          : _buildCountryList(context, brightnessKey),
+                  child: _filteredCountries.isEmpty
+                      ? _buildEmptyState(context, brightnessKey)
+                      : _buildCountryList(context, brightnessKey),
                 ),
-                if (bottomPadding > 0)
-                  ClipRRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: Container(
-                        height: bottomPadding,
-                        color: ThemeColors.get(
-                          brightnessKey,
-                          'fill/base/100',
-                        ).withValues(alpha: 0.9),
-                      ),
-                    ),
-                  ),
               ],
             ),
           ),
@@ -220,7 +200,11 @@ class _DrawerCountryCodeState extends State<DrawerCountryCode> {
             ),
             child: Row(
               children: [
-                SvgPicture.asset(country.flagAsset, width: 32, height: 24),
+                SvgPicture.asset(
+                  country.flagAsset,
+                  width: 32,
+                  height: 24,
+                ),
                 const SizedBox(width: 8),
                 Text(
                   country.code,

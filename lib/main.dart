@@ -329,31 +329,6 @@ class HomePage extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 16.0),
                           child: AnnouncementStack(),
                         ),
-                        const SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: AspectRatio(
-                            aspectRatio:
-                                343 /
-                                106, // Standard ratio based on design specs
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: ThemeColors.get(
-                                  brightnessKey,
-                                  'fill/base/200',
-                                ),
-                                borderRadius: BorderRadius.circular(16),
-                                image: const DecorationImage(
-                                  image: AssetImage(
-                                    'lib/assets/images/Card_Banner.png',
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                         Expanded(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
