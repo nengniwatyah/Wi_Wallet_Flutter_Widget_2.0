@@ -1,6 +1,6 @@
 # SnackBar Guide
 
-The `SnackBarWidget` is a custom notification component designed to provide feedback to the user. It supports four variants: Success, Warning, Error, and Info.
+The `SnackBarWidget` is a custom notification component designed to provide feedback to the user. It supports three variants: Success, Warning, and Error.
 
 ## Usage
 
@@ -16,7 +16,6 @@ Show the SnackBar using the static `show` method:
 SnackBarWidget.show(
   context,
   title: 'Success',
-  description: 'Operation completed successfully.',
   type: SnackBarType.success,
 );
 ```
@@ -37,7 +36,6 @@ The `SnackBarType` enum defines the visual style of the SnackBar:
 |---|---|---|
 | `title` | `String` | The main title of the notification. |
 | `type` | `SnackBarType` | The variant of the SnackBar. |
-| `onClose` | `VoidCallback?` | Optional callback when the close button is tapped. (Handled automatically in `show` method) |
 
 ## Example
 
@@ -45,7 +43,6 @@ The `SnackBarType` enum defines the visual style of the SnackBar:
 SnackBarWidget.show(
   context,
   title: 'Payment Failed',
-  description: 'Please check your balance and try again.',
   type: SnackBarType.error,
 );
 ```
@@ -57,3 +54,19 @@ To preview the SnackBar widget interactively, run the preview file:
 ```bash
 flutter run -t lib/widgets/snack_bar/preview_snack_bar.dart
 ```
+
+## Testing
+
+Unit and Integration tests are available to ensure the widget renders correctly and adheres to design specifications.
+
+**Test File:** `test/widgets/snack_bar/snack_bar_test.dart`
+
+**Run Tests:**
+
+```bash
+flutter test test/widgets/snack_bar/snack_bar_test.dart
+```
+
+**Test Coverage:**
+- **UI Tests:** Verifies title rendering, icon presence, border radius (6px), and background color for all variants.
+- **Integration Tests:** Verifies that `SnackBarWidget.show` correctly triggers the display of the SnackBar using `ScaffoldMessenger`.

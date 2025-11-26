@@ -18,11 +18,43 @@ import 'package:mcp_test_app/widgets/drawer/drawer_deposit_channel.dart';
 import 'package:mcp_test_app/widgets/drawer/drawer_review_transaction.dart';
 import 'package:mcp_test_app/widgets/snack_bar/snack_bar.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
+import 'package:mcp_test_app/widgets/image_carousel/image_carousel.dart';
 
 // ItemList
 @widgetbook.UseCase(name: 'Default', type: ItemList)
 Widget buildItemList(BuildContext context) {
   return ItemList(title: 'Transaction History', onTap: () {});
+}
+// ... (skipping unchanged parts) ...
+
+// Image Carousel
+@widgetbook.UseCase(name: 'Default', type: ImageCarousel)
+Widget buildImageCarousel(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ImageCarousel(
+      pages: [
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+      ],
+    ),
+  );
+}
+
+@widgetbook.UseCase(name: 'Auto Play', type: ImageCarousel)
+Widget buildImageCarouselAutoPlay(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: ImageCarousel(
+      autoPlay: true,
+      pages: [
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+      ],
+    ),
+  );
 }
 
 @widgetbook.UseCase(name: 'With Trailing Text', type: ItemList)
@@ -288,3 +320,5 @@ Widget buildSnackBarError(BuildContext context) {
     child: SnackBarWidget(title: 'Error', type: SnackBarType.error),
   );
 }
+
+// Image Carousel
