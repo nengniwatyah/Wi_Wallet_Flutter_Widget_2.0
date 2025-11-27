@@ -4,6 +4,7 @@ import 'package:mcp_test_app/assets/hugeicons/huge_icons.dart';
 import 'package:mcp_test_app/config/themes/theme_constants.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart' as theme;
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
+import 'package:mcp_test_app/widgets/skeleton/lottie_skeleton.dart';
 
 // Preview widget for AnnouncementStack
 void main() {
@@ -69,11 +70,13 @@ class AnnouncementStack extends StatefulWidget {
     this.messages = const [],
     this.onClose,
     this.debugMode = false,
+    this.isLoading = false,
   });
 
   final List<String> messages;
   final VoidCallback? onClose;
   final bool debugMode;
+  final bool isLoading;
 
   @override
   State<AnnouncementStack> createState() => _AnnouncementStackState();
@@ -228,28 +231,34 @@ class _AnnouncementStackState extends State<AnnouncementStack>
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          createHugeIcon(
-            megaphoneIcon,
-            brightnessKey == 'light'
-                ? theme.ThemeColors.get('light', 'text/base/600')
-                : theme.ThemeColors.get('dark', 'text/base/600'),
-            width: 16,
-            height: 16,
+          LottieSkeleton(
+            isLoading: widget.isLoading,
+            child: createHugeIcon(
+              megaphoneIcon,
+              brightnessKey == 'light'
+                  ? theme.ThemeColors.get('light', 'text/base/600')
+                  : theme.ThemeColors.get('dark', 'text/base/600'),
+              width: 16,
+              height: 16,
+            ),
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: Text(
-              text,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.notoSans(
-                color:
-                    brightnessKey == 'light'
-                        ? theme.ThemeColors.get('light', 'text/base/600')
-                        : theme.ThemeColors.get('dark', 'text/base/600'),
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-                height: 1.45,
+            child: LottieSkeleton(
+              isLoading: widget.isLoading,
+              child: Text(
+                text,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.notoSans(
+                  color:
+                      brightnessKey == 'light'
+                          ? theme.ThemeColors.get('light', 'text/base/600')
+                          : theme.ThemeColors.get('dark', 'text/base/600'),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  height: 1.45,
+                ),
               ),
             ),
           ),

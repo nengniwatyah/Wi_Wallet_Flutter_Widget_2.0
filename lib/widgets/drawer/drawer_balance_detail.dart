@@ -6,6 +6,8 @@ import 'package:mcp_test_app/widgets/button/buttons.dart';
 import 'package:mcp_test_app/widgets/announce/announcement_warning.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 
+import 'package:mcp_test_app/widgets/skeleton/lottie_skeleton.dart';
+
 class DrawerBalanceDetail extends StatelessWidget {
   final String totalBalanceAmount;
   final String currency;
@@ -16,6 +18,8 @@ class DrawerBalanceDetail extends StatelessWidget {
   final String warningText;
   final String buttonText;
   final VoidCallback? onClose;
+  final bool isLoading;
+  final bool showButton;
 
   const DrawerBalanceDetail({
     super.key,
@@ -28,6 +32,8 @@ class DrawerBalanceDetail extends StatelessWidget {
     required this.warningText,
     this.buttonText = 'OK',
     this.onClose,
+    this.isLoading = false,
+    this.showButton = true,
   });
 
   static Future<void> show(
@@ -92,14 +98,18 @@ class DrawerBalanceDetail extends StatelessWidget {
           // Header
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Text(
-              'Balance Detail',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.notoSansThai(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                height: 1.51,
-                color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+            child: LottieSkeleton(
+              isLoading: isLoading,
+              borderRadius: BorderRadius.circular(8),
+              child: Text(
+                'Balance Detail',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.notoSansThai(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  height: 1.51,
+                  color: theme.ThemeColors.get(brightnessKey, 'text/base/600'),
+                ),
               ),
             ),
           ),
@@ -110,19 +120,25 @@ class DrawerBalanceDetail extends StatelessWidget {
               child: Column(
                 children: [
                   // Image
-                  Image.asset(
-                    'lib/assets/images/full-wallet.png',
-                    width: 144,
-                    height: 144,
-                    fit: BoxFit.cover,
-                    errorBuilder:
-                        (_, __, ___) => Container(
-                          height: 144,
-                          color: theme.ThemeColors.get(
-                            brightnessKey,
-                            'fill/base/300',
+                  LottieSkeleton(
+                    isLoading: isLoading,
+                    borderRadius: BorderRadius.circular(
+                      72,
+                    ), // Circular for image
+                    child: Image.asset(
+                      'lib/assets/images/full-wallet.png',
+                      width: 144,
+                      height: 144,
+                      fit: BoxFit.cover,
+                      errorBuilder:
+                          (_, __, ___) => Container(
+                            height: 144,
+                            color: theme.ThemeColors.get(
+                              brightnessKey,
+                              'fill/base/300',
+                            ),
                           ),
-                        ),
+                    ),
                   ),
                   const SizedBox(height: 16),
 
@@ -140,28 +156,36 @@ class DrawerBalanceDetail extends StatelessWidget {
                     child: Column(
                       children: [
                         // Total Balance
-                        Text(
-                          l10n.homeDrawerDetailTotalBalance,
-                          style: GoogleFonts.notoSansThai(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            height: 1.51,
-                            color: theme.ThemeColors.get(
-                              brightnessKey,
-                              'text/base/600',
+                        LottieSkeleton(
+                          isLoading: isLoading,
+                          borderRadius: BorderRadius.circular(4),
+                          child: Text(
+                            l10n.homeDrawerDetailTotalBalance,
+                            style: GoogleFonts.notoSansThai(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              height: 1.51,
+                              color: theme.ThemeColors.get(
+                                brightnessKey,
+                                'text/base/600',
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 4),
-                        Text(
-                          '$totalBalanceAmount $currency',
-                          style: GoogleFonts.notoSansThai(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w700,
-                            height: 1.27,
-                            color: theme.ThemeColors.get(
-                              brightnessKey,
-                              'success/500',
+                        LottieSkeleton(
+                          isLoading: isLoading,
+                          borderRadius: BorderRadius.circular(4),
+                          child: Text(
+                            '$totalBalanceAmount $currency',
+                            style: GoogleFonts.notoSansThai(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              height: 1.27,
+                              color: theme.ThemeColors.get(
+                                brightnessKey,
+                                'success/500',
+                              ),
                             ),
                           ),
                         ),
@@ -179,60 +203,68 @@ class DrawerBalanceDetail extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                Text(
-                                  holdAmountLabel,
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: theme.ThemeColors.get(
-                                      brightnessKey,
-                                      'text/base/400',
+                            LottieSkeleton(
+                              isLoading: isLoading,
+                              borderRadius: BorderRadius.circular(4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    holdAmountLabel,
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: theme.ThemeColors.get(
+                                        brightnessKey,
+                                        'text/base/400',
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  ' *',
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: const Color(0xFFFF2729),
+                                  Text(
+                                    ' *',
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: const Color(0xFFFF2729),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  holdAmountValue,
-                                  textAlign: TextAlign.right,
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: theme.ThemeColors.get(
-                                      brightnessKey,
-                                      'text/base/600',
+                            LottieSkeleton(
+                              isLoading: isLoading,
+                              borderRadius: BorderRadius.circular(4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    holdAmountValue,
+                                    textAlign: TextAlign.right,
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: theme.ThemeColors.get(
+                                        brightnessKey,
+                                        'text/base/600',
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  currency,
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: theme.ThemeColors.get(
-                                      brightnessKey,
-                                      'text/base/600',
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    currency,
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: theme.ThemeColors.get(
+                                        brightnessKey,
+                                        'text/base/600',
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -241,47 +273,55 @@ class DrawerBalanceDetail extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              ledgerBalanceLabel,
-                              style: GoogleFonts.notoSansThai(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w600,
-                                height: 1.23,
-                                color: theme.ThemeColors.get(
-                                  brightnessKey,
-                                  'text/base/400',
+                            LottieSkeleton(
+                              isLoading: isLoading,
+                              borderRadius: BorderRadius.circular(4),
+                              child: Text(
+                                ledgerBalanceLabel,
+                                style: GoogleFonts.notoSansThai(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.23,
+                                  color: theme.ThemeColors.get(
+                                    brightnessKey,
+                                    'text/base/400',
+                                  ),
                                 ),
                               ),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  ledgerBalanceValue,
-                                  textAlign: TextAlign.right,
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: theme.ThemeColors.get(
-                                      brightnessKey,
-                                      'text/base/600',
+                            LottieSkeleton(
+                              isLoading: isLoading,
+                              borderRadius: BorderRadius.circular(4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    ledgerBalanceValue,
+                                    textAlign: TextAlign.right,
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: theme.ThemeColors.get(
+                                        brightnessKey,
+                                        'text/base/600',
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  currency,
-                                  style: GoogleFonts.notoSansThai(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.23,
-                                    color: theme.ThemeColors.get(
-                                      brightnessKey,
-                                      'text/base/600',
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    currency,
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.23,
+                                      color: theme.ThemeColors.get(
+                                        brightnessKey,
+                                        'text/base/600',
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -290,30 +330,37 @@ class DrawerBalanceDetail extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   // Warning
-                  Builder(
-                    builder: (context) {
-                      final textColor = theme.ThemeColors.get(
-                        brightnessKey,
-                        'text/base/warning',
-                      );
-                      return AnnouncementWarning(
-                        title: '',
-                        description: '',
-                        descriptionSpans: [
-                          TextSpan(
-                            text: '*Hold Amount',
-                            style: TextStyle(
-                              color: textColor,
-                              fontWeight: FontWeight.w700,
+                  LottieSkeleton(
+                    isLoading: isLoading,
+                    borderRadius: BorderRadius.circular(8),
+                    child: Builder(
+                      builder: (context) {
+                        final textColor = theme.ThemeColors.get(
+                          brightnessKey,
+                          'text/base/warning',
+                        );
+                        return AnnouncementWarning(
+                          title: '',
+                          description: '',
+                          descriptionSpans: [
+                            TextSpan(
+                              text: '*Hold Amount',
+                              style: TextStyle(
+                                color: textColor,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: warningText.replaceFirst('*Hold Amount', ''),
-                            style: TextStyle(color: textColor),
-                          ),
-                        ],
-                      );
-                    },
+                            TextSpan(
+                              text: warningText.replaceFirst(
+                                '*Hold Amount',
+                                '',
+                              ),
+                              style: TextStyle(color: textColor),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],
@@ -321,14 +368,19 @@ class DrawerBalanceDetail extends StatelessWidget {
             ),
           ),
           // OK Button
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-            child: Buttons(
-              text: buttonText,
-              type: ButtonType.primary,
-              onPressed: onClose,
+          if (showButton)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+              child: LottieSkeleton(
+                isLoading: isLoading,
+                borderRadius: BorderRadius.circular(24), // Button radius
+                child: Buttons(
+                  text: buttonText,
+                  type: ButtonType.primary,
+                  onPressed: onClose,
+                ),
+              ),
             ),
-          ),
           if (bottomPadding > 0)
             ClipRRect(
               child: BackdropFilter(

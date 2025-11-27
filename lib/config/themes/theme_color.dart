@@ -301,12 +301,12 @@ class ThemeColors {
     'utility/black': _hex('#0a0a0a'),
     'utility/transparent': _hex('#00000000'),
     'utility/white': _hex('#ffffff'),
-    'utility/shade/100': _hex('#0000001a'),
-    'utility/shade/200': _hex('#00000033'),
-    'utility/shade/300': _hex('#0000004d'),
-    'utility/shade/400': _hex('#00000066'),
-    'utility/shade/500': _hex('#00000080'),
-    'utility/shade/600': _hex('#00000099'),
+    'utility/shade/100': _hex('#0000000a'),
+    'utility/shade/200': _hex('#00000014'),
+    'utility/shade/300': _hex('#00000029'),
+    'utility/shade/400': _hex('#0000003d'),
+    'utility/shade/500': _hex('#00000052'),
+    'utility/shade/600': _hex('#00000070'),
     'utility/tint/100': _hex('#c7c7c714'),
     'utility/tint/200': _hex('#c7c7c71f'),
     'utility/tint/300': _hex('#c7c7c729'),
@@ -322,6 +322,14 @@ class ThemeColors {
   };
 
 
+  static Color get(String theme, String key) {
+    if (theme == 'light') {
+      return light[key] ?? dark[key] ?? Colors.transparent;
+    } else {
+      return dark[key] ?? light[key] ?? Colors.transparent;
+    }
+  }
+
   static Color _hex(String hex) {
     hex = hex.replaceAll('#', '');
     if (hex.length == 6) {
@@ -330,13 +338,5 @@ class ThemeColors {
       hex = '${hex.substring(6)}${hex.substring(0, 6)}';
     }
     return Color(int.parse(hex, radix: 16));
-  }
-
-  static Color get(String theme, String key) {
-    if (theme == 'light') {
-      return light[key] ?? dark[key] ?? Colors.transparent;
-    } else {
-      return dark[key] ?? light[key] ?? Colors.transparent;
-    }
   }
 }

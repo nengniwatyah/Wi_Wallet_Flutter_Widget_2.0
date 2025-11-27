@@ -134,6 +134,26 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
+        name: 'image_carousel',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'ImageCarousel',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Auto Play',
+                builder:
+                    _mcp_test_app_widgetbook_use_cases
+                        .buildImageCarouselAutoPlay,
+              ),
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _mcp_test_app_widgetbook_use_cases.buildImageCarousel,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
         name: 'input',
         children: [
           _widgetbook.WidgetbookComponent(
@@ -197,6 +217,20 @@ final directories = <_widgetbook.WidgetbookNode>[
         ],
       ),
       _widgetbook.WidgetbookFolder(
+        name: 'loading',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'PreLoading',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _mcp_test_app_widgetbook_use_cases.buildPreLoading,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
         name: 'navigator_bar',
         children: [
           _widgetbook.WidgetbookComponent(
@@ -219,6 +253,20 @@ final directories = <_widgetbook.WidgetbookNode>[
               _widgetbook.WidgetbookUseCase(
                 name: 'Default',
                 builder: _mcp_test_app_widgetbook_use_cases.buildShortcutMenu,
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'skeleton',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'LottieSkeleton',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _mcp_test_app_widgetbook_use_cases.buildLottieSkeleton,
               ),
             ],
           ),

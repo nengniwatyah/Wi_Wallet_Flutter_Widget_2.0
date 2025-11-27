@@ -19,6 +19,8 @@ import 'package:mcp_test_app/widgets/drawer/drawer_review_transaction.dart';
 import 'package:mcp_test_app/widgets/snack_bar/snack_bar.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'package:mcp_test_app/widgets/image_carousel/image_carousel.dart';
+import 'package:mcp_test_app/widgets/skeleton/lottie_skeleton.dart';
+import 'package:mcp_test_app/widgets/loading/pre_loading.dart';
 
 // ItemList
 @widgetbook.UseCase(name: 'Default', type: ItemList)
@@ -321,4 +323,72 @@ Widget buildSnackBarError(BuildContext context) {
   );
 }
 
-// Image Carousel
+// Skeleton
+@widgetbook.UseCase(name: 'Default', type: LottieSkeleton)
+Widget buildLottieSkeleton(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Card Skeleton'),
+        const SizedBox(height: 8),
+        LottieSkeleton(
+          isLoading: true,
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            width: double.infinity,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+        const Text('Avatar Skeleton'),
+        const SizedBox(height: 8),
+        LottieSkeleton(
+          isLoading: true,
+          borderRadius: BorderRadius.circular(40),
+          child: const CircleAvatar(radius: 40),
+        ),
+        const SizedBox(height: 24),
+        const Text('Button Skeleton'),
+        const SizedBox(height: 8),
+        LottieSkeleton(
+          isLoading: true,
+          borderRadius: BorderRadius.circular(24),
+          child: SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text('Button'),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+// Loading
+@widgetbook.UseCase(name: 'Default', type: PreLoading)
+Widget buildPreLoading(BuildContext context) {
+  return Stack(
+    children: [
+      Center(
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder:
+              (context, index) => ListTile(
+                title: Text('Item ${index + 1}'),
+                leading: const Icon(Icons.star),
+              ),
+        ),
+      ),
+      const PreLoading(),
+    ],
+  );
+}

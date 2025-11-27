@@ -9,30 +9,8 @@ import 'package:mcp_test_app/widgets/announce/announcement.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-// Provider for Theme
-class ThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.dark;
-
-  ThemeMode get themeMode => _themeMode;
-
-  void toggleTheme() {
-    _themeMode =
-        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    notifyListeners();
-  }
-}
-
-// Provider for Locale
-class LocaleProvider extends ChangeNotifier {
-  Locale? _locale;
-
-  Locale? get locale => _locale;
-
-  void setLocale(Locale newLocale) {
-    _locale = newLocale;
-    notifyListeners();
-  }
-}
+import 'package:mcp_test_app/providers/theme_provider.dart';
+import 'package:mcp_test_app/providers/locale_provider.dart';
 
 void main() {
   runApp(
@@ -99,9 +77,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   // Helper to build dropdown items with consistent style
   DropdownMenuItem<Locale> _buildDropdownItem(
     BuildContext context,
@@ -156,6 +139,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
       ),
       body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: SafeArea(
           child: Center(
             child: Padding(
@@ -253,61 +237,64 @@ class HomePage extends StatelessWidget {
                       color: ThemeColors.get(brightnessKey, 'fill/base/100'),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<Locale>(
-                        value: _getCurrentLocale(context),
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.language,
-                          color: ThemeColors.get(
-                            brightnessKey,
-                            'text/base/600',
+                    child: SizedBox(
+                      height: 48,
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<Locale>(
+                          value: _getCurrentLocale(context),
+                          isExpanded: true,
+                          icon: Icon(
+                            Icons.language,
+                            color: ThemeColors.get(
+                              brightnessKey,
+                              'text/base/600',
+                            ),
                           ),
-                        ),
-                        dropdownColor: ThemeColors.get(
-                          brightnessKey,
-                          'fill/base/200',
-                        ),
-                        items: [
-                          _buildDropdownItem(
-                            context,
-                            const Locale('en'),
-                            'English',
+                          dropdownColor: ThemeColors.get(
                             brightnessKey,
+                            'fill/base/200',
                           ),
-                          _buildDropdownItem(
-                            context,
-                            const Locale('th'),
-                            'ภาษาไทย',
-                            brightnessKey,
-                          ),
-                          _buildDropdownItem(
-                            context,
-                            const Locale('zh'),
-                            '中文',
-                            brightnessKey,
-                          ),
-                          _buildDropdownItem(
-                            context,
-                            const Locale('ru'),
-                            'Русский',
-                            brightnessKey,
-                          ),
-                          _buildDropdownItem(
-                            context,
-                            const Locale('my'),
-                            'မြန်မာ',
-                            brightnessKey,
-                          ),
-                        ],
-                        onChanged: (Locale? newLocale) {
-                          if (newLocale != null) {
-                            Provider.of<LocaleProvider>(
+                          items: [
+                            _buildDropdownItem(
                               context,
-                              listen: false,
-                            ).setLocale(newLocale);
-                          }
-                        },
+                              const Locale('en'),
+                              'English',
+                              brightnessKey,
+                            ),
+                            _buildDropdownItem(
+                              context,
+                              const Locale('th'),
+                              'ภาษาไทย',
+                              brightnessKey,
+                            ),
+                            _buildDropdownItem(
+                              context,
+                              const Locale('zh'),
+                              '中文',
+                              brightnessKey,
+                            ),
+                            _buildDropdownItem(
+                              context,
+                              const Locale('ru'),
+                              'Русский',
+                              brightnessKey,
+                            ),
+                            _buildDropdownItem(
+                              context,
+                              const Locale('my'),
+                              'မြန်မာ',
+                              brightnessKey,
+                            ),
+                          ],
+                          onChanged: (Locale? newLocale) {
+                            if (newLocale != null) {
+                              Provider.of<LocaleProvider>(
+                                context,
+                                listen: false,
+                              ).setLocale(newLocale);
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -325,8 +312,8 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         const SizedBox(height: 24),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: AnnouncementStack(),
                         ),
                         const SizedBox(height: 16),
