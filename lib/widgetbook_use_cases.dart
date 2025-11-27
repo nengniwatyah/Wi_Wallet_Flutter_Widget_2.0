@@ -37,8 +37,8 @@ Widget buildImageCarousel(BuildContext context) {
     child: ImageCarousel(
       pages: [
         Image.asset('lib/assets/images/test-banner.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/test-banner1.png', fit: BoxFit.cover),
         Image.asset('lib/assets/images/test-banner2.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner3.png', fit: BoxFit.cover),
       ],
     ),
   );
@@ -52,8 +52,8 @@ Widget buildImageCarouselAutoPlay(BuildContext context) {
       autoPlay: true,
       pages: [
         Image.asset('lib/assets/images/test-banner.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/test-banner1.png', fit: BoxFit.cover),
         Image.asset('lib/assets/images/test-banner2.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner3.png', fit: BoxFit.cover),
       ],
     ),
   );
