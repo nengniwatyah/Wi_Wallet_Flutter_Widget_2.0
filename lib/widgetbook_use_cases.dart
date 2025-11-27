@@ -36,9 +36,9 @@ Widget buildImageCarousel(BuildContext context) {
     padding: const EdgeInsets.all(16.0),
     child: ImageCarousel(
       pages: [
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner1.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner2.png', fit: BoxFit.cover),
       ],
     ),
   );
@@ -51,9 +51,9 @@ Widget buildImageCarouselAutoPlay(BuildContext context) {
     child: ImageCarousel(
       autoPlay: true,
       pages: [
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
-        Image.asset('lib/assets/images/full-wallet.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner1.png', fit: BoxFit.cover),
+        Image.asset('lib/assets/images/test-banner2.png', fit: BoxFit.cover),
       ],
     ),
   );

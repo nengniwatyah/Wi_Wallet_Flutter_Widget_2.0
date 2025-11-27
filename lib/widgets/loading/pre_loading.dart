@@ -20,8 +20,8 @@ class PreLoading extends StatelessWidget {
         Center(
           child: Lottie.asset(
             'lib/assets/lottie/wi_loader.json',
-            width: 240,
-            height: 240,
+            width: 280,
+            height: 280,
             fit: BoxFit.contain,
           ),
         ),
