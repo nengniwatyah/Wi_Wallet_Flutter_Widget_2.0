@@ -1,11 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mcp_test_app/main.dart'; // Import your main.dart where MyApp and providers are defined
+import 'package:mcp_test_app/main.dart';
+import 'package:mcp_test_app/providers/theme_provider.dart';
+import 'package:mcp_test_app/providers/locale_provider.dart'; // Import your main.dart where MyApp and providers are defined
 
 void main() {
   group('Font Localization Tests', () {
-    testWidgets('Noto Sans Thai is used for Thai locale', (WidgetTester tester) async {
+    testWidgets('Noto Sans Thai is used for Thai locale', (
+      WidgetTester tester,
+    ) async {
       final localeProvider = LocaleProvider();
       localeProvider.setLocale(const Locale('th'));
 
@@ -31,7 +35,9 @@ void main() {
       expect(textTheme?.titleLarge?.fontFamily, startsWith('NotoSansThai'));
     });
 
-    testWidgets('Noto Sans is used for English locale', (WidgetTester tester) async {
+    testWidgets('Noto Sans is used for English locale', (
+      WidgetTester tester,
+    ) async {
       final localeProvider = LocaleProvider();
       localeProvider.setLocale(const Locale('en'));
 
@@ -55,7 +61,10 @@ void main() {
       expect(textTheme?.bodyMedium?.fontFamily, startsWith('NotoSans'));
       expect(textTheme?.headlineMedium?.fontFamily, startsWith('NotoSans'));
       expect(textTheme?.titleLarge?.fontFamily, startsWith('NotoSans'));
-      expect(textTheme?.bodyMedium?.fontFamily, isNot(startsWith('NotoSansThai')));
+      expect(
+        textTheme?.bodyMedium?.fontFamily,
+        isNot(startsWith('NotoSansThai')),
+      );
     });
   });
 }

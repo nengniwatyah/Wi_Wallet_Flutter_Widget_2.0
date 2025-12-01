@@ -66,6 +66,17 @@ Thank you for your interest in contributing! 🎉
 - Include `@key` metadata with descriptions
 - Test with all supported languages
 
+## 🛠️ Development Tools
+
+### Widgetbook
+We use Widgetbook for UI component development and testing.
+- **Run:** `flutter run -t lib/widgetbook.dart -d chrome`
+- **Update:** Run `dart run build_runner build` after adding new use cases.
+
+### Code Generation
+- **Localization:** `flutter gen-l10n`
+- **Build Runner:** `dart run build_runner build --delete-conflicting-outputs`
+
 ## Testing
 
 ```bash

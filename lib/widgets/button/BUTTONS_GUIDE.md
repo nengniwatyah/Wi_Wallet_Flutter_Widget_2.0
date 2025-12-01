@@ -11,8 +11,8 @@ The `Buttons` widget is a versatile, theme-aware button component that supports 
 - **Amount**: Specialized button for amount selection with currency handling
 
 ### Dimensions
-- **Height**: 48px (fixed)
-- **Padding**: 16px horizontal, 12px vertical
+- **Height**: 40px (fixed)
+- **Padding**: 16px horizontal
 - **Border Radius**: 999px (fully rounded)
 - **Border Width**: 1px (for secondary and amount types)
 

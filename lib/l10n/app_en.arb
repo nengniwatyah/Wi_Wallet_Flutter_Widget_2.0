@@ -1,41 +1,175 @@
 {
   "@@locale": "en",
   "welcome_message": "Welcome",
+  "@welcome_message": {
+    "description": "Greeting headline on the home screen"
+  },
   "greeting": "Hello",
+  "@greeting": {
+    "description": "Short greeting text"
+  },
   "farewell": "Goodbye",
+  "@farewell": {
+    "description": "Farewell text"
+  },
   "app_name": "Test App",
+  "@app_name": {
+    "description": "Application name shown in titles"
+  },
   "light_theme": "Light",
+  "@light_theme": {
+    "description": "Label for light theme option"
+  },
   "dark_theme": "Dark",
-  "home": "Home",
-  "deposit": "Deposit",
-  "convert": "Convert",
-  "setting": "Setting",
+  "@dark_theme": {
+    "description": "Label for dark theme option"
+  },
+  "navigatorHome": "Home",
+  "@navigatorHome": {
+    "description": "Navigation label for Home tab"
+  },
+  "navigatorHomeDeposit": "Deposit",
+  "@navigatorHomeDeposit": {
+    "description": "Navigation label for Deposit tab"
+  },
+  "navigatorHomeConvert": "Convert",
+  "@navigatorHomeConvert": {
+    "description": "Navigation label for Convert tab"
+  },
+  "navigatorHomeSetting": "Setting",
+  "@navigatorHomeSetting": {
+    "description": "Navigation label for Setting tab"
+  },
   "transfer": "Transfer",
+  "@transfer": {
+    "description": "Action label for transferring funds"
+  },
   "top_up": "Top Up",
+  "@top_up": {
+    "description": "Action label for topping up balance"
+  },
   "bill": "Bill",
+  "@bill": {
+    "description": "Action label for paying bills"
+  },
   "announcement": "Announcement",
+  "@announcement": {
+    "description": "Section title for announcements"
+  },
   "viewAll": "View all",
+  "@viewAll": {
+    "description": "Button text to view all items"
+  },
   "availableBalance": "Available Balance",
+  "@availableBalance": {
+    "description": "Label for available balance section"
+  },
+  "labelHomeTotalBalance": "Available Balance",
+  "@labelHomeTotalBalance": {
+    "description": "Label for available balance section"
+  },
+  "homeDrawerDetailTotalBalance": "Available Balance",
+  "@homeDrawerDetailTotalBalance": {
+    "description": "Label for total balance section"
+  },
   "primaryButton": "Primary Button",
+  "@primaryButton": {
+    "description": "Label for primary button examples"
+  },
   "secondaryButton": "Secondary Button",
+  "@secondaryButton": {
+    "description": "Label for secondary button examples"
+  },
   "primaryEnabled": "Primary Enabled",
+  "@primaryEnabled": {
+    "description": "Label for enabled primary button"
+  },
   "secondaryEnabled": "Secondary Enabled",
+  "@secondaryEnabled": {
+    "description": "Label for enabled secondary button"
+  },
   "secondaryDisabled": "Secondary Disabled",
+  "@secondaryDisabled": {
+    "description": "Label for disabled secondary button"
+  },
   "amountEnabled": "Amount Enabled",
+  "@amountEnabled": {
+    "description": "Label for amount entry enabled state"
+  },
   "cardReviewPreviewTitle": "Card Review Transaction",
+  "@cardReviewPreviewTitle": {
+    "description": "Title for card review transaction preview"
+  },
   "cardReviewTotalLabel": "Total",
+  "@cardReviewTotalLabel": {
+    "description": "Label for total amount"
+  },
   "cardReviewTotalAmountMock": "5,000.00",
+  "@cardReviewTotalAmountMock": {
+    "description": "Mock total amount value"
+  },
   "cardReviewCurrencyMock": "THB",
+  "@cardReviewCurrencyMock": {
+    "description": "Mock currency code"
+  },
   "cardReviewFeeLabel": "Fee",
+  "@cardReviewFeeLabel": {
+    "description": "Label for fee amount"
+  },
   "cardReviewFeeAmountMock": "0.00",
+  "@cardReviewFeeAmountMock": {
+    "description": "Mock fee amount value"
+  },
   "cardReviewFromLabel": "From",
+  "@cardReviewFromLabel": {
+    "description": "Label for source account"
+  },
   "cardReviewFromValueMock": "Your Wi Wallet",
+  "@cardReviewFromValueMock": {
+    "description": "Mock source account value"
+  },
   "cardReviewMobileLabel": "Mobile Number",
+  "@cardReviewMobileLabel": {
+    "description": "Label for mobile number"
+  },
   "cardReviewMobileValueMock": "081-141-1234",
+  "@cardReviewMobileValueMock": {
+    "description": "Mock mobile number value"
+  },
   "cardReviewToLabel": "To",
+  "@cardReviewToLabel": {
+    "description": "Label for destination account"
+  },
   "cardReviewToValueMock": "Siam Commercial Bank",
+  "@cardReviewToValueMock": {
+    "description": "Mock destination account value"
+  },
   "cardReviewAccountNameLabel": "Account Name",
+  "@cardReviewAccountNameLabel": {
+    "description": "Label for account name"
+  },
   "cardReviewAccountNameValueMock": "Victor Von Doom",
+  "@cardReviewAccountNameValueMock": {
+    "description": "Mock account name value"
+  },
   "cardReviewAccountNumberLabel": "Account Number",
-  "cardReviewAccountNumberValueMock": "1234567890"
+  "@cardReviewAccountNumberLabel": {
+    "description": "Label for account number"
+  },
+  "cardReviewAccountNumberValueMock": "1234567890",
+  "@cardReviewAccountNumberValueMock": {
+    "description": "Mock account number value"
+  },
+  "mobileNumberPlaceholder": "Mobile Number",
+  "@mobileNumberPlaceholder": {
+    "description": "Placeholder for mobile number input"
+  },
+  "noResultsFound": "No results found",
+  "@noResultsFound": {
+    "description": "Empty state text when no results are found"
+  },
+  "pleaseTryAgain": "Please try again",
+  "@pleaseTryAgain": {
+    "description": "Prompt to retry after a failure"
+  }
 }

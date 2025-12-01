@@ -27,16 +27,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dark_theme => 'Темная';
 
   @override
-  String get home => 'Главная';
+  String get navigatorHome => 'Главная';
 
   @override
-  String get deposit => 'Депозит';
+  String get navigatorHomeDeposit => 'Депозит';
 
   @override
-  String get convert => 'Конв';
+  String get navigatorHomeConvert => 'Конв';
 
   @override
-  String get setting => 'Настройки';
+  String get navigatorHomeSetting => 'Настройки';
 
   @override
   String get transfer => 'Перевод';
@@ -55,6 +55,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get availableBalance => 'Доступный баланс';
+
+  @override
+  String get labelHomeTotalBalance => 'Доступный баланс';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'Доступный баланс';
 
   @override
   String get primaryButton => 'Основная кнопка';
@@ -121,4 +127,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'Мобильный номер';
+
+  @override
+  String get noResultsFound => 'Результаты не найдены';
+
+  @override
+  String get pleaseTryAgain => 'Пожалуйста, попробуйте еще раз';
 }

@@ -13,8 +13,16 @@ Complete guide to using all available widgets in this foundation.
 - [AnnouncementWarning](#announcementwarning)
 - [CardReviewTransaction](#cardreviewtransaction)
 - [DrawerReviewTransaction](#drawerreviewtransaction)
+- [DrawerBalanceDetail](#drawerbalancedetail)
+- [DrawerDepositChannel](#drawerdepositchannel)
 - [ShortcutMenuItem](#shortcutmenuitem)
 - [Buttons](#buttons)
+- [Avatar](#avatar)
+- [ImageCarousel](#imagecarousel)
+- [ItemList](#itemlist)
+- [PreLoading](#preloading)
+- [LottieSkeleton](#lottieskeleton)
+- [SnackBarWidget](#snackbarwidget)
 
 ---
 
@@ -49,9 +57,11 @@ Scaffold(
 
 - 5 menu items: Home, Deposit, Scan, Convert, Setting
 - Floating scan button in center
+- 10px backdrop blur effect (glass-morphism)
 - Theme-aware colors
 - Localized labels
 - Responsive design
+- Fixed scan button clipping issue
 
 ### Customization
 
@@ -510,8 +520,9 @@ DrawerReviewTransaction.show(
 - Transaction details
 - Object information
 - Confirm button
-- Close button
-- Swipe to dismiss
+- Close button (X button only dismiss)
+- 10px backdrop blur effect
+- Overlay with rgba(0,0,0,0.5)
 - Theme-aware
 
 ### Behavior
@@ -524,6 +535,71 @@ DrawerReviewTransaction.show(
 
 ---
 
+## DrawerBalanceDetail
+
+Balance breakdown drawer with hold amount details.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/drawer/drawer_balance_detail.dart';
+```
+
+### Usage
+
+```dart
+DrawerBalanceDetail.show(
+  context,
+  totalBalanceAmount: '100,000.00',
+  holdAmountValue: '5,030.20',
+  ledgerBalanceValue: '15,030.20',
+  availableBalanceValue: '94,969.80',
+  currency: 'THB',
+);
+```
+
+### Features
+
+- Modal bottom sheet (50% height)
+- Balance breakdown display
+- Hold amount explanation
+- Full-wallet image asset
+- Button only dismiss
+- 10px backdrop blur effect
+- Theme-aware styling
+
+---
+
+## DrawerDepositChannel
+
+Bank selection drawer for deposit channels.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/drawer/drawer_deposit_channel.dart';
+```
+
+### Usage
+
+```dart
+DrawerDepositChannel(
+  onBankSelected: (bank) => print('Selected: $bank'),
+  onClose: () => Navigator.pop(context),
+)
+```
+
+### Features
+
+- Bank logo display
+- Mobile banking options
+- Scrollable bank list
+- Selection callback
+- Modal bottom sheet (50% height)
+- 10px backdrop blur effect
+
+---
+
 ## ShortcutMenuItem
 
 Menu item with icon and label.
@@ -531,7 +607,7 @@ Menu item with icon and label.
 ### Import
 
 ```dart
-import 'package:your_app/widgets/shortcut_menu.dart';
+import 'package:your_app/widgets/shortcut_menu/shortcut_menu.dart';
 ```
 
 ### Usage
@@ -589,37 +665,42 @@ Collection of themed buttons.
 ### Import
 
 ```dart
-import 'package:your_app/widgets/buttons.dart';
+import 'package:your_app/widgets/button/buttons.dart';
 ```
 
 ### Primary Button
 
 ```dart
-PrimaryButton(
+Buttons(
   text: 'Submit',
+  type: ButtonType.primary,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
-  isLoading: false,
 )
 ```
 
 ### Secondary Button
 
 ```dart
-SecondaryButton(
+Buttons(
   text: 'Cancel',
+  type: ButtonType.secondary,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
 )
 ```
 
-### Outlined Button
+### Amount Button
 
 ```dart
-OutlinedButton(
-  text: 'Learn More',
+Buttons(
+  text: '฿100',
+  type: ButtonType.amount,
+  enabled: true,
   onPressed: () {
     // Handle press
   },
@@ -631,10 +712,209 @@ OutlinedButton(
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | text | String | required | Button text |
+| type | ButtonType | required | Button type (primary, secondary, amount) |
+| enabled | bool | true | Button enabled state |
 | onPressed | VoidCallback? | null | Press callback |
-| isLoading | bool | false | Show loading indicator |
-| width | double? | null | Button width |
-| height | double | 48 | Button height |
+
+---
+
+## Avatar
+
+Profile card widget with status badge and skeleton loading support.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/avatar/avatar.dart';
+```
+
+### Usage
+
+```dart
+Avatar(
+  name: 'Tony Stark',
+  handle: '@ironman',
+  imageUrl: 'https://example.com/avatar.jpg',
+  status: AvatarStatus.warning,
+  onQrTap: () => print('QR Tapped'),
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| name | String | required | User display name |
+| handle | String | required | User handle/username |
+| imageUrl | String? | null | Network image URL |
+| assetPath | String? | null | Local asset path (fallback) |
+| radius | double | 24 | Avatar radius |
+| isLoading | bool | false | Show skeleton loading |
+| status | AvatarStatus | none | Status badge (none, danger, warning) |
+| onQrTap | VoidCallback? | null | QR code tap callback |
+
+---
+
+## ImageCarousel
+
+Image slider with auto-play support.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/image_carousel/image_carousel.dart';
+```
+
+### Usage
+
+```dart
+ImageCarousel(
+  pages: [
+    Image.asset('assets/banner1.png'),
+    Image.asset('assets/banner2.png'),
+  ],
+  autoPlay: true,
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| pages | List<Widget> | required | List of widgets to display |
+| height | double | 150 | Total widget height |
+| imageHeight | double | 134 | Image area height |
+| autoPlay | bool | false | Enable auto-play |
+| autoPlayInterval | Duration | 6s | Interval between slides |
+
+---
+
+## ItemList
+
+Versatile list item widget for menus and transactions.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/item_list/item_list.dart';
+```
+
+### Usage
+
+```dart
+// Common Type
+ItemList(
+  title: 'Settings',
+  iconPath: 'assets/icons/settings.svg',
+  onTap: () {},
+)
+
+// Transaction Type
+ItemList(
+  type: ItemListType.transaction,
+  title: 'Payment',
+  subtitle: '2023-10-01 12:00',
+  amount: '-500.00 THB',
+  amountColor: Colors.red,
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| title | String | 'History' | Main text |
+| subtitle | String? | null | Subtitle text (Transaction type) |
+| iconPath | String? | null | Leading icon path |
+| type | ItemListType | common | Widget type (common, transaction) |
+| amount | String? | null | Transaction amount |
+| amountColor | Color? | null | Amount text color |
+| trailingText | String? | null | Text at the end |
+| isSelected | bool? | null | Show radio button state |
+
+---
+
+## PreLoading
+
+Full-screen loading overlay with blur and Lottie animation.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/loading/pre_loading.dart';
+```
+
+### Usage
+
+```dart
+Stack(
+  children: [
+    MainContent(),
+    if (isLoading) const PreLoading(),
+  ],
+)
+```
+
+---
+
+## LottieSkeleton
+
+Skeleton loading wrapper using Lottie animation.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/skeleton/lottie_skeleton.dart';
+```
+
+### Usage
+
+```dart
+LottieSkeleton(
+  isLoading: true,
+  borderRadius: BorderRadius.circular(8),
+  child: Text('Content'),
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| isLoading | bool | required | Show skeleton state |
+| child | Widget | required | Content to show when not loading |
+| borderRadius | BorderRadiusGeometry? | null | Clip radius |
+| width | double? | null | Skeleton width |
+| height | double? | null | Skeleton height |
+
+---
+
+## SnackBarWidget
+
+Custom styled snackbar for notifications.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/snack_bar/snack_bar.dart';
+```
+
+### Usage
+
+```dart
+SnackBarWidget.show(
+  context,
+  title: 'Operation successful',
+  type: SnackBarType.success,
+);
+```
+
+### Properties
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| title | String | Yes | Message text |
+| type | SnackBarType | Yes | Type (success, warning, error) |
 
 ---
 

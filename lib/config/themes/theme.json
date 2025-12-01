@@ -1796,37 +1796,37 @@
           },
           {
             "name": "utility/shade/100",
-            "value": "#0000001a",
+            "value": "#0000000a",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "utility/shade/200",
-            "value": "#00000033",
+            "value": "#00000014",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "utility/shade/300",
-            "value": "#0000004d",
+            "value": "#00000029",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "utility/shade/400",
-            "value": "#00000066",
+            "value": "#0000003d",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "utility/shade/500",
-            "value": "#00000080",
+            "value": "#00000052",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "utility/shade/600",
-            "value": "#00000099",
+            "value": "#00000070",
             "var": "",
             "rootAlias": ""
           },

@@ -27,16 +27,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dark_theme => '深色';
 
   @override
-  String get home => '主页';
+  String get navigatorHome => '主页';
 
   @override
-  String get deposit => '存款';
+  String get navigatorHomeDeposit => '存款';
 
   @override
-  String get convert => '转换';
+  String get navigatorHomeConvert => '转换';
 
   @override
-  String get setting => '设置';
+  String get navigatorHomeSetting => '设置';
 
   @override
   String get transfer => '转账';
@@ -55,6 +55,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get availableBalance => '可用余额';
+
+  @override
+  String get labelHomeTotalBalance => '可用余额';
+
+  @override
+  String get homeDrawerDetailTotalBalance => '可用余额';
 
   @override
   String get primaryButton => '主按钮';
@@ -121,4 +127,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => '手机号码';
+
+  @override
+  String get noResultsFound => '未找到结果';
+
+  @override
+  String get pleaseTryAgain => '请再试一次';
 }

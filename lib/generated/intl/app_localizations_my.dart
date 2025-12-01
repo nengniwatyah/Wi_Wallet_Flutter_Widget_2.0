@@ -27,16 +27,16 @@ class AppLocalizationsMy extends AppLocalizations {
   String get dark_theme => 'အမှောင်';
 
   @override
-  String get home => 'ပင်မစာမျက်နှာ';
+  String get navigatorHome => 'ပင်မစာမျက်နှာ';
 
   @override
-  String get deposit => 'အပ်ငွေ';
+  String get navigatorHomeDeposit => 'အပ်ငွေ';
 
   @override
-  String get convert => 'ပြောင်းလဲရန်';
+  String get navigatorHomeConvert => 'ပြောင်းလဲရန်';
 
   @override
-  String get setting => 'ချိန်ညှိချက်';
+  String get navigatorHomeSetting => 'ချိန်ညှိချက်';
 
   @override
   String get transfer => 'လွှဲပြောင်းခြင်း';
@@ -55,6 +55,12 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get availableBalance => 'ရရှိပါးပြီး';
+
+  @override
+  String get labelHomeTotalBalance => 'ရရှိပါးပြီး';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'ရရှိပါးပြီး';
 
   @override
   String get primaryButton => 'ပရိမါရီဘတံန်';
@@ -121,4 +127,13 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'မိုဘိုလ်ဖုန်းနံတ်';
+
+  @override
+  String get noResultsFound => 'ရန်တွေ့မသိပါဘူ';
+
+  @override
+  String get pleaseTryAgain => 'အမှန်အတွက် တံ့ပေးတွင်းပါ';
 }

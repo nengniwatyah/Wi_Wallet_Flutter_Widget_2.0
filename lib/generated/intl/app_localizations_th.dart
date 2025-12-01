@@ -27,16 +27,16 @@ class AppLocalizationsTh extends AppLocalizations {
   String get dark_theme => 'มืด';
 
   @override
-  String get home => 'หน้าหลัก';
+  String get navigatorHome => 'หน้าหลัก';
 
   @override
-  String get deposit => 'ฝากเงิน';
+  String get navigatorHomeDeposit => 'ฝากเงิน';
 
   @override
-  String get convert => 'แปลงเงิน';
+  String get navigatorHomeConvert => 'แปลงเงิน';
 
   @override
-  String get setting => 'ตั้งค่า';
+  String get navigatorHomeSetting => 'ตั้งค่า';
 
   @override
   String get transfer => 'โอนเงิน';
@@ -55,6 +55,12 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get availableBalance => 'ยอดคงเหลือ';
+
+  @override
+  String get labelHomeTotalBalance => 'ยอดคงเหลือ';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'ยอดคงเหลือ';
 
   @override
   String get primaryButton => 'ปุ่มหลัก';
@@ -121,4 +127,13 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get cardReviewAccountNumberValueMock => '1234567890';
+
+  @override
+  String get mobileNumberPlaceholder => 'เบอร์มือถือ';
+
+  @override
+  String get noResultsFound => 'ไม่พบผลการค้นหา';
+
+  @override
+  String get pleaseTryAgain => 'กรุณาลองใหม่อีกครั้ง';
 }

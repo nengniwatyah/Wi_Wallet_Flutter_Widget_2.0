@@ -423,35 +423,28 @@ lib/
    lib/l10n/
    lib/generated/intl/
    ```
-
 2. Copy `l10n.yaml` to your project root
-
 3. Add dependencies to `pubspec.yaml`
-
 4. Run `flutter pub get` and `flutter gen-l10n`
 
 ### Option 2: Copy Specific Components
 
 #### Copy Theme System Only
-
 1. Copy `lib/config/themes/theme_color.dart`
 2. Create ThemeProvider (see [Theme System](#2-theme-system))
 3. Setup MaterialApp with theme configuration
 
 #### Copy Localization Only
-
 1. Copy `lib/l10n/` folder
 2. Copy `l10n.yaml`
 3. Add dependencies and run `flutter gen-l10n`
 4. Setup MaterialApp with localization delegates
 
 #### Copy Individual Widgets
-
 Each widget in `lib/widgets/` is self-contained:
-
 1. Copy the widget file (e.g., `full_amount_input.dart`)
 2. Copy required assets (SVG icons)
-3. Ensure ThemeColors is available
+3. Ensure `ThemeColors` is available
 4. Import and use in your app
 
 ---
@@ -595,164 +588,133 @@ DrawerDepositChannel(
 - Scrollable bank list
 - Selection callback
 
----
+### 10. Avatar
 
-## 🔧 Configuration
-
-### Add New Language
-
-1. Create `lib/l10n/app_ja.arb` (for Japanese):
-
-```json
-{
-  "app_name": "私のアプリ",
-  "home": "ホーム"
-}
-```
-
-2. Add to `supportedLocales`:
+Profile card with status badge and skeleton loading.
 
 ```dart
-supportedLocales: const [
-  Locale('en'),
-  Locale('th'),
-  Locale('ja'), // Add Japanese
-],
+Avatar(
+  name: 'Tony Stark',
+  handle: '@ironman',
+  status: AvatarStatus.warning,
+)
 ```
 
-3. Run `flutter gen-l10n`
+### 11. ImageCarousel
 
-### Customize Theme Colors
-
-Edit `lib/config/themes/theme_color.dart`:
+Image slider with auto-play support.
 
 ```dart
-static final Map<String, Color> light = {
-  'primary/400': _hex('#YOUR_COLOR'),
-  // ... other colors
-};
+ImageCarousel(
+  pages: [Image.asset('banner1.png')],
+  autoPlay: true,
+)
+```
+
+### 12. ItemList
+
+Versatile list item for menus and transactions.
+
+```dart
+ItemList(
+  type: ItemListType.transaction,
+  title: 'Payment',
+  amount: '-500.00 THB',
+)
+```
+
+### 13. PreLoading
+
+Full-screen loading overlay with blur effect.
+
+```dart
+if (isLoading) const PreLoading()
+```
+
+### 14. LottieSkeleton
+
+Skeleton loading wrapper using Lottie.
+
+```dart
+LottieSkeleton(
+  isLoading: true,
+  child: Text('Content'),
+)
+```
+
+### 15. SnackBarWidget
+
+Custom styled notifications.
+
+```dart
+SnackBarWidget.show(
+  context,
+  title: 'Success',
+  type: SnackBarType.success,
+);
 ```
 
 ---
 
-## 📱 Platform Support
+## 📱 Preview Widgets with Widgetbook
 
-- ✅ iOS
-- ✅ Android
-- ✅ Web
-- ✅ macOS
-- ✅ Linux
-- ✅ Windows
+Widgetbook provides an interactive UI to explore and test your widgets locally and in CI.
 
----
-
-## 🧪 Testing
+### Local Preview
 
 ```bash
-# Run tests
-flutter test
-
-# Run specific test
-flutter test test/widget_test.dart
-
-# Generate coverage
-flutter test --coverage
+# Run Widgetbook locally (web)
+flutter pub run widgetbook --target lib/widgetbook.dart
+# Or, if you have a custom entrypoint:
+flutter pub run widgetbook -t lib/widgetbook.dart
 ```
 
----
+Open `http://localhost:8080` in your browser to browse the widget catalogue.
 
-## 📱 Preview Widgets on External Devices
+### Widgetbook Cloud (CI preview)
 
-Test widgets on real devices (phones, tablets) over your local network using Flutter's web server.
+The repository includes a GitHub Actions workflow (`.github/workflows/widgetbook.yml`) that builds and publishes a preview to Widgetbook Cloud.
 
-### Step 1: Get Your Local IP Address
+After a successful run you will see a comment on the PR with a link, e.g.:
 
-**macOS/Linux:**
-```bash
-# Get your local IP address
-ipconfig getifaddr en0
-# Example output: 192.168.1.100
+```
+Widgetbook preview: https://preview.widgetbook.io/your-repo/commit/<sha>
 ```
 
-**Windows:**
-```cmd
-# Get your local IP address
-ipconfig | findstr "IPv4"
-# Look for your local network IP (usually 192.168.x.x)
-```
-
-### Step 2: Run Preview Widget on Web Server
+You can also manually trigger the workflow:
 
 ```bash
-# Run any preview widget on local network
+gh workflow run widgetbook.yml
+```
+
+### External Device Preview (Web Server)
+
+You can also serve any preview widget on your local network:
+
+```bash
 flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/<path_to_preview_file>.dart
 ```
 
-### Available Preview Widgets
+Then open `http://<YOUR_IP>:8000` on any device on the same Wi‑Fi.
 
-#### Drawer Components
-```bash
-# Balance Detail Drawer
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_balance_detail.dart
+#### Available Preview Widgets
 
-# Review Transaction Drawer
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_review_transaction.dart
+- Drawer components
+  - `preview_drawer_balance_detail.dart`
+  - `preview_drawer_review_transaction.dart`
+  - `preview_drawer_deposit_channel.dart`
+- Card components
+  - `preview_card_review_transaction.dart`
+- Announcement components
+  - `preview_announcement_warning.dart`
+- New Widgets
+  - `preview_avatar.dart`
+  - `preview_image_carousel.dart`
+  - `preview_item_list.dart`
+  - `preview_pre_loading.dart`
+  - `preview_lottie_skeleton.dart`
+  - `preview_snack_bar.dart`
 
-# Deposit Channel Drawer
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_deposit_channel.dart
-```
-
-#### Card Components
-```bash
-# Review Transaction Card
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/card/preview_card_review_transaction.dart
-```
-
-#### Announcement Components
-```bash
-# Announcement Warning
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/announce/preview_announcement_warning.dart
-```
-
-### Step 3: Access on External Device
-
-1. **Connect your device to the same WiFi network**
-2. **Open browser on your device**
-3. **Navigate to:** `http://[YOUR_IP]:8000`
-   - Example: `http://192.168.1.100:8000`
-
-### Features Available on External Devices
-
-- ✅ **Real touch interactions** - Test actual tap, swipe, scroll behaviors
-- ✅ **Theme switching** - Toggle between light/dark mode
-- ✅ **Responsive design** - See how widgets adapt to different screen sizes
-- ✅ **Performance testing** - Test animations and transitions on real hardware
-- ✅ **Cross-device testing** - Test on multiple devices simultaneously
-
-### Tips for External Device Testing
-
-1. **Use QR Code**: Generate QR code for the URL to easily share with multiple devices
-2. **Network Stability**: Ensure stable WiFi connection for smooth experience
-3. **Hot Reload**: Changes will reflect on all connected devices automatically
-4. **Multiple Ports**: Use different ports (8001, 8002, etc.) to run multiple previews simultaneously
-
-### Example Workflow
-
-```bash
-# Terminal 1: Get IP
-ipconfig getifaddr en0
-# Output: 192.168.1.100
-
-# Terminal 2: Run drawer preview
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8000 -t lib/widgets/drawer/preview_drawer_balance_detail.dart
-
-# Terminal 3: Run card preview (different port)
-flutter run -d web-server --web-hostname=0.0.0.0 --web-port=8001 -t lib/widgets/card/preview_card_review_transaction.dart
-```
-
-**Access URLs:**
-- Drawer Preview: `http://192.168.1.100:8000`
-- Card Preview: `http://192.168.1.100:8001`
 
 ---
 
@@ -765,6 +727,7 @@ dependencies:
   hugeicons: ^0.0.9            # Icon library
   provider: ^6.1.1             # State management
   intl: ^0.20.2                # Internationalization
+  lottie: ^3.1.0               # Animations
 ```
 
 ---

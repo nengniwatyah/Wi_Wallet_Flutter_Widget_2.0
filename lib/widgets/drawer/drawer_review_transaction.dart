@@ -81,41 +81,48 @@ class DrawerReviewTransaction extends StatelessWidget {
       isDismissible: false,
       enableDrag: false,
       barrierColor: const Color.fromRGBO(0, 0, 0, 0.5),
-      builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: DrawerReviewTransaction(
-        warningTitle: warningTitle,
-        warningDescription: warningDescription,
-        totalAmount: totalAmount,
-        feeAmount: feeAmount,
-        currency: currency,
-        fromLabel: fromLabel,
-        fromValue: fromValue,
-        mobileLabel: mobileLabel,
-        mobileValue: mobileValue,
-        toLabel: toLabel,
-        toValue: toValue,
-        accountNameLabel: accountNameLabel,
-        accountNameValue: accountNameValue,
-        accountNumberLabel: accountNumberLabel,
-        accountNumberValue: accountNumberValue,
-        objectLabel: objectLabel,
-        objectValue: objectValue,
-        confirmButtonText: confirmButtonText,
-        onConfirm: onConfirm,
-        onClose: () => Navigator.pop(context),
-        ),
-      ),
+      builder:
+          (context) => BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: DrawerReviewTransaction(
+              warningTitle: warningTitle,
+              warningDescription: warningDescription,
+              totalAmount: totalAmount,
+              feeAmount: feeAmount,
+              currency: currency,
+              fromLabel: fromLabel,
+              fromValue: fromValue,
+              mobileLabel: mobileLabel,
+              mobileValue: mobileValue,
+              toLabel: toLabel,
+              toValue: toValue,
+              accountNameLabel: accountNameLabel,
+              accountNameValue: accountNameValue,
+              accountNumberLabel: accountNumberLabel,
+              accountNumberValue: accountNumberValue,
+              objectLabel: objectLabel,
+              objectValue: objectValue,
+              confirmButtonText: confirmButtonText,
+              onConfirm: onConfirm,
+              onClose: () => Navigator.pop(context),
+            ),
+          ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    final screenHeight = MediaQuery.of(context).size.height;
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final mediaQuery = MediaQuery.of(context);
+    final screenHeight = mediaQuery.size.height;
+    final bottomPadding =
+        mediaQuery.viewPadding.bottom > 0
+            ? mediaQuery.viewPadding.bottom
+            : mediaQuery.padding.bottom;
 
     return Container(
-      height: screenHeight * 0.75,
+      height: screenHeight * 0.80,
       decoration: BoxDecoration(
         color: ThemeColors.get(brightnessKey, 'fill/base/100'),
         borderRadius: const BorderRadius.only(
@@ -221,13 +228,26 @@ class DrawerReviewTransaction extends StatelessWidget {
           ),
           // Confirm Button
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
             child: Buttons(
               text: confirmButtonText,
               type: ButtonType.primary,
               onPressed: onConfirm,
             ),
           ),
+          if (bottomPadding > 0)
+            ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  height: bottomPadding,
+                  color: ThemeColors.get(
+                    brightnessKey,
+                    'fill/base/100',
+                  ).withValues(alpha: 0.9),
+                ),
+              ),
+            ),
         ],
       ),
     );

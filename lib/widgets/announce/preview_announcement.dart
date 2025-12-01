@@ -10,7 +10,8 @@ class ThemeProvider extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode;
 
   void toggleTheme() {
-    _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    _themeMode =
+        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 }
@@ -76,7 +77,7 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
     _messages = [
       'Your account has been verified successfully. All features are now fully accessible from 01/06/2022 at 8:00 AM (Thailand time).',
       'We are currently upgrading our security infrastructure. Services will resume by 31/05/2022 at 5:00 PM (Thailand time).',
-      'Your account has been verified successfully. All features are now fully accessible from 01/06/2022 at 8:00 AM (Thailand time).',
+      'This is a very long announcement message that is intended to test the text truncation functionality of the widget. It should be long enough to exceed three lines when displayed on a standard mobile screen width. If it works correctly, you should see an ellipsis at the end of the third line.',
     ];
   }
 
@@ -86,7 +87,12 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
     });
   }
 
-  DropdownMenuItem<Locale> _buildDropdownItem(BuildContext context, Locale locale, String text, String brightnessKey) {
+  DropdownMenuItem<Locale> _buildDropdownItem(
+    BuildContext context,
+    Locale locale,
+    String text,
+    String brightnessKey,
+  ) {
     return DropdownMenuItem(
       value: locale,
       child: Text(
@@ -110,7 +116,8 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
 
   @override
   Widget build(BuildContext context) {
-    final brightnessKey = Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    final brightnessKey =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     return Scaffold(
       backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
       appBar: AppBar(
@@ -121,7 +128,9 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
             builder: (context, themeProvider, _) {
               return IconButton(
                 icon: Icon(
-                  themeProvider.themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode,
+                  themeProvider.themeMode == ThemeMode.light
+                      ? Icons.dark_mode
+                      : Icons.light_mode,
                 ),
                 onPressed: () => themeProvider.toggleTheme(),
               );
@@ -144,28 +153,59 @@ class _AnnouncementPreviewState extends State<AnnouncementPreview> {
                   child: DropdownButton<Locale>(
                     value: _getCurrentLocale(context),
                     isExpanded: true,
-                    icon: Icon(Icons.language, color: ThemeColors.get(brightnessKey, 'text/base/600')),
-                    dropdownColor: ThemeColors.get(brightnessKey, 'fill/base/200'),
+                    icon: Icon(
+                      Icons.language,
+                      color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                    ),
+                    dropdownColor: ThemeColors.get(
+                      brightnessKey,
+                      'fill/base/200',
+                    ),
                     items: [
-                      _buildDropdownItem(context, const Locale('en'), 'English', brightnessKey),
-                      _buildDropdownItem(context, const Locale('th'), 'ภาษาไทย', brightnessKey),
-                      _buildDropdownItem(context, const Locale('zh'), '中文', brightnessKey),
-                      _buildDropdownItem(context, const Locale('ru'), 'Русский', brightnessKey),
-                      _buildDropdownItem(context, const Locale('my'), 'မြန်မာ', brightnessKey),
+                      _buildDropdownItem(
+                        context,
+                        const Locale('en'),
+                        'English',
+                        brightnessKey,
+                      ),
+                      _buildDropdownItem(
+                        context,
+                        const Locale('th'),
+                        'ภาษาไทย',
+                        brightnessKey,
+                      ),
+                      _buildDropdownItem(
+                        context,
+                        const Locale('zh'),
+                        '中文',
+                        brightnessKey,
+                      ),
+                      _buildDropdownItem(
+                        context,
+                        const Locale('ru'),
+                        'Русский',
+                        brightnessKey,
+                      ),
+                      _buildDropdownItem(
+                        context,
+                        const Locale('my'),
+                        'မြန်မာ',
+                        brightnessKey,
+                      ),
                     ],
                     onChanged: (Locale? newLocale) {
                       if (newLocale != null) {
-                        Provider.of<LocaleProvider>(context, listen: false).setLocale(newLocale);
+                        Provider.of<LocaleProvider>(
+                          context,
+                          listen: false,
+                        ).setLocale(newLocale);
                       }
                     },
                   ),
                 ),
               ),
               const SizedBox(height: 24),
-              AnnouncementStack(
-                messages: _messages,
-                onClose: _updateMessages,
-              ),
+              AnnouncementStack(messages: _messages, onClose: _updateMessages),
             ],
           ),
         ),
