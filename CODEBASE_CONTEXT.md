@@ -3,7 +3,7 @@
 ## 📋 ภาพรวมโปรเจค
 
 **ชื่อโปรเจค:** flutter_test_app (Wi Wallet Flutter Widget 2.0)  
-**เวอร์ชัน:** 1.0.0+1  
+**เวอร์ชัน:** 25.0.5+1  
 **Flutter SDK:** ^3.7.2  
 **ประเภท:** Multi-platform Flutter Application (iOS, Android, Web, macOS, Linux, Windows)  
 **Repository:** https://github.com/nengniwatyah/Wi_Wallet_Flutter_Widget_2.0
