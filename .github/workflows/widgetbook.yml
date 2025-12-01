@@ -28,4 +28,4 @@ jobs:
         run: dart pub global activate widgetbook_cli
         
       - name: Push to Widgetbook Cloud
-        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
+        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }} --branch ${{ github.head_ref || github.ref_name }}
