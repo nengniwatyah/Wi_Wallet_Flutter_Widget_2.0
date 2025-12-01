@@ -223,6 +223,26 @@ class PreviewItemList extends StatelessWidget {
                       isSelected: false,
                       onTap: () {},
                     ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Transaction State',
+                      style: TextStyle(
+                        color: ThemeColors.get(brightnessKey, 'text/base/600'),
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ItemList(
+                      type: ItemListType.transaction,
+                      title: 'Victor Von Doom',
+                      subtitle: '2025-10-06 12:00:53',
+                      amount: '-50,000.00 THB',
+                      amountColor: ThemeColors.get(
+                        brightnessKey,
+                        'text/base/danger',
+                      ),
+                      onTap: () {},
+                    ),
                   ],
                 ),
               ),

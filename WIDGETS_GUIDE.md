@@ -17,6 +17,12 @@ Complete guide to using all available widgets in this foundation.
 - [DrawerDepositChannel](#drawerdepositchannel)
 - [ShortcutMenuItem](#shortcutmenuitem)
 - [Buttons](#buttons)
+- [Avatar](#avatar)
+- [ImageCarousel](#imagecarousel)
+- [ItemList](#itemlist)
+- [PreLoading](#preloading)
+- [LottieSkeleton](#lottieskeleton)
+- [SnackBarWidget](#snackbarwidget)
 
 ---
 
@@ -709,6 +715,206 @@ Buttons(
 | type | ButtonType | required | Button type (primary, secondary, amount) |
 | enabled | bool | true | Button enabled state |
 | onPressed | VoidCallback? | null | Press callback |
+
+---
+
+## Avatar
+
+Profile card widget with status badge and skeleton loading support.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/avatar/avatar.dart';
+```
+
+### Usage
+
+```dart
+Avatar(
+  name: 'Tony Stark',
+  handle: '@ironman',
+  imageUrl: 'https://example.com/avatar.jpg',
+  status: AvatarStatus.warning,
+  onQrTap: () => print('QR Tapped'),
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| name | String | required | User display name |
+| handle | String | required | User handle/username |
+| imageUrl | String? | null | Network image URL |
+| assetPath | String? | null | Local asset path (fallback) |
+| radius | double | 24 | Avatar radius |
+| isLoading | bool | false | Show skeleton loading |
+| status | AvatarStatus | none | Status badge (none, danger, warning) |
+| onQrTap | VoidCallback? | null | QR code tap callback |
+
+---
+
+## ImageCarousel
+
+Image slider with auto-play support.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/image_carousel/image_carousel.dart';
+```
+
+### Usage
+
+```dart
+ImageCarousel(
+  pages: [
+    Image.asset('assets/banner1.png'),
+    Image.asset('assets/banner2.png'),
+  ],
+  autoPlay: true,
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| pages | List<Widget> | required | List of widgets to display |
+| height | double | 150 | Total widget height |
+| imageHeight | double | 134 | Image area height |
+| autoPlay | bool | false | Enable auto-play |
+| autoPlayInterval | Duration | 6s | Interval between slides |
+
+---
+
+## ItemList
+
+Versatile list item widget for menus and transactions.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/item_list/item_list.dart';
+```
+
+### Usage
+
+```dart
+// Common Type
+ItemList(
+  title: 'Settings',
+  iconPath: 'assets/icons/settings.svg',
+  onTap: () {},
+)
+
+// Transaction Type
+ItemList(
+  type: ItemListType.transaction,
+  title: 'Payment',
+  subtitle: '2023-10-01 12:00',
+  amount: '-500.00 THB',
+  amountColor: Colors.red,
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| title | String | 'History' | Main text |
+| subtitle | String? | null | Subtitle text (Transaction type) |
+| iconPath | String? | null | Leading icon path |
+| type | ItemListType | common | Widget type (common, transaction) |
+| amount | String? | null | Transaction amount |
+| amountColor | Color? | null | Amount text color |
+| trailingText | String? | null | Text at the end |
+| isSelected | bool? | null | Show radio button state |
+
+---
+
+## PreLoading
+
+Full-screen loading overlay with blur and Lottie animation.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/loading/pre_loading.dart';
+```
+
+### Usage
+
+```dart
+Stack(
+  children: [
+    MainContent(),
+    if (isLoading) const PreLoading(),
+  ],
+)
+```
+
+---
+
+## LottieSkeleton
+
+Skeleton loading wrapper using Lottie animation.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/skeleton/lottie_skeleton.dart';
+```
+
+### Usage
+
+```dart
+LottieSkeleton(
+  isLoading: true,
+  borderRadius: BorderRadius.circular(8),
+  child: Text('Content'),
+)
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| isLoading | bool | required | Show skeleton state |
+| child | Widget | required | Content to show when not loading |
+| borderRadius | BorderRadiusGeometry? | null | Clip radius |
+| width | double? | null | Skeleton width |
+| height | double? | null | Skeleton height |
+
+---
+
+## SnackBarWidget
+
+Custom styled snackbar for notifications.
+
+### Import
+
+```dart
+import 'package:your_app/widgets/snack_bar/snack_bar.dart';
+```
+
+### Usage
+
+```dart
+SnackBarWidget.show(
+  context,
+  title: 'Operation successful',
+  type: SnackBarType.success,
+);
+```
+
+### Properties
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| title | String | Yes | Message text |
+| type | SnackBarType | Yes | Type (success, warning, error) |
 
 ---
 

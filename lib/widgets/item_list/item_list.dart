@@ -2,21 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 
+enum ItemListType { common, transaction }
+
 class ItemList extends StatelessWidget {
   final String title;
+  final String? subtitle;
   final String? iconPath;
   final VoidCallback? onTap;
   final String? trailingText;
   final bool?
   isSelected; // If not null, shows radio button. true = checked, false = unchecked.
+  final ItemListType type;
+  final String? amount;
+  final Color? amountColor;
 
   const ItemList({
     super.key,
     this.title = 'History',
+    this.subtitle,
     this.iconPath,
     this.onTap,
     this.trailingText,
     this.isSelected,
+    this.type = ItemListType.common,
+    this.amount,
+    this.amountColor,
   });
 
   @override
@@ -27,7 +37,7 @@ class ItemList extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 56,
+        height: type == ItemListType.transaction ? 72 : 56,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: ThemeColors.get(themeMode, 'fill/base/300'),
@@ -35,27 +45,54 @@ class ItemList extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Leading Icon (Placeholder if not provided)
+            // Leading Icon
             SizedBox(
-              width: 24,
-              height: 24,
+              width: type == ItemListType.transaction ? 40 : 24,
+              height: type == ItemListType.transaction ? 40 : 24,
               child:
-                  iconPath != null
-                      ? SvgPicture.asset(iconPath!, width: 24, height: 24)
-                      : _buildPlaceholderIcon(context, themeMode),
+                  type == ItemListType.transaction
+                      ? SvgPicture.asset(
+                        'lib/assets/images/logo-wi.svg',
+                        width: 40,
+                        height: 40,
+                      )
+                      : (iconPath != null
+                          ? SvgPicture.asset(iconPath!, width: 24, height: 24)
+                          : _buildPlaceholderIcon(context, themeMode)),
             ),
-            const SizedBox(width: 8),
-            // Title
+            const SizedBox(width: 12),
+            // Title & Subtitle
             Expanded(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontFamily: 'Noto Sans Thai',
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  height: 16 / 13, // line-height / font-size
-                  color: ThemeColors.get(themeMode, 'text/base/600'),
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontFamily: 'Noto Sans Thai',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      height: 16 / 13,
+                      color: ThemeColors.get(themeMode, 'text/base/600'),
+                    ),
+                  ),
+                  if (subtitle != null && type == ItemListType.transaction) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle!,
+                      style: TextStyle(
+                        fontFamily: 'Noto Sans Thai',
+                        fontSize: 10, // Updated to 10px as per Figma
+                        fontWeight: FontWeight.w400,
+                        height: 12 / 10, // Updated line height
+                        color: ThemeColors.get(themeMode, 'text/base/400'),
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ],
               ),
             ),
             // Trailing Widget
@@ -67,7 +104,18 @@ class ItemList extends StatelessWidget {
   }
 
   Widget _buildTrailingWidget(BuildContext context, String themeMode) {
-    if (isSelected != null) {
+    if (type == ItemListType.transaction && amount != null) {
+      return Text(
+        amount!,
+        style: TextStyle(
+          fontFamily: 'Noto Sans Thai',
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          height: 16 / 13,
+          color: amountColor ?? ThemeColors.get(themeMode, 'text/base/success'),
+        ),
+      );
+    } else if (isSelected != null) {
       // Radio Button State
       return SizedBox(
         width: 24,

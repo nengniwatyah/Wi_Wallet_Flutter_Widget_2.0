@@ -130,7 +130,7 @@ lib/
 - **ThemeColors.get():** Type-safe color access
 - **Material Design 3:** useMaterial3: true
 
-## 🧩 Widget Components (14 Components)
+## 🧩 Widget Components (20 Components)
 
 ### 1. Input Components (3)
 - **FullAmountInput** - Amount input with validation, decimal support
@@ -156,8 +156,18 @@ lib/
 ### 6. Button Components (1)
 - **Buttons** - Reusable button component with 3 types (primary, secondary, amount)
 
-### 7. Menu Components (1)
+### 7. Menu Components (2)
 - **ShortcutMenuItem** - Menu item with SVG icon manipulation and theme awareness
+- **ItemList** - Versatile list item for menus and transactions
+
+### 8. Display Components (3)
+- **Avatar** - Profile card with status badge and skeleton loading
+- **ImageCarousel** - Image slider with auto-play support
+- **SnackBarWidget** - Custom styled notification snackbar
+
+### 9. Loading Components (2)
+- **PreLoading** - Full-screen loading overlay with blur and Lottie
+- **LottieSkeleton** - Skeleton loading wrapper using Lottie animation
 
 ## 🏗️ Architecture Patterns
 
@@ -245,6 +255,11 @@ widgets/{feature}/
 - **Multi-device Testing** - Simultaneous testing across devices
 - **Real Interaction Testing** - Touch, swipe, scroll behaviors
 
+### Widgetbook Integration
+- **Centralized Preview** - All widgets cataloged in Widgetbook
+- **Interactive Controls** - Knobs and controls for testing widget states
+- **Use Case Driven** - Organized by use cases for easy discovery
+
 ## ⚠️ Known Issues & Solutions
 
 ### Resolved Issues
@@ -261,7 +276,7 @@ widgets/{feature}/
 
 ## 📊 Project Statistics
 
-- **Total Components:** 14 widgets
+- **Total Components:** 20 widgets
 - **Supported Languages:** 5 languages
 - **Design Tokens:** 100+ color tokens (including alt/ variant)
 - **Platform Support:** 6 platforms

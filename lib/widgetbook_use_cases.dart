@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:mcp_test_app/widgets/item_list/item_list.dart';
+import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:mcp_test_app/widgets/announce/announcement.dart';
 import 'package:mcp_test_app/widgets/announce/announcement_warning.dart';
 import 'package:mcp_test_app/widgets/button/buttons.dart';
@@ -20,6 +21,7 @@ import 'package:mcp_test_app/widgets/snack_bar/snack_bar.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'package:mcp_test_app/widgets/image_carousel/image_carousel.dart';
 import 'package:mcp_test_app/widgets/skeleton/lottie_skeleton.dart';
+import 'package:mcp_test_app/widgets/avatar/preview_avatar.dart'; // ignore: unused_import
 import 'package:mcp_test_app/widgets/loading/pre_loading.dart';
 
 // ItemList
@@ -72,6 +74,20 @@ Widget buildItemListSelected(BuildContext context) {
 @widgetbook.UseCase(name: 'With Radio Button (Unselected)', type: ItemList)
 Widget buildItemListUnselected(BuildContext context) {
   return ItemList(title: 'Thai', isSelected: false, onTap: () {});
+}
+
+@widgetbook.UseCase(name: 'Transaction Type', type: ItemList)
+Widget buildItemListTransaction(BuildContext context) {
+  final themeMode =
+      Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+  return ItemList(
+    type: ItemListType.transaction,
+    title: 'Victor Von Doom',
+    subtitle: '2025-10-06 12:00:53',
+    amount: '-50,000.00 THB',
+    amountColor: ThemeColors.get(themeMode, 'text/base/danger'),
+    onTap: () {},
+  );
 }
 
 // Announcement
@@ -380,12 +396,32 @@ Widget buildPreLoading(BuildContext context) {
     children: [
       Center(
         child: ListView.builder(
-          itemCount: 10,
-          itemBuilder:
-              (context, index) => ListTile(
-                title: Text('Item ${index + 1}'),
-                leading: const Icon(Icons.star),
+          padding: const EdgeInsets.all(16),
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            final isNegative = index % 2 == 0;
+            final brightnessKey =
+                Theme.of(context).brightness == Brightness.light
+                    ? 'light'
+                    : 'dark';
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: ItemList(
+                type: ItemListType.transaction,
+                title:
+                    isNegative
+                        ? 'Victor Von Doom ${index + 1}'
+                        : 'Transfer from ${index + 1}',
+                subtitle: '2025-10-06 12:00:53',
+                amount: isNegative ? '-50,000.00 THB' : '+50,000.00 THB',
+                amountColor: ThemeColors.get(
+                  brightnessKey,
+                  isNegative ? 'text/base/danger' : 'text/base/success',
+                ),
+                onTap: () {},
               ),
+            );
+          },
         ),
       ),
       const PreLoading(),

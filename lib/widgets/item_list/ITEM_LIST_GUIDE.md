@@ -1,12 +1,14 @@
 # ItemList Widget Guide
 
 ## Overview
-The `ItemList` widget is a versatile, theme-aware menu item component designed for settings screens and lists. It supports multiple trailing states (arrow, text, radio button) with consistent styling across the application. The widget follows the project's design token system and adapts seamlessly to light/dark themes.
+The `ItemList` widget is a versatile, theme-aware menu item component designed for settings screens, lists, and transaction histories. It supports multiple trailing states (arrow, text, radio button, amount) and list types (common, transaction) with consistent styling across the application. The widget follows the project's design token system and adapts seamlessly to light/dark themes.
 
 ## Design Specifications
 
 ### Dimensions
-- **Height**: 56px (fixed)
+- **Height**: 
+  - Common Type: 56px (fixed)
+  - Transaction Type: 72px (fixed)
 - **Padding**: 16px horizontal
 - **Border Radius**: 12px
 - **Icon Size**: 24x24px
@@ -17,13 +19,17 @@ The `ItemList` widget is a versatile, theme-aware menu item component designed f
 - **Title Font Size**: 13px
 - **Title Line Height**: 16px (1.23 ratio)
 - **Title Font Weight**: 600 (Semi-Bold)
+- **Subtitle Font Size**: 10px
+- **Subtitle Line Height**: 12px
+- **Subtitle Font Weight**: 400 (Regular)
 - **Trailing Text Font Weight**: 500 (Medium)
 
 ### States
-The widget supports three trailing states:
+The widget supports four trailing states:
 1. **Arrow State** (Default): Shows a right-pointing arrow
-2. **Text State**: Displays custom text (e.g., "English", "฿100")
+2. **Text State**: Displays custom text (e.g., "English")
 3. **Radio Button State**: Shows check/uncheck radio button
+4. **Transaction State**: Displays amount (e.g., "+50,000.00") with color coding
 
 ## Design Token Usage
 
@@ -58,6 +64,11 @@ The widget supports three trailing states:
 - **Checked**: `radio_button_check.svg` (original color preserved)
 - **Unchecked**: `radio_button_uncheck.svg` with `text/base/600` color filter
 - **Size**: 24x24px with `BoxFit.contain`
+
+### Transaction Specifics
+- **Logo**: `logo-wi.svg` (40x40px)
+- **Subtitle Color**: `text/base/400`
+- **Amount Color**: Custom or `text/base/success` (default)
 
 ## Code Review Analysis
 
@@ -125,15 +136,31 @@ ItemList(
 )
 ```
 
+### Transaction State (History)
+```dart
+ItemList(
+  type: ItemListType.transaction,
+  title: 'Victor Von Doom',
+  subtitle: '2025-10-06 12:00:53',
+  amount: '-50,000.00 THB',
+  amountColor: ThemeColors.get(themeMode, 'text/base/danger'),
+  onTap: () => showDetails(),
+)
+```
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `title` | String | No | 'History' | Main text label |
+| `subtitle` | String? | No | null | Secondary text label (Transaction only) |
 | `iconPath` | String? | No | null | Custom SVG icon path |
 | `onTap` | VoidCallback? | No | null | Tap handler |
 | `trailingText` | String? | No | null | Text to show instead of arrow |
 | `isSelected` | bool? | No | null | Radio button state (null = no radio) |
+| `type` | ItemListType | No | common | Widget type (common/transaction) |
+| `amount` | String? | No | null | Amount text (Transaction only) |
+| `amountColor` | Color? | No | null | Custom color for amount text |
 
 ## Integration Guidelines
 
@@ -145,9 +172,11 @@ ItemList(
 - Language/currency pickers
 
 ### State Priority
-1. If `isSelected != null`: Show radio button
-2. Else if `trailingText != null`: Show text
-3. Else: Show arrow (default)
+### State Priority
+1. If `type == transaction && amount != null`: Show amount text
+2. Else if `isSelected != null`: Show radio button
+3. Else if `trailingText != null`: Show text
+4. Else: Show arrow (default)
 
 ### Icon Guidelines
 - Use 24x24px SVG icons

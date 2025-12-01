@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mcp_test_app/widgets/loading/pre_loading.dart';
+import 'package:mcp_test_app/widgets/item_list/item_list.dart';
 import 'package:mcp_test_app/config/themes/theme_color.dart';
 import 'package:provider/provider.dart';
 import 'package:mcp_test_app/generated/intl/app_localizations.dart';
@@ -60,14 +61,14 @@ class PreviewPreLoadingPage extends StatefulWidget {
 }
 
 class _PreviewPreLoadingPageState extends State<PreviewPreLoadingPage> {
-  final bool _isLoading = true;
+  bool _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
     final brightnessKey =
         Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
     return Scaffold(
-      backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/300'),
+      backgroundColor: ThemeColors.get(brightnessKey, 'fill/base/100'),
       appBar: AppBar(
         title: Text(
           'PreLoading Preview',
@@ -101,19 +102,22 @@ class _PreviewPreLoadingPageState extends State<PreviewPreLoadingPage> {
             padding: const EdgeInsets.all(16),
             itemCount: 20,
             itemBuilder: (context, index) {
-              return Card(
-                margin: const EdgeInsets.only(bottom: 12),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor:
-                        Colors.primaries[index % Colors.primaries.length],
-                    child: Text('${index + 1}'),
+              final isNegative = index % 2 == 0;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: ItemList(
+                  type: ItemListType.transaction,
+                  title:
+                      isNegative
+                          ? 'Victor Von Doom ${index + 1}'
+                          : 'Transfer from ${index + 1}',
+                  subtitle: '2025-10-06 12:00:53',
+                  amount: isNegative ? '-50,000.00 THB' : '+50,000.00 THB',
+                  amountColor: ThemeColors.get(
+                    brightnessKey,
+                    isNegative ? 'text/base/danger' : 'text/base/success',
                   ),
-                  title: Text('List Item ${index + 1}'),
-                  subtitle: const Text(
-                    'This content should be blurred when loading is active.',
-                  ),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  onTap: () {},
                 ),
               );
             },
@@ -122,6 +126,14 @@ class _PreviewPreLoadingPageState extends State<PreviewPreLoadingPage> {
           // PreLoading Overlay
           if (_isLoading) const PreLoading(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _isLoading = !_isLoading;
+          });
+        },
+        child: Icon(_isLoading ? Icons.stop : Icons.play_arrow),
       ),
     );
   }

@@ -1,3 +1,56 @@
+# 🚀 Release Notes v2.2.0 - New Widgets & Enhanced Preview System
+
+**Release Date:** December 2025
+**Branch:** `dev`
+
+---
+
+## ✨ What's New
+
+### 🧩 New Widgets (6 Added)
+- **Avatar** - Profile card with status badge (danger/warning) and skeleton loading support.
+- **ImageCarousel** - Image slider with auto-play capability and custom indicators.
+- **ItemList (Transaction Type)** - Enhanced list item with subtitle, amount display, and dynamic styling for transactions.
+- **PreLoading** - Full-screen loading overlay with 10px blur effect and Lottie animation.
+- **LottieSkeleton** - Advanced skeleton loading wrapper using Lottie animations.
+- **SnackBarWidget** - Custom styled notifications with 3 types: Success, Warning, Error.
+
+### 📚 Documentation Updates
+- **WIDGETS_GUIDE.md** - Added comprehensive documentation for all 6 new widgets.
+- **CODEBASE_CONTEXT.md** - Updated component count to 20 and added new categories (Display, Loading).
+- **CONTRIBUTING.md** - Added "Development Tools" section covering Widgetbook and Code Generation.
+- **SETUP_GUIDE.md** - Added optional Widgetbook setup instructions.
+
+### 🛠️ Developer Experience
+- **Widgetbook Integration** - Added use cases for all new widgets, enabling interactive testing.
+- **Enhanced Previews** - `PreLoading` preview now simulates a transaction list background with alternating colors.
+- **Transaction Simulation** - `ItemList` preview now showcases realistic transaction data with positive/negative amounts.
+
+---
+
+## 🔧 Technical Improvements
+
+### Component Architecture
+- **Total Components:** 20 widgets (up from 14)
+- **Modular Structure:** New dedicated folders for `avatar/`, `image_carousel/`, `loading/`, `skeleton/`, `snack_bar/`.
+- **Refined ItemList:** Added `ItemListType` enum for better type safety and extensibility.
+
+### Preview System
+- **Realistic Data:** Previews now use dynamic data to simulate real-world scenarios.
+- **Interactive Controls:** Widgetbook knobs allow testing different states (e.g., loading, error) easily.
+
+---
+
+## 🚀 What's Next
+
+### Planned for v2.3.0
+- **Navigation System** - Implement go_router integration
+- **API Layer** - Repository pattern implementation
+- **Testing Suite** - Unit and widget test coverage
+- **Performance Optimization** - Image caching and lazy loading
+
+---
+
 # 🚀 Release Notes v2.1.0 - Glass Morphism & Enhanced Architecture
 
 **Release Date:** November 2025  

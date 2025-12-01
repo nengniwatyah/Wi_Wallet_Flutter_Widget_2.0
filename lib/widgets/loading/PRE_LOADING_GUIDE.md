@@ -94,8 +94,40 @@ class _MyPageState extends State<MyPage> {
 ### ฟีเจอร์ของหน้า Preview
 1.  **Independent Run**: สามารถกด Run ไฟล์นี้แยกได้เลย (มี `main()` ในตัว)
 2.  **Theme Toggle**: มีปุ่มเปลี่ยน Theme (Dark/Light) ที่มุมขวาบน เพื่อดูผลลัพธ์ทั้งสองโหมด
-3.  **Background Simulation**: มีรายการ List จำลองอยู่ด้านหลัง เพื่อให้เห็นผลลัพธ์ของ Blur Effect ได้ชัดเจน
-4.  **Always Loading**: ในหน้า Preview นี้ สถานะ `_isLoading` จะถูกตั้งเป็น `true` ตลอดเวลา เพื่อให้เห็น Animation และ Overlay ได้ทันทีที่เปิด
+3.  **Transaction List Simulation**: จำลองรายการธุรกรรม (Transaction History) ด้านหลัง โดยใช้ `ItemList` แบบ `transaction`
+    *   แสดงรายการแบบสลับยอดเงินบวก/ลบ (Positive/Negative Amounts)
+    *   ยอดลบ: สีแดง (`text/base/danger`) พร้อมชื่อ "Victor Von Doom"
+    *   ยอดบวก: สีเขียว (`text/base/success`) พร้อมชื่อ "Transfer from"
+4.  **Play/Stop Toggle**: มีปุ่ม Floating Action Button มุมขวาล่าง สำหรับกด Play/Stop เพื่อจำลองสถานะ Loading (Show/Hide Overlay) ได้ง่ายๆ
+
+### ตัวอย่าง Code ในหน้า Preview
+การจำลองรายการ Transaction ใน `ListView.builder`:
+
+```dart
+ListView.builder(
+  padding: const EdgeInsets.all(16),
+  itemCount: 20,
+  itemBuilder: (context, index) {
+    final isNegative = index % 2 == 0;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: ItemList(
+        type: ItemListType.transaction,
+        title: isNegative
+            ? 'Victor Von Doom ${index + 1}'
+            : 'Transfer from ${index + 1}',
+        subtitle: '2025-10-06 12:00:53',
+        amount: isNegative ? '-50,000.00 THB' : '+50,000.00 THB',
+        amountColor: ThemeColors.get(
+          brightnessKey,
+          isNegative ? 'text/base/danger' : 'text/base/success',
+        ),
+        onTap: () {},
+      ),
+    );
+  },
+),
+```
 
 ### วิธีการ Run
 คลิกขวาที่ไฟล์ `lib/widgets/loading/preview_pre_loading.dart` แล้วเลือก **Run** หรือกดปุ่ม Run ที่อยู่เหนือ `void main()`

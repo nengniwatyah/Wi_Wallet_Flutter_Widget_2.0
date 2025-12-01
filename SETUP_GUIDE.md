@@ -27,6 +27,18 @@ flutter doctor
 flutter run
 ```
 
+### 3. Setup Widgetbook (Optional)
+
+If you plan to work on UI components:
+
+```bash
+# Generate Widgetbook code
+dart run build_runner build --delete-conflicting-outputs
+
+# Run Widgetbook
+flutter run -t lib/widgetbook.dart -d chrome
+```
+
 ## 🎨 Customization Guide
 
 ### Change App Name

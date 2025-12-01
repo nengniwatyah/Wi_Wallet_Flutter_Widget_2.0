@@ -588,6 +588,72 @@ DrawerDepositChannel(
 - Scrollable bank list
 - Selection callback
 
+### 10. Avatar
+
+Profile card with status badge and skeleton loading.
+
+```dart
+Avatar(
+  name: 'Tony Stark',
+  handle: '@ironman',
+  status: AvatarStatus.warning,
+)
+```
+
+### 11. ImageCarousel
+
+Image slider with auto-play support.
+
+```dart
+ImageCarousel(
+  pages: [Image.asset('banner1.png')],
+  autoPlay: true,
+)
+```
+
+### 12. ItemList
+
+Versatile list item for menus and transactions.
+
+```dart
+ItemList(
+  type: ItemListType.transaction,
+  title: 'Payment',
+  amount: '-500.00 THB',
+)
+```
+
+### 13. PreLoading
+
+Full-screen loading overlay with blur effect.
+
+```dart
+if (isLoading) const PreLoading()
+```
+
+### 14. LottieSkeleton
+
+Skeleton loading wrapper using Lottie.
+
+```dart
+LottieSkeleton(
+  isLoading: true,
+  child: Text('Content'),
+)
+```
+
+### 15. SnackBarWidget
+
+Custom styled notifications.
+
+```dart
+SnackBarWidget.show(
+  context,
+  title: 'Success',
+  type: SnackBarType.success,
+);
+```
+
 ---
 
 ## 📱 Preview Widgets with Widgetbook
@@ -641,6 +707,13 @@ Then open `http://<YOUR_IP>:8000` on any device on the same Wi‑Fi.
   - `preview_card_review_transaction.dart`
 - Announcement components
   - `preview_announcement_warning.dart`
+- New Widgets
+  - `preview_avatar.dart`
+  - `preview_image_carousel.dart`
+  - `preview_item_list.dart`
+  - `preview_pre_loading.dart`
+  - `preview_lottie_skeleton.dart`
+  - `preview_snack_bar.dart`
 
 
 ---
@@ -654,6 +727,7 @@ dependencies:
   hugeicons: ^0.0.9            # Icon library
   provider: ^6.1.1             # State management
   intl: ^0.20.2                # Internationalization
+  lottie: ^3.1.0               # Animations
 ```
 
 ---
