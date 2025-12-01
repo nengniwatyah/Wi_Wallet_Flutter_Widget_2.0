@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeProvider, localeProvider, child) {
         return MaterialApp(
           onGenerateTitle: (context) {
-            return AppLocalizations.of(context)!.app_name;
+            return AppLocalizations.of(context)!.appName;
           },
           localizationsDelegates: [
             AppLocalizations.delegate,
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         titleSpacing: 0,
         title: Text(
-          AppLocalizations.of(context)!.app_name,
+          AppLocalizations.of(context)!.appName,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             color: ThemeColors.get(brightnessKey, 'text/base/600'),
             fontSize: 20.0,
@@ -169,7 +169,9 @@ class _HomePageState extends State<HomePage> {
                           const Icon(Icons.light_mode, size: 20),
                           const SizedBox(width: 8.0),
                           Text(
-                            AppLocalizations.of(context)!.light_theme,
+                            AppLocalizations.of(
+                              context,
+                            )!.settingValueMainMenuAppearLight,
                             style: Theme.of(
                               context,
                             ).textTheme.bodyMedium?.copyWith(
@@ -210,7 +212,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const SizedBox(width: 8.0),
                           Text(
-                            AppLocalizations.of(context)!.dark_theme,
+                            AppLocalizations.of(
+                              context,
+                            )!.settingValueMainMenuAppearDark,
                             style: Theme.of(
                               context,
                             ).textTheme.bodyMedium?.copyWith(
@@ -347,15 +351,24 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ShortcutMenuItem(
-                                label: AppLocalizations.of(context)!.transfer,
+                                label:
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.shortcutMenuHomeTransfer,
                               ),
                               const SizedBox(width: 56),
                               ShortcutMenuItem(
-                                label: AppLocalizations.of(context)!.top_up,
+                                label:
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.shortcutMenuHomeWiCoin,
                               ),
                               const SizedBox(width: 56),
                               ShortcutMenuItem(
-                                label: AppLocalizations.of(context)!.bill,
+                                label:
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.shortcutMenuHomeBill,
                               ),
                             ],
                           ),

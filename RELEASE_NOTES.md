@@ -39,6 +39,11 @@
 - **Realistic Data:** Previews now use dynamic data to simulate real-world scenarios.
 - **Interactive Controls:** Widgetbook knobs allow testing different states (e.g., loading, error) easily.
 
+### 🌍 Localization Workflow
+- **Centralized Management** - New `localization.json` source of truth for all translations.
+- **Automated Generation** - New `tool/generate_arb.dart` script to auto-generate ARB files.
+- **Documentation** - Added `lib/l10n/localization_i10n.md` guide.
+
 ---
 
 ## 🚀 What's Next

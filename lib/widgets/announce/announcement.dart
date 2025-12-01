@@ -57,7 +57,7 @@ class AnnouncementStackPreview extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          Text(AppLocalizations.of(context)!.viewAll),
+          Text(AppLocalizations.of(context)!.labelHomeViewAll),
         ],
       ),
     );

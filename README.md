@@ -52,6 +52,7 @@ cd Wi_Wallet_Flutter_Widget_2.0
 flutter pub get
 
 # Generate localization files
+dart run tool/generate_arb.dart
 flutter gen-l10n
 
 # Run the app
@@ -86,32 +87,33 @@ output-class: AppLocalizations
 output-dir: lib/generated/intl
 ```
 
-**Step 3:** Create ARB files in `lib/l10n/`
+**Step 3:** Update `localization.json` at project root
 
 ```json
-// lib/l10n/app_en.arb
-{
-  "app_name": "My App",
-  "@app_name": {
+[
+  {
+    "Name": "app_name",
+    "EN": "My App",
+    "TH": "แอปของฉัน",
     "description": "Application name"
   },
-  "home": "Home",
-  "settings": "Settings"
-}
-```
-
-```json
-// lib/l10n/app_th.arb
-{
-  "app_name": "แอปของฉัน",
-  "home": "หน้าหลัก",
-  "settings": "ตั้งค่า"
-}
+  {
+    "Name": "home",
+    "EN": "Home",
+    "TH": "หน้าหลัก"
+  },
+  {
+    "Name": "settings",
+    "EN": "Settings",
+    "TH": "ตั้งค่า"
+  }
+]
 ```
 
 **Step 4:** Generate localization files
 
 ```bash
+dart run tool/generate_arb.dart
 flutter gen-l10n
 ```
 

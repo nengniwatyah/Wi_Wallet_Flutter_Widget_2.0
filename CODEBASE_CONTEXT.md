@@ -84,7 +84,10 @@ lib/
 - 🇲🇲 မြန်မာ (my) - Myanmar
 
 ### การตั้งค่า
-- **ARB files:** `lib/l10n/app_{locale}.arb`
+### การตั้งค่า
+- **Source of Truth:** `localization.json` (Root level)
+- **Generation Script:** `tool/generate_arb.dart`
+- **ARB files:** `lib/l10n/app_{locale}.arb` (Generated)
 - **Generated files:** `lib/generated/intl/`
 - **Configuration:** `l10n.yaml` (root level)
 - **Font handling:** GoogleFonts.notoSansThai() สำหรับภาษาไทย
@@ -289,6 +292,7 @@ widgets/{feature}/
 ### Setup Commands
 ```bash
 flutter pub get                 # Install dependencies
+dart run tool/generate_arb.dart # Generate ARB from JSON
 flutter gen-l10n               # Generate localization
 flutter run                    # Run main app
 flutter test                   # Run tests

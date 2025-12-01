@@ -9,22 +9,73 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get welcome_message => 'Добро пожаловать';
+  String get headerDeposit => 'Депозит';
 
   @override
-  String get greeting => 'Привет';
+  String get labelDepositAmount => 'Сумма';
 
   @override
-  String get farewell => 'До свидания';
+  String get infomationDeposit => 'Вам нужно внести депозит минимум 100 THB';
 
   @override
-  String get app_name => 'Тестовое приложение';
+  String get titleDepositFrom => 'От';
 
   @override
-  String get light_theme => 'Светлая';
+  String get labelDepositMobileBanking => 'Мобильный банк';
 
   @override
-  String get dark_theme => 'Темная';
+  String get valueDepositSCB => 'Siam Commercial Bank';
+
+  @override
+  String get valueDepositBbl => 'Bangkok Bank Mobile Banking';
+
+  @override
+  String get valueDepositBay => 'Bank of Ayudhya';
+
+  @override
+  String get titleDepositTo => 'Кому';
+
+  @override
+  String get labelDepositWiWallet => 'Ваш Wi Wallet';
+
+  @override
+  String get labelDepositTotalBalance => 'Общий баланс:';
+
+  @override
+  String get textButtonDepositConfirm => 'Подтвердить';
+
+  @override
+  String get titleDrawerMobileNumber => 'Мобильный номер';
+
+  @override
+  String get placeholderDrawerSearch => 'Поиск';
+
+  @override
+  String get labelHomeTotalBalance => 'Общий баланс';
+
+  @override
+  String get textButtonHomeManage => 'Управление';
+
+  @override
+  String get titleHomeCards => 'Карты';
+
+  @override
+  String get titleHomeServices => 'Услуги';
+
+  @override
+  String get shortcutMenuHomeTransfer => 'Перевести';
+
+  @override
+  String get shortcutMenuHomeMore => 'Еще';
+
+  @override
+  String get shortcutMenuHomeBill => 'Счет';
+
+  @override
+  String get shortcutMenuHomeWiCoin => 'Wi Coin';
+
+  @override
+  String get titleHomeHighlight => 'Выделить';
 
   @override
   String get navigatorHome => 'Главная';
@@ -33,107 +84,630 @@ class AppLocalizationsRu extends AppLocalizations {
   String get navigatorHomeDeposit => 'Депозит';
 
   @override
-  String get navigatorHomeConvert => 'Конв';
+  String get navigatorHomeConvert => 'Конвертировать';
 
   @override
   String get navigatorHomeSetting => 'Настройки';
 
   @override
-  String get transfer => 'Перевод';
+  String get labelHomeViewAll => 'Посмотреть все';
 
   @override
-  String get top_up => 'Пополнение';
+  String homeAnnounceVerifyFaceToReceive(Object amount) {
+    return 'You have received $amount THB. Please verify face to receive this amount which will incur fee in your wallet.';
+  }
 
   @override
-  String get bill => 'Счет';
+  String get titleDrawerDepositChannel => 'Канал пополнения';
+
+  @override
+  String get labelDrawerMobileBanking => 'Мобильный банк';
+
+  @override
+  String get valueDrawerScb => 'Siam Commercial Bank';
+
+  @override
+  String get valueDrawerBbl => 'Bangkok Bank Mobile Banking';
+
+  @override
+  String get valueDrawerBay => 'Bank of Ayudhya';
+
+  @override
+  String get valueDrawerKbank => 'Kasikorn Bank';
+
+  @override
+  String get titleDepositEnterMobileNumber => 'Введите мобильный номер';
+
+  @override
+  String get descriptionDepositEnterMobileNumberKbank =>
+      'Пожалуйста, введите номер телефона, зарегистрированный в Kasikorn Bank для депозита';
+
+  @override
+  String get placeholderDepositMobileNumber => 'Мобильный номер';
+
+  @override
+  String get titleModalError => 'Ошибка';
+
+  @override
+  String get descriptionModalErrorSystem =>
+      'Сожалеем, произошла ошибка системы. Пожалуйста, попробуйте еще раз';
+
+  @override
+  String get textButtonModalOk => 'OK';
+
+  @override
+  String get titleDepositKplusWaitingForPayment => 'Ожидание платежа';
+
+  @override
+  String get descriptionDepositKplusNotification =>
+      'Пожалуйста, дождитесь уведомления для открытия приложения K PLUS. Если вы не получили уведомление, вы можете проверить входящие сообщения в вашем K PLUS.';
+
+  @override
+  String get infomationDepositKplusTimeLimit =>
+      'Пожалуйста, завершите процесс в течение mm:ss минут.';
+
+  @override
+  String get valueDepositKplus => 'Kasikorn Bank';
+
+  @override
+  String get labelDepositKplusTransactionType => 'Тип транзакции';
+
+  @override
+  String get labelDepositKplus => 'Депозит';
+
+  @override
+  String get labelDepositKplusMobileNumber => 'Мобильный номер';
+
+  @override
+  String get labelDepositKplusTransactionNo => 'Номер транзакции';
+
+  @override
+  String get labelDepositKplusDateTime => 'Дата и время';
+
+  @override
+  String get textButtonDepositKplusOpen => 'Открыть в KPLUS';
+
+  @override
+  String get fieldValueDepositKplus => 'Депозит';
+
+  @override
+  String get titleDrawerEmptyNoResultsFound => 'Результатов не найдено';
+
+  @override
+  String get descriptionDrawerEmptyTryAgain => 'Пожалуйста, попробуйте еще раз';
+
+  @override
+  String get inboxTabMenuGeneral => 'General';
+
+  @override
+  String get inboxTabMenuForYou => 'For You';
+
+  @override
+  String get inboxDetailHeaderTitleReceive => 'Receive';
+
+  @override
+  String get inboxTextButtonVerifyFace => 'Verify Face';
+
+  @override
+  String get identityVerificationHeaderTitle => 'Identity Verification';
+
+  @override
+  String get identityVerificationTitleTakePhoto => 'Take photos of face again.';
+
+  @override
+  String get identityVerificationDesTakePhotoCannotMakeInTime =>
+      'You cannot make it in time. Please follow the instruction and take new photos.';
+
+  @override
+  String get identityVerificationTextButtonRetake => 'Retake';
+
+  @override
+  String get identityVerificationDesTakePhotoTheSystem =>
+      'The system has detected an irregularity.\nEnsure your face is within the frame and no one else is near the camera.';
+
+  @override
+  String get identityVerificationTitleFaceUnsuccess =>
+      'Face verification unsuccessful';
+
+  @override
+  String get identityVerificationDesFaceUnsuccess =>
+      'Your face verification has failed due to a mismatch with the document photo.\nFor more information, please contact customer service available 24 hours daily.';
+
+  @override
+  String get identityVerificationTextButtonContact => 'Contact Us';
+
+  @override
+  String get homeAlertInfoVerifyAccountToReceiveSuccess =>
+      'Your account has been credited successfully!';
+
+  @override
+  String get homeAlertInfoVerifyAccountToReceiveFail =>
+      'Sorry, this transaction cannot be made.';
+
+  @override
+  String get identityVerificationTitleFaceVerification => 'Face Verification';
+
+  @override
+  String get identityVerificationDesFaceVerifacation =>
+      'Prepare for your face liveness capture.\nFollow instructions below.';
+
+  @override
+  String get identityVerificationDesFaceVerifacationOneStep =>
+      'Do not wear hats, glasses, masks or headphones.';
+
+  @override
+  String get identityVerificationDesFaceVerifacationTwoStep =>
+      'Make sure that your background is not too bright or too dark and avoid backlighting.';
+
+  @override
+  String get identityVerificationDesFaceVerifacationThreeStep =>
+      'Keep the face within the frame.';
+
+  @override
+  String get identityVerificationTextButtonOpenCamera => 'Open Camera';
+
+  @override
+  String get transactionDetailHeaderTitle => 'Detail';
+
+  @override
+  String get transactionDetailAlertInfoSavedSuccess =>
+      'Receipt saved successfully';
+
+  @override
+  String get transactionDetailAlertInfoErrorSystem =>
+      'Sorry, system has encountered error. Please try again.';
+
+  @override
+  String get transactionDetailHeaderTitleTypeReceive => 'Receive';
+
+  @override
+  String get transactionDetailHeaderTitleTypeTransfer => 'Transfer';
+
+  @override
+  String transactionDetailTotalAmountThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String transactionDetailFeeAmountThb(Object amount) {
+    return 'Fee $amount THB';
+  }
+
+  @override
+  String get transactionDetailTextLabelFrom => 'From';
+
+  @override
+  String get transactionDetailTextLabelTo => 'To';
+
+  @override
+  String get transactionDetailTextLabelStampDate => 'Date&Time:';
+
+  @override
+  String get transactionDetailTextLabelTransId => 'Transaction ID';
+
+  @override
+  String get transactionDetailDesRecheckInfo =>
+      'Please verify the information and keep the slip for evidence.';
+
+  @override
+  String get transactionDetailDesCustomerContact =>
+      'Customer service contact 02-026-6679 operates 24 hours daily.';
+
+  @override
+  String get transactionDetailTextInfoScanVerify => 'Scan to Verify';
+
+  @override
+  String get transactionDetailTextButtonSaveReceipt => 'Save Receipt';
+
+  @override
+  String get transactionDetailTextButtonGoHome => 'Go to Home';
+
+  @override
+  String get transactionDetailTextCredit => 'Powered by WiPay';
+
+  @override
+  String get transactionDetailHeaderTotal => 'Total';
+
+  @override
+  String transactionDetailHeaderAmountThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String transactionDetailHeaderFeeAmountThb(Object amount) {
+    return 'Fee $amount THB';
+  }
+
+  @override
+  String get transactionDetailTextLabelType => 'Transaction Type';
+
+  @override
+  String get transactionDetailTextValueHoldAmount => 'Hold Amount';
+
+  @override
+  String get transactionDetailTextLabelPaymentChannel => 'Payment Channel';
+
+  @override
+  String get transactionDetailTextValueWallet => 'Wi Wallet';
+
+  @override
+  String get transactionDetailTextLabelDate => 'Date&Time';
+
+  @override
+  String get settingMainMenuHistory => 'History';
+
+  @override
+  String get settingHeaderTitle => 'Setting';
+
+  @override
+  String get settingMainMenuFingerprint => 'Fingerprint / Face Recognition';
+
+  @override
+  String get settingMainMenuOtp => 'OTP Channel';
+
+  @override
+  String get settingMainMenuChangePin => 'Change PIN';
+
+  @override
+  String get settingMainMenuSelectLang => 'Select Language';
+
+  @override
+  String get settingMainMenuLockTrans => 'Lock Transactions';
+
+  @override
+  String get settingMainMenuTerms => 'Terms & Conditions';
+
+  @override
+  String get settingMainMenuContact => 'Contact Us';
+
+  @override
+  String get settingMainMenuLogout => 'Logout';
+
+  @override
+  String get settingValueMainMenuFingerprintOn => 'On';
+
+  @override
+  String get settingValueMainMenuFingerprintOff => 'Off';
+
+  @override
+  String get settingValueMainMenuOtpSms => 'SMS';
+
+  @override
+  String get settingValueMainMenuOtpEmail => 'Email';
+
+  @override
+  String get settingValueMainMenuSelectLangEn => 'English';
+
+  @override
+  String get settingValueMainMenuLockTransOn => 'On';
+
+  @override
+  String get settingValueMainMenuLockTransOff => 'Off';
+
+  @override
+  String get settingMainMenuAppearances => 'Appearances';
+
+  @override
+  String get settingValueMainMenuAppearDark => 'Dark';
+
+  @override
+  String get settingValueMainMenuAppearLight => 'Light';
+
+  @override
+  String get settingTextVerAppWiWallet => 'Wi Wallet';
+
+  @override
+  String get historyHeaderTitle => 'History';
+
+  @override
+  String get identityVerificationTitleError => 'Error';
+
+  @override
+  String get identityVerificationDesErrorSystem =>
+      'Sorry, system has encountered error.please contact customer service available 24 hours daily.';
+
+  @override
+  String get identityVerificationTitleCompareFace => 'Comparing face...';
+
+  @override
+  String get identityVerificationDesCompareFace => 'Please wait for a moment.';
+
+  @override
+  String get identityVerificationTitleKeepLookingStraight =>
+      'Keep looking straight.';
+
+  @override
+  String get identityVerificationTitleTurnLeft => 'Turn left and hold.';
+
+  @override
+  String get identityVerificationTitleTurnRight => 'Turn Right and hold.';
+
+  @override
+  String get historyDrawerSelectMonth => 'Select Month';
+
+  @override
+  String get transferHeaderTitleTransfer => 'Перевод';
+
+  @override
+  String get transferInputLabelAmount => 'Amount';
+
+  @override
+  String get transferInputInfoMinimumTransfer =>
+      'You need to transfer at least 0.01 THB.';
+
+  @override
+  String get transferInputLabelFrom => 'From';
+
+  @override
+  String get transferCardFromTitleYourWiWallet => 'Your Wi Wallet';
+
+  @override
+  String get transferCardFromValueTotalBalance => 'Total Balance:';
+
+  @override
+  String transferCardFromValueAmount(Object amount) {
+    return '฿ $amount';
+  }
+
+  @override
+  String get transferCardLabelTo => 'To';
+
+  @override
+  String get transferCardToValueSelectAccType => 'Select Account Type';
+
+  @override
+  String get transferInputLabelObjective => 'Objective';
+
+  @override
+  String get transferInputLabelNote => '(optional)';
+
+  @override
+  String get transferInputPlaceholderEnterNote => 'Objective of Transfer';
+
+  @override
+  String get transferTextButtonReview => 'Review';
+
+  @override
+  String get transferDrawerHeaderTitleSelectAccType => 'Select Account Type';
+
+  @override
+  String get transferDrawerLabelOtherWallet => 'Other Wi Wallets';
+
+  @override
+  String get transferDrawerSelectValueWallet => 'Wi Wallet';
+
+  @override
+  String get transferDrawerLabelPromptPayThai => 'PromptPay Thai';
+
+  @override
+  String get transferDrawerSelectValuePromptPay => 'PromptPay';
+
+  @override
+  String get transferDrawerLabelMobileBank => 'Mobile Banking';
+
+  @override
+  String get transferDrawerSelectValueSiamBank => 'Siam Commercial Bank';
+
+  @override
+  String get transferDrawerSelectValueBangkokBank =>
+      'Bangkok Bank Mobile Banking';
+
+  @override
+  String get transferDrawerSelectValueBankAyudhya => 'Bank of Ayudhya';
+
+  @override
+  String get transferDrawerSelectValueKasikornBank => 'Kasikorn Bank';
+
+  @override
+  String get transferInputLabelAccountNumber => 'Account Number';
+
+  @override
+  String get transferInputPlaceholderEnterAccount => 'Enter account number';
+
+  @override
+  String get transferDrawerHeaderTitleReview => 'Review';
+
+  @override
+  String get transferDrawerWarningTitleRecheckInfo =>
+      'Please recheck information before proceeding';
+
+  @override
+  String get transferDrawerWarningInfoPreventFraud =>
+      'To prevent wrong account transfers or fraudulent activities. It cannot be changed once confirmed.';
+
+  @override
+  String get transferDrawerDetailTotal => 'Total';
+
+  @override
+  String transferDrawerDetailAmountThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String transferDrawerDetailFeeAmountThb(Object amount) {
+    return 'Fee $amount THB';
+  }
+
+  @override
+  String get transferDrawerDetailFrom => 'From';
+
+  @override
+  String get transferDrawerDetailValueYourWallet => 'Your Wi Wallet';
+
+  @override
+  String get transferDrawerDetailMobileNumber => 'Mobile Number';
+
+  @override
+  String get transferDrawerDetailTo => 'To';
+
+  @override
+  String get transferDrawerDetailAccountName => 'Account Name';
+
+  @override
+  String get transferDrawerDetailAccountNumber => 'Account Number';
+
+  @override
+  String get transferDrawerLabelObject => 'Object';
+
+  @override
+  String get transferDrawerTextButtonConfirm => 'Confirm';
+
+  @override
+  String get transferModalTitleInsufficientBalance => 'Insufficient Balance';
+
+  @override
+  String get transferModalDesDepositBalance =>
+      'You don’t have enough balance on Wi Wallet. Please deposit the balance.';
+
+  @override
+  String get transferModalTextButtonCancel => 'Cancel';
+
+  @override
+  String get transferModalTextButtonConfirm => 'Confirm';
+
+  @override
+  String get transferModalTitleErrorAccountNumber => 'Error';
+
+  @override
+  String get transferModalDescriptionErrorIncorrectAccount =>
+      'Sorry, the system has encountered an error. The destination account number is incorrect. Please contact customer service, available 24 hours daily.';
+
+  @override
+  String get transferModalTextButtonOk => 'OK';
+
+  @override
+  String get transferModalTitleErrorSystem => 'Error';
+
+  @override
+  String get transferModalDescriptionSystemErrorTry =>
+      'Sorry, system has encountered error. Please try again.';
+
+  @override
+  String get scanHeaderTitle => 'Scan';
+
+  @override
+  String get scanInfoHoldCamera => 'Hold the camera to scan a QR code.';
+
+  @override
+  String get scanButtonLeftFlash => 'Flash';
+
+  @override
+  String get scanButtonRightPhoto => 'Photo';
+
+  @override
+  String get homeModalTitlePinIncorrectError => 'Error';
+
+  @override
+  String get homeModalDesPinIncorrectError =>
+      'The system encountered an error because you entered the PIN incorrectly too many times. Please contact customer service available 24 hours daily.';
+
+  @override
+  String get homeModalTextButtonContact => 'Contact Us';
+
+  @override
+  String get homeAlertInfoErrorSystem =>
+      'Sorry, system has encountered error. Please try again.';
+
+  @override
+  String get homeDrawerHeaderTitleBalanceDetail => 'Balance Detail';
+
+  @override
+  String get homeDrawerDetailTotalBalance => 'Available Balance';
+
+  @override
+  String homeDrawerDetailAmountTotalBalanceThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String get homeDrawerDetailHoldAmount => 'Hold Amount*';
+
+  @override
+  String homeDrawerDetailHoldAmountThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String get homeDrawerDetailLedgerBalance => 'Ledger Balance';
+
+  @override
+  String homeDrawerDetailLedgerBalanceThb(Object amount) {
+    return '$amount THB';
+  }
+
+  @override
+  String get homeDrawerWarningInfoHoldAmount =>
+      '*Hold Amount means they aren\'t immediately available for use. Please contact our customer support team for more details and to process the next steps.';
+
+  @override
+  String get homeDrawerTextButtonBalanceDetailOk => 'OK';
+
+  @override
+  String get historyCardListItemTitleReserveAmount => 'Reserve Hold Amount';
+
+  @override
+  String get historyCardListItemTitleHoldAmount => 'Hold Amount';
+
+  @override
+  String get appName => 'Wi Wallet';
+
+  @override
+  String get lightTheme => 'Светлая тема';
+
+  @override
+  String get darkTheme => 'Темная тема';
+
+  @override
+  String get topUp => 'Пополнить';
 
   @override
   String get announcement => 'Объявление';
 
   @override
-  String get viewAll => 'Посмотреть все';
+  String get primaryButton => 'Основной';
 
   @override
-  String get availableBalance => 'Доступный баланс';
+  String get secondaryButton => 'Вторичный';
 
   @override
-  String get labelHomeTotalBalance => 'Доступный баланс';
+  String get cardReviewPreviewTitle => 'Просмотр транзакции';
 
   @override
-  String get homeDrawerDetailTotalBalance => 'Доступный баланс';
+  String get cardReviewTotalAmountMock => '100.00';
 
   @override
-  String get primaryButton => 'Основная кнопка';
-
-  @override
-  String get secondaryButton => 'Вторичная кнопка';
-
-  @override
-  String get primaryEnabled => 'Основная включена';
-
-  @override
-  String get secondaryEnabled => 'Вторичная включена';
-
-  @override
-  String get secondaryDisabled => 'Вторичная отключена';
-
-  @override
-  String get amountEnabled => 'Сумма включена';
-
-  @override
-  String get cardReviewPreviewTitle => 'Card Review Transaction Preview';
-
-  @override
-  String get cardReviewTotalLabel => 'Total';
-
-  @override
-  String get cardReviewTotalAmountMock => '5,000.00';
+  String get cardReviewFeeAmountMock => '10.00';
 
   @override
   String get cardReviewCurrencyMock => 'THB';
 
   @override
-  String get cardReviewFeeLabel => 'Fee';
+  String get cardReviewFromLabel => 'От';
 
   @override
-  String get cardReviewFeeAmountMock => '0.00';
+  String get cardReviewFromValueMock => 'Мой кошелек';
 
   @override
-  String get cardReviewFromLabel => 'From';
+  String get cardReviewMobileLabel => 'Мобильный номер';
 
   @override
-  String get cardReviewFromValueMock => 'Your Wi Wallet';
+  String get cardReviewMobileValueMock => '0812345678';
 
   @override
-  String get cardReviewMobileLabel => 'Mobile Number';
+  String get cardReviewToLabel => 'Кому';
 
   @override
-  String get cardReviewMobileValueMock => '081-141-1234';
+  String get cardReviewToValueMock => 'Иван Иванов';
 
   @override
-  String get cardReviewToLabel => 'To';
+  String get cardReviewAccountNameLabel => 'Имя счета';
 
   @override
-  String get cardReviewToValueMock => 'Siam Commercial Bank';
+  String get cardReviewAccountNameValueMock => 'Иван Иванов';
 
   @override
-  String get cardReviewAccountNameLabel => 'Account Name';
+  String get cardReviewAccountNumberLabel => 'Номер счета';
 
   @override
-  String get cardReviewAccountNameValueMock => 'Victor Von Doom';
-
-  @override
-  String get cardReviewAccountNumberLabel => 'Account Number';
-
-  @override
-  String get cardReviewAccountNumberValueMock => '1234567890';
-
-  @override
-  String get mobileNumberPlaceholder => 'Мобильный номер';
-
-  @override
-  String get noResultsFound => 'Результаты не найдены';
-
-  @override
-  String get pleaseTryAgain => 'Пожалуйста, попробуйте еще раз';
+  String get cardReviewAccountNumberValueMock => '123-456-7890';
 }

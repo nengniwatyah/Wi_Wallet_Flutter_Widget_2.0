@@ -26,6 +26,17 @@ Complete guide to using all available widgets in this foundation.
 
 ---
 
+## 🌍 Localization
+
+This project uses a centralized `localization.json` file. To add or modify strings:
+1. Edit `lib/l10n/localization.json`.
+2. Run `dart run tool/generate_arb.dart`.
+3. Run `flutter gen-l10n`.
+
+See [Localization Guide](lib/l10n/localization_i10n.md) for details.
+
+---
+
 ## NavigatorBar
 
 Bottom navigation bar with floating center button.
