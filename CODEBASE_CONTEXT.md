@@ -258,6 +258,10 @@ widgets/{feature}/
 - **Multi-device Testing** - Simultaneous testing across devices
 - **Real Interaction Testing** - Touch, swipe, scroll behaviors
 
+### Card & Announcement Widgets
+- **CardReviewTransaction** - Added API data handling, number formatting, and improved localization support
+- **AnnouncementStack** - Refactored to separate base widget from preview, added skeleton loading support
+
 ### Widgetbook Integration
 - **Centralized Preview** - All widgets cataloged in Widgetbook
 - **Interactive Controls** - Knobs and controls for testing widget states

@@ -17,11 +17,19 @@
     },
     {
         "Name": "infomationDeposit",
-        "TH": "ท่านต้องฝากเงินอย่างน้อย 100 THB",
-        "EN": "You need to deposit at least 100 THB.",
-        "RU": "Вам нужно внести депозит минимум 100 THB",
-        "ZH": "您需要至少存入100 THB",
-        "MM": "အနည်းဆုံး 100 THB အပ်ရန်လိုအပ်ပါသည်"
+        "TH": "ท่านต้องฝากเงินอย่างน้อย {amount} {currency}",
+        "EN": "You need to deposit at least {amount} {currency}.",
+        "RU": "Вам нужно внести депозит минимум {amount} {currency}",
+        "ZH": "您需要至少存入{amount} {currency}",
+        "MM": "အနည်းဆုံး {amount} {currency} အပ်ရန်လိုအပ်ပါသည်"
+    },
+    {
+        "Name": "depositTextButtonAmount",
+        "TH": "{amount}",
+        "EN": "{amount}",
+        "RU": "{amount}",
+        "ZH": "{amount}",
+        "MM": "{amount}"
     },
     {
         "Name": "titleDepositFrom",
@@ -225,11 +233,11 @@
     },
     {
         "Name": "homeAnnounceVerifyFaceToReceive",
-        "TH": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.",
-        "EN": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.",
-        "RU": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.",
-        "ZH": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.",
-        "MM": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet."
+        "TH": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.",
+        "EN": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.",
+        "RU": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.",
+        "ZH": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.",
+        "MM": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet."
     },
     {
         "Name": "titleDrawerDepositChannel",
@@ -353,11 +361,11 @@
     },
     {
         "Name": "infomationDepositKplusTimeLimit",
-        "TH": "กรุณาดำเนินการให้เสร็จสิ้นภายในเวลา mm:ss นาที",
-        "EN": "Please complete the process\nwithin mm:ss minutes.",
-        "RU": "Пожалуйста, завершите процесс в течение mm:ss минут.",
-        "ZH": "请在 mm:ss 分钟内完成操作",
-        "MM": "mm:ss မိနစ်အတွင်း လုပ်ငန်းစဉ်ကို ပြီးမြောက်စေပါ"
+        "TH": "กรุณาดำเนินการให้เสร็จสิ้นภายในเวลา {time} นาที",
+        "EN": "Please complete the process\nwithin {time} minutes.",
+        "RU": "Пожалуйста, завершите процесс в течение {time} минут.",
+        "ZH": "请在 {time} 分钟内完成操作",
+        "MM": "{time} မိနစ်အတွင်း လုပ်ငန်းစဉ်ကို ပြီးမြောက်စေပါ"
     },
     {
         "Name": "valueDepositKplus",
@@ -641,19 +649,19 @@
     },
     {
         "Name": "transactionDetailTotalAmountThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "transactionDetailFeeAmountThb",
-        "TH": "Fee {amount} THB",
-        "EN": "Fee {amount} THB",
-        "RU": "Fee {amount} THB",
-        "ZH": "Fee {amount} THB",
-        "MM": "Fee {amount} THB"
+        "TH": "Fee {amount} {currency}",
+        "EN": "Fee {amount} {currency}",
+        "RU": "Fee {amount} {currency}",
+        "ZH": "Fee {amount} {currency}",
+        "MM": "Fee {amount} {currency}"
     },
     {
         "Name": "transactionDetailTextLabelFrom",
@@ -745,19 +753,19 @@
     },
     {
         "Name": "transactionDetailHeaderAmountThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "transactionDetailHeaderFeeAmountThb",
-        "TH": "Fee {amount} THB",
-        "EN": "Fee {amount} THB",
-        "RU": "Fee {amount} THB",
-        "ZH": "Fee {amount} THB",
-        "MM": "Fee {amount} THB"
+        "TH": "Fee {amount} {currency}",
+        "EN": "Fee {amount} {currency}",
+        "RU": "Fee {amount} {currency}",
+        "ZH": "Fee {amount} {currency}",
+        "MM": "Fee {amount} {currency}"
     },
     {
         "Name": "transactionDetailTextLabelType",
@@ -798,6 +806,14 @@
         "RU": "Date&Time",
         "ZH": "Date&Time",
         "MM": "Date&Time"
+    },
+    {
+        "Name": "transactionDetailTextValueDate",
+        "TH": "{date} {time}",
+        "EN": "{date} {time}",
+        "RU": "{date} {time}",
+        "ZH": "{date} {time}",
+        "MM": "{date} {time}"
     },
     {
         "Name": "transactionDetailTextLabelTransId",
@@ -1065,11 +1081,11 @@
     },
     {
         "Name": "transferInputInfoMinimumTransfer",
-        "TH": "You need to transfer at least 0.01 THB.",
-        "EN": "You need to transfer at least 0.01 THB.",
-        "RU": "You need to transfer at least 0.01 THB.",
-        "ZH": "You need to transfer at least 0.01 THB.",
-        "MM": "You need to transfer at least 0.01 THB."
+        "TH": "You need to transfer at least {amount} {currency}.",
+        "EN": "You need to transfer at least {amount} {currency}.",
+        "RU": "You need to transfer at least {amount} {currency}.",
+        "ZH": "You need to transfer at least {amount} {currency}.",
+        "MM": "You need to transfer at least {amount} {currency}."
     },
     {
         "Name": "transferInputLabelFrom",
@@ -1281,19 +1297,19 @@
     },
     {
         "Name": "transferDrawerDetailAmountThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "transferDrawerDetailFeeAmountThb",
-        "TH": "Fee {amount} THB",
-        "EN": "Fee {amount} THB",
-        "RU": "Fee {amount} THB",
-        "ZH": "Fee {amount} THB",
-        "MM": "Fee {amount} THB"
+        "TH": "Fee {amount} {currency}",
+        "EN": "Fee {amount} {currency}",
+        "RU": "Fee {amount} {currency}",
+        "ZH": "Fee {amount} {currency}",
+        "MM": "Fee {amount} {currency}"
     },
     {
         "Name": "transferDrawerDetailFrom",
@@ -1328,12 +1344,28 @@
         "MM": "To"
     },
     {
+        "Name": "transferDrawerDetailToValue",
+        "TH": "{bank}",
+        "EN": "{bank}",
+        "RU": "{bank}",
+        "ZH": "{bank}",
+        "MM": "{bank}"
+    },
+    {
         "Name": "transferDrawerDetailAccountName",
         "TH": "Account Name",
         "EN": "Account Name",
         "RU": "Account Name",
         "ZH": "Account Name",
         "MM": "Account Name"
+    },
+    {
+        "Name": "transferDrawerDetailAccountNameValue",
+        "TH": "{accountname}",
+        "EN": "{accountname}",
+        "RU": "{accountname}",
+        "ZH": "{accountname}",
+        "MM": "{accountname}"
     },
     {
         "Name": "transferDrawerDetailMobileNumber",
@@ -1344,6 +1376,14 @@
         "MM": "Mobile Number"
     },
     {
+        "Name": "transferDrawerDetailMobileNumberValue",
+        "TH": "{mobilenumber}",
+        "EN": "{mobilenumber}",
+        "RU": "{mobilenumber}",
+        "ZH": "{mobilenumber}",
+        "MM": "{mobilenumber}"
+    },
+    {
         "Name": "transferDrawerDetailAccountNumber",
         "TH": "Account Number",
         "EN": "Account Number",
@@ -1352,12 +1392,20 @@
         "MM": "Account Number"
     },
     {
+        "Name": "transferDrawerDetailAccountNumberValue",
+        "TH": "{accountnumber}",
+        "EN": "{accountnumber}",
+        "RU": "{accountnumber}",
+        "ZH": "{accountnumber}",
+        "MM": "{accountnumber}"
+    },
+    {
         "Name": "transferDrawerLabelObject",
-        "TH": "Object",
-        "EN": "Object",
-        "RU": "Object",
-        "ZH": "Object",
-        "MM": "Object"
+        "TH": "Objective",
+        "EN": "Objective",
+        "RU": "Objective",
+        "ZH": "Objective",
+        "MM": "Objective"
     },
     {
         "Name": "transferDrawerTextButtonConfirm",
@@ -1529,11 +1577,11 @@
     },
     {
         "Name": "homeDrawerDetailAmountTotalBalanceThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "homeDrawerDetailHoldAmount",
@@ -1545,11 +1593,11 @@
     },
     {
         "Name": "homeDrawerDetailHoldAmountThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "homeDrawerDetailLedgerBalance",
@@ -1561,11 +1609,11 @@
     },
     {
         "Name": "homeDrawerDetailLedgerBalanceThb",
-        "TH": "{amount} THB",
-        "EN": "{amount} THB",
-        "RU": "{amount} THB",
-        "ZH": "{amount} THB",
-        "MM": "{amount} THB"
+        "TH": "{amount} {currency}",
+        "EN": "{amount} {currency}",
+        "RU": "{amount} {currency}",
+        "ZH": "{amount} {currency}",
+        "MM": "{amount} {currency}"
     },
     {
         "Name": "homeDrawerWarningInfoHoldAmount",
@@ -1598,5 +1646,37 @@
         "RU": "Hold Amount",
         "ZH": "Hold Amount",
         "MM": "Hold Amount"
+    },
+    {
+        "Name": "announcement",
+        "TH": "Announcement",
+        "EN": "Announcement",
+        "RU": "Announcement",
+        "ZH": "Announcement",
+        "MM": "Announcement"
+    },
+    {
+        "Name": "primaryButton",
+        "TH": "Primary Button",
+        "EN": "Primary Button",
+        "RU": "Primary Button",
+        "ZH": "Primary Button",
+        "MM": "Primary Button"
+    },
+    {
+        "Name": "secondaryButton",
+        "TH": "Secondary Button",
+        "EN": "Secondary Button",
+        "RU": "Secondary Button",
+        "ZH": "Secondary Button",
+        "MM": "Secondary Button"
+    },
+    {
+        "Name": "cardReviewPreviewTitle",
+        "TH": "Review Transaction",
+        "EN": "Review Transaction",
+        "RU": "Review Transaction",
+        "ZH": "Review Transaction",
+        "MM": "Review Transaction"
     }
 ]

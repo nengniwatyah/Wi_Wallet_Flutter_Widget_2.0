@@ -110,12 +110,31 @@ static final Map<String, Color> dark = {
 };
 ```
 
-## 🌍 Add New Language
+## 🌍 Localization Workflow
 
-### Step 1: Update localization.json
+We use a **Pipeline** approach to manage translations: `JSON` -> `ARB` -> `Dart Code`.
 
+### Standard Workflow (Every time you change text)
+
+1.  **Update Source (`localization.json`)**
+    *   Edit `lib/l10n/localization.json`. This is the single source of truth.
+    *   Format: JSON Array of Objects.
+
+2.  **Generate ARB (`dart run tool/generate_arb.dart`)**
+    *   Converts JSON to Flutter's standard `.arb` files.
+    *   Handles placeholders and metadata automatically.
+
+3.  **Generate Dart (`flutter gen-l10n`)**
+    *   Creates the `AppLocalizations` class so you can use `AppLocalizations.of(context)!.keyName` in code.
+    *   *Must run this to see changes in IDE.*
+
+4.  **Verify (`flutter analyze`)**
+    *   Checks for missing keys or usage errors.
+
+### Adding a New Language
+
+**Step 1: Update localization.json**
 Add a new column for your language (e.g., `JA`) in `lib/l10n/localization.json`:
-
 ```json
 [
   {
@@ -126,14 +145,13 @@ Add a new column for your language (e.g., `JA`) in `lib/l10n/localization.json`:
 ]
 ```
 
-### Step 2: Generate ARB Files
-
+**Step 2: Generate ARB Files**
 ```bash
 dart run tool/generate_arb.dart
 ```
 
-### Step 2: Update MaterialApp
-
+**Step 3: Update MaterialApp**
+Edit `lib/main.dart` (or where `MaterialApp` is defined):
 ```dart
 supportedLocales: const [
   Locale('en'),
@@ -145,8 +163,8 @@ supportedLocales: const [
 ],
 ```
 
-### Step 3: Add Font Support (if needed)
-
+**Step 4: Add Font Support (if needed)**
+If the language requires a specific font (like Japanese), update `theme_data.dart`:
 ```dart
 theme: ThemeData(
   textTheme: locale?.languageCode == 'ja'
@@ -155,8 +173,7 @@ theme: ThemeData(
 ),
 ```
 
-### Step 4: Generate
-
+**Step 5: Generate Code**
 ```bash
 flutter gen-l10n
 ```

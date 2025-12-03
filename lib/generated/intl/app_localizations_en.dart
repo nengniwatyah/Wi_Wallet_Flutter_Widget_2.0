@@ -15,7 +15,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labelDepositAmount => 'Amount';
 
   @override
-  String get infomationDeposit => 'You need to deposit at least 100 THB.';
+  String infomationDeposit(Object amount, Object currency) {
+    return 'You need to deposit at least $amount $currency.';
+  }
+
+  @override
+  String depositTextButtonAmount(Object amount) {
+    return '$amount';
+  }
 
   @override
   String get titleDepositFrom => 'From';
@@ -93,8 +100,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labelHomeViewAll => 'View all';
 
   @override
-  String homeAnnounceVerifyFaceToReceive(Object amount) {
-    return 'You have received $amount THB. Please verify face to receive this amount which will incur fee in your wallet.';
+  String homeAnnounceVerifyFaceToReceive(Object amount, Object currency) {
+    return 'You have received $amount $currency. Please verify face to receive this amount which will incur fee in your wallet.';
   }
 
   @override
@@ -143,8 +150,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please wait for notification to open\nK PLUS application. If you do not receive the\nnotification, you can check Inbox on your\nK PLUS.';
 
   @override
-  String get infomationDepositKplusTimeLimit =>
-      'Please complete the process\nwithin mm:ss minutes.';
+  String infomationDepositKplusTimeLimit(Object time) {
+    return 'Please complete the process\nwithin $time minutes.';
+  }
 
   @override
   String get valueDepositKplus => 'Kasikorn Bank';
@@ -264,13 +272,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transactionDetailHeaderTitleTypeTransfer => 'Transfer';
 
   @override
-  String transactionDetailTotalAmountThb(Object amount) {
-    return '$amount THB';
+  String transactionDetailTotalAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transactionDetailFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transactionDetailFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -309,13 +317,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transactionDetailHeaderTotal => 'Total';
 
   @override
-  String transactionDetailHeaderAmountThb(Object amount) {
-    return '$amount THB';
+  String transactionDetailHeaderAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transactionDetailHeaderFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transactionDetailHeaderFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -332,6 +340,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get transactionDetailTextLabelDate => 'Date&Time';
+
+  @override
+  String transactionDetailTextValueDate(Object date, Object time) {
+    return '$date $time';
+  }
 
   @override
   String get settingMainMenuHistory => 'History';
@@ -432,8 +445,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transferInputLabelAmount => 'Amount';
 
   @override
-  String get transferInputInfoMinimumTransfer =>
-      'You need to transfer at least 0.01 THB.';
+  String transferInputInfoMinimumTransfer(Object amount, Object currency) {
+    return 'You need to transfer at least $amount $currency.';
+  }
 
   @override
   String get transferInputLabelFrom => 'From';
@@ -519,13 +533,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transferDrawerDetailTotal => 'Total';
 
   @override
-  String transferDrawerDetailAmountThb(Object amount) {
-    return '$amount THB';
+  String transferDrawerDetailAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transferDrawerDetailFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transferDrawerDetailFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -541,13 +555,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transferDrawerDetailTo => 'To';
 
   @override
+  String transferDrawerDetailToValue(Object bank) {
+    return '$bank';
+  }
+
+  @override
   String get transferDrawerDetailAccountName => 'Account Name';
+
+  @override
+  String transferDrawerDetailAccountNameValue(Object accountname) {
+    return '$accountname';
+  }
+
+  @override
+  String transferDrawerDetailMobileNumberValue(Object mobilenumber) {
+    return '$mobilenumber';
+  }
 
   @override
   String get transferDrawerDetailAccountNumber => 'Account Number';
 
   @override
-  String get transferDrawerLabelObject => 'Object';
+  String transferDrawerDetailAccountNumberValue(Object accountnumber) {
+    return '$accountnumber';
+  }
+
+  @override
+  String get transferDrawerLabelObject => 'Objective';
 
   @override
   String get transferDrawerTextButtonConfirm => 'Confirm';
@@ -615,24 +649,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeDrawerDetailTotalBalance => 'Available Balance';
 
   @override
-  String homeDrawerDetailAmountTotalBalanceThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailAmountTotalBalanceThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
   String get homeDrawerDetailHoldAmount => 'Hold Amount*';
 
   @override
-  String homeDrawerDetailHoldAmountThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailHoldAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
   String get homeDrawerDetailLedgerBalance => 'Ledger Balance';
 
   @override
-  String homeDrawerDetailLedgerBalanceThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailLedgerBalanceThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
@@ -649,65 +683,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get historyCardListItemTitleHoldAmount => 'Hold Amount';
 
   @override
-  String get appName => 'Wi Wallet';
-
-  @override
-  String get lightTheme => 'Light Theme';
-
-  @override
-  String get darkTheme => 'Dark Theme';
-
-  @override
-  String get topUp => 'Top Up';
-
-  @override
   String get announcement => 'Announcement';
 
   @override
-  String get primaryButton => 'Primary';
+  String get primaryButton => 'Primary Button';
 
   @override
-  String get secondaryButton => 'Secondary';
+  String get secondaryButton => 'Secondary Button';
 
   @override
   String get cardReviewPreviewTitle => 'Review Transaction';
-
-  @override
-  String get cardReviewTotalAmountMock => '100.00';
-
-  @override
-  String get cardReviewFeeAmountMock => '10.00';
-
-  @override
-  String get cardReviewCurrencyMock => 'THB';
-
-  @override
-  String get cardReviewFromLabel => 'From';
-
-  @override
-  String get cardReviewFromValueMock => 'My Wallet';
-
-  @override
-  String get cardReviewMobileLabel => 'Mobile Number';
-
-  @override
-  String get cardReviewMobileValueMock => '0812345678';
-
-  @override
-  String get cardReviewToLabel => 'To';
-
-  @override
-  String get cardReviewToValueMock => 'John Doe';
-
-  @override
-  String get cardReviewAccountNameLabel => 'Account Name';
-
-  @override
-  String get cardReviewAccountNameValueMock => 'John Doe';
-
-  @override
-  String get cardReviewAccountNumberLabel => 'Account Number';
-
-  @override
-  String get cardReviewAccountNumberValueMock => '123-456-7890';
 }

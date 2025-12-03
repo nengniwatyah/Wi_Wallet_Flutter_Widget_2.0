@@ -15,7 +15,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labelDepositAmount => 'Сумма';
 
   @override
-  String get infomationDeposit => 'Вам нужно внести депозит минимум 100 THB';
+  String infomationDeposit(Object amount, Object currency) {
+    return 'Вам нужно внести депозит минимум $amount $currency';
+  }
+
+  @override
+  String depositTextButtonAmount(Object amount) {
+    return '$amount';
+  }
 
   @override
   String get titleDepositFrom => 'От';
@@ -93,8 +100,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labelHomeViewAll => 'Посмотреть все';
 
   @override
-  String homeAnnounceVerifyFaceToReceive(Object amount) {
-    return 'You have received $amount THB. Please verify face to receive this amount which will incur fee in your wallet.';
+  String homeAnnounceVerifyFaceToReceive(Object amount, Object currency) {
+    return 'You have received $amount $currency. Please verify face to receive this amount which will incur fee in your wallet.';
   }
 
   @override
@@ -143,8 +150,9 @@ class AppLocalizationsRu extends AppLocalizations {
       'Пожалуйста, дождитесь уведомления для открытия приложения K PLUS. Если вы не получили уведомление, вы можете проверить входящие сообщения в вашем K PLUS.';
 
   @override
-  String get infomationDepositKplusTimeLimit =>
-      'Пожалуйста, завершите процесс в течение mm:ss минут.';
+  String infomationDepositKplusTimeLimit(Object time) {
+    return 'Пожалуйста, завершите процесс в течение $time минут.';
+  }
 
   @override
   String get valueDepositKplus => 'Kasikorn Bank';
@@ -171,7 +179,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fieldValueDepositKplus => 'Депозит';
 
   @override
-  String get titleDrawerEmptyNoResultsFound => 'Результатов не найдено';
+  String get titleDrawerEmptyNoResultsFound => 'Результаты не найдены';
 
   @override
   String get descriptionDrawerEmptyTryAgain => 'Пожалуйста, попробуйте еще раз';
@@ -264,13 +272,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transactionDetailHeaderTitleTypeTransfer => 'Transfer';
 
   @override
-  String transactionDetailTotalAmountThb(Object amount) {
-    return '$amount THB';
+  String transactionDetailTotalAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transactionDetailFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transactionDetailFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -309,13 +317,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transactionDetailHeaderTotal => 'Total';
 
   @override
-  String transactionDetailHeaderAmountThb(Object amount) {
-    return '$amount THB';
+  String transactionDetailHeaderAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transactionDetailHeaderFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transactionDetailHeaderFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -332,6 +340,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get transactionDetailTextLabelDate => 'Date&Time';
+
+  @override
+  String transactionDetailTextValueDate(Object date, Object time) {
+    return '$date $time';
+  }
 
   @override
   String get settingMainMenuHistory => 'History';
@@ -426,14 +439,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get historyDrawerSelectMonth => 'Select Month';
 
   @override
-  String get transferHeaderTitleTransfer => 'Перевод';
+  String get transferHeaderTitleTransfer => 'Transfer';
 
   @override
   String get transferInputLabelAmount => 'Amount';
 
   @override
-  String get transferInputInfoMinimumTransfer =>
-      'You need to transfer at least 0.01 THB.';
+  String transferInputInfoMinimumTransfer(Object amount, Object currency) {
+    return 'You need to transfer at least $amount $currency.';
+  }
 
   @override
   String get transferInputLabelFrom => 'From';
@@ -519,13 +533,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transferDrawerDetailTotal => 'Total';
 
   @override
-  String transferDrawerDetailAmountThb(Object amount) {
-    return '$amount THB';
+  String transferDrawerDetailAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
-  String transferDrawerDetailFeeAmountThb(Object amount) {
-    return 'Fee $amount THB';
+  String transferDrawerDetailFeeAmountThb(Object amount, Object currency) {
+    return 'Fee $amount $currency';
   }
 
   @override
@@ -541,13 +555,33 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transferDrawerDetailTo => 'To';
 
   @override
+  String transferDrawerDetailToValue(Object bank) {
+    return '$bank';
+  }
+
+  @override
   String get transferDrawerDetailAccountName => 'Account Name';
+
+  @override
+  String transferDrawerDetailAccountNameValue(Object accountname) {
+    return '$accountname';
+  }
+
+  @override
+  String transferDrawerDetailMobileNumberValue(Object mobilenumber) {
+    return '$mobilenumber';
+  }
 
   @override
   String get transferDrawerDetailAccountNumber => 'Account Number';
 
   @override
-  String get transferDrawerLabelObject => 'Object';
+  String transferDrawerDetailAccountNumberValue(Object accountnumber) {
+    return '$accountnumber';
+  }
+
+  @override
+  String get transferDrawerLabelObject => 'Objective';
 
   @override
   String get transferDrawerTextButtonConfirm => 'Confirm';
@@ -615,24 +649,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get homeDrawerDetailTotalBalance => 'Available Balance';
 
   @override
-  String homeDrawerDetailAmountTotalBalanceThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailAmountTotalBalanceThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
   String get homeDrawerDetailHoldAmount => 'Hold Amount*';
 
   @override
-  String homeDrawerDetailHoldAmountThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailHoldAmountThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
   String get homeDrawerDetailLedgerBalance => 'Ledger Balance';
 
   @override
-  String homeDrawerDetailLedgerBalanceThb(Object amount) {
-    return '$amount THB';
+  String homeDrawerDetailLedgerBalanceThb(Object amount, Object currency) {
+    return '$amount $currency';
   }
 
   @override
@@ -649,65 +683,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get historyCardListItemTitleHoldAmount => 'Hold Amount';
 
   @override
-  String get appName => 'Wi Wallet';
+  String get announcement => 'Announcement';
 
   @override
-  String get lightTheme => 'Светлая тема';
+  String get primaryButton => 'Primary Button';
 
   @override
-  String get darkTheme => 'Темная тема';
+  String get secondaryButton => 'Secondary Button';
 
   @override
-  String get topUp => 'Пополнить';
-
-  @override
-  String get announcement => 'Объявление';
-
-  @override
-  String get primaryButton => 'Основной';
-
-  @override
-  String get secondaryButton => 'Вторичный';
-
-  @override
-  String get cardReviewPreviewTitle => 'Просмотр транзакции';
-
-  @override
-  String get cardReviewTotalAmountMock => '100.00';
-
-  @override
-  String get cardReviewFeeAmountMock => '10.00';
-
-  @override
-  String get cardReviewCurrencyMock => 'THB';
-
-  @override
-  String get cardReviewFromLabel => 'От';
-
-  @override
-  String get cardReviewFromValueMock => 'Мой кошелек';
-
-  @override
-  String get cardReviewMobileLabel => 'Мобильный номер';
-
-  @override
-  String get cardReviewMobileValueMock => '0812345678';
-
-  @override
-  String get cardReviewToLabel => 'Кому';
-
-  @override
-  String get cardReviewToValueMock => 'Иван Иванов';
-
-  @override
-  String get cardReviewAccountNameLabel => 'Имя счета';
-
-  @override
-  String get cardReviewAccountNameValueMock => 'Иван Иванов';
-
-  @override
-  String get cardReviewAccountNumberLabel => 'Номер счета';
-
-  @override
-  String get cardReviewAccountNumberValueMock => '123-456-7890';
+  String get cardReviewPreviewTitle => 'Review Transaction';
 }

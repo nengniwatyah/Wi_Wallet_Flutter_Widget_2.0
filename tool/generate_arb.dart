@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 void main() async {
-  final file = File('localization.json');
+  final file = File('lib/l10n/localization.json');
   if (!await file.exists()) {
     print('❌ Error: localization.json not found in root directory.');
     return;

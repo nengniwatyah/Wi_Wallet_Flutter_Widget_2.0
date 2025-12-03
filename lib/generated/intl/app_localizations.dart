@@ -119,8 +119,14 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'You need to deposit at least 100 THB.'**
-  String get infomationDeposit;
+  /// **'You need to deposit at least {amount} {currency}.'**
+  String infomationDeposit(Object amount, Object currency);
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'{amount}'**
+  String depositTextButtonAmount(Object amount);
 
   ///
   ///
@@ -275,8 +281,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.'**
-  String homeAnnounceVerifyFaceToReceive(Object amount);
+  /// **'You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.'**
+  String homeAnnounceVerifyFaceToReceive(Object amount, Object currency);
 
   ///
   ///
@@ -365,8 +371,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'Please complete the process\nwithin mm:ss minutes.'**
-  String get infomationDepositKplusTimeLimit;
+  /// **'Please complete the process\nwithin {time} minutes.'**
+  String infomationDepositKplusTimeLimit(Object time);
 
   ///
   ///
@@ -581,14 +587,14 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String transactionDetailTotalAmountThb(Object amount);
+  /// **'{amount} {currency}'**
+  String transactionDetailTotalAmountThb(Object amount, Object currency);
 
   ///
   ///
   /// In en, this message translates to:
-  /// **'Fee {amount} THB'**
-  String transactionDetailFeeAmountThb(Object amount);
+  /// **'Fee {amount} {currency}'**
+  String transactionDetailFeeAmountThb(Object amount, Object currency);
 
   ///
   ///
@@ -659,14 +665,14 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String transactionDetailHeaderAmountThb(Object amount);
+  /// **'{amount} {currency}'**
+  String transactionDetailHeaderAmountThb(Object amount, Object currency);
 
   ///
   ///
   /// In en, this message translates to:
-  /// **'Fee {amount} THB'**
-  String transactionDetailHeaderFeeAmountThb(Object amount);
+  /// **'Fee {amount} {currency}'**
+  String transactionDetailHeaderFeeAmountThb(Object amount, Object currency);
 
   ///
   ///
@@ -697,6 +703,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Date&Time'**
   String get transactionDetailTextLabelDate;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'{date} {time}'**
+  String transactionDetailTextValueDate(Object date, Object time);
 
   ///
   ///
@@ -893,8 +905,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'You need to transfer at least 0.01 THB.'**
-  String get transferInputInfoMinimumTransfer;
+  /// **'You need to transfer at least {amount} {currency}.'**
+  String transferInputInfoMinimumTransfer(Object amount, Object currency);
 
   ///
   ///
@@ -1055,14 +1067,14 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String transferDrawerDetailAmountThb(Object amount);
+  /// **'{amount} {currency}'**
+  String transferDrawerDetailAmountThb(Object amount, Object currency);
 
   ///
   ///
   /// In en, this message translates to:
-  /// **'Fee {amount} THB'**
-  String transferDrawerDetailFeeAmountThb(Object amount);
+  /// **'Fee {amount} {currency}'**
+  String transferDrawerDetailFeeAmountThb(Object amount, Object currency);
 
   ///
   ///
@@ -1091,8 +1103,26 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
+  /// **'{bank}'**
+  String transferDrawerDetailToValue(Object bank);
+
+  ///
+  ///
+  /// In en, this message translates to:
   /// **'Account Name'**
   String get transferDrawerDetailAccountName;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'{accountname}'**
+  String transferDrawerDetailAccountNameValue(Object accountname);
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'{mobilenumber}'**
+  String transferDrawerDetailMobileNumberValue(Object mobilenumber);
 
   ///
   ///
@@ -1103,7 +1133,13 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'Object'**
+  /// **'{accountnumber}'**
+  String transferDrawerDetailAccountNumberValue(Object accountnumber);
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'Objective'**
   String get transferDrawerLabelObject;
 
   ///
@@ -1229,8 +1265,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String homeDrawerDetailAmountTotalBalanceThb(Object amount);
+  /// **'{amount} {currency}'**
+  String homeDrawerDetailAmountTotalBalanceThb(Object amount, Object currency);
 
   ///
   ///
@@ -1241,8 +1277,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String homeDrawerDetailHoldAmountThb(Object amount);
+  /// **'{amount} {currency}'**
+  String homeDrawerDetailHoldAmountThb(Object amount, Object currency);
 
   ///
   ///
@@ -1253,8 +1289,8 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'{amount} THB'**
-  String homeDrawerDetailLedgerBalanceThb(Object amount);
+  /// **'{amount} {currency}'**
+  String homeDrawerDetailLedgerBalanceThb(Object amount, Object currency);
 
   ///
   ///
@@ -1283,43 +1319,19 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
-  /// **'Wi Wallet'**
-  String get appName;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Light Theme'**
-  String get lightTheme;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Dark Theme'**
-  String get darkTheme;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Top Up'**
-  String get topUp;
-
-  ///
-  ///
-  /// In en, this message translates to:
   /// **'Announcement'**
   String get announcement;
 
   ///
   ///
   /// In en, this message translates to:
-  /// **'Primary'**
+  /// **'Primary Button'**
   String get primaryButton;
 
   ///
   ///
   /// In en, this message translates to:
-  /// **'Secondary'**
+  /// **'Secondary Button'**
   String get secondaryButton;
 
   ///
@@ -1327,84 +1339,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Review Transaction'**
   String get cardReviewPreviewTitle;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'100.00'**
-  String get cardReviewTotalAmountMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'10.00'**
-  String get cardReviewFeeAmountMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'THB'**
-  String get cardReviewCurrencyMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'From'**
-  String get cardReviewFromLabel;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'My Wallet'**
-  String get cardReviewFromValueMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Mobile Number'**
-  String get cardReviewMobileLabel;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'0812345678'**
-  String get cardReviewMobileValueMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'To'**
-  String get cardReviewToLabel;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'John Doe'**
-  String get cardReviewToValueMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Account Name'**
-  String get cardReviewAccountNameLabel;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'John Doe'**
-  String get cardReviewAccountNameValueMock;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'Account Number'**
-  String get cardReviewAccountNumberLabel;
-
-  ///
-  ///
-  /// In en, this message translates to:
-  /// **'123-456-7890'**
-  String get cardReviewAccountNumberValueMock;
 }
 
 class _AppLocalizationsDelegate

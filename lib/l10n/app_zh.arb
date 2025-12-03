@@ -8,9 +8,20 @@
   "@labelDepositAmount": {
     "description": " "
   },
-  "infomationDeposit": "您需要至少存入100 THB",
+  "infomationDeposit": "您需要至少存入{amount} {currency}",
   "@infomationDeposit": {
-    "description": " "
+    "description": " ",
+    "placeholders": {
+      "amount": {},
+      "currency": {}
+    }
+  },
+  "depositTextButtonAmount": "{amount}",
+  "@depositTextButtonAmount": {
+    "description": " ",
+    "placeholders": {
+      "amount": {}
+    }
   },
   "titleDepositFrom": "来自",
   "@titleDepositFrom": {
@@ -112,11 +123,12 @@
   "@labelHomeViewAll": {
     "description": " "
   },
-  "homeAnnounceVerifyFaceToReceive": "You have received {amount} THB. Please verify face to receive this amount which will incur fee in your wallet.",
+  "homeAnnounceVerifyFaceToReceive": "You have received {amount} {currency}. Please verify face to receive this amount which will incur fee in your wallet.",
   "@homeAnnounceVerifyFaceToReceive": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "titleDrawerDepositChannel": "存款渠道",
@@ -175,9 +187,12 @@
   "@descriptionDepositKplusNotification": {
     "description": " "
   },
-  "infomationDepositKplusTimeLimit": "请在 mm:ss 分钟内完成操作",
+  "infomationDepositKplusTimeLimit": "请在 {time} 分钟内完成操作",
   "@infomationDepositKplusTimeLimit": {
-    "description": " "
+    "description": " ",
+    "placeholders": {
+      "time": {}
+    }
   },
   "valueDepositKplus": "Kasikorn Bank",
   "@valueDepositKplus": {
@@ -215,7 +230,7 @@
   "@titleDrawerEmptyNoResultsFound": {
     "description": " "
   },
-  "descriptionDrawerEmptyTryAgain": "请重试",
+  "descriptionDrawerEmptyTryAgain": "请再试一次",
   "@descriptionDrawerEmptyTryAgain": {
     "description": " "
   },
@@ -319,18 +334,20 @@
   "@transactionDetailHeaderTitleTypeTransfer": {
     "description": " "
   },
-  "transactionDetailTotalAmountThb": "{amount} THB",
+  "transactionDetailTotalAmountThb": "{amount} {currency}",
   "@transactionDetailTotalAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
-  "transactionDetailFeeAmountThb": "Fee {amount} THB",
+  "transactionDetailFeeAmountThb": "Fee {amount} {currency}",
   "@transactionDetailFeeAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "transactionDetailTextLabelFrom": "From",
@@ -377,18 +394,20 @@
   "@transactionDetailHeaderTotal": {
     "description": " "
   },
-  "transactionDetailHeaderAmountThb": "{amount} THB",
+  "transactionDetailHeaderAmountThb": "{amount} {currency}",
   "@transactionDetailHeaderAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
-  "transactionDetailHeaderFeeAmountThb": "Fee {amount} THB",
+  "transactionDetailHeaderFeeAmountThb": "Fee {amount} {currency}",
   "@transactionDetailHeaderFeeAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "transactionDetailTextLabelType": "Transaction Type",
@@ -410,6 +429,14 @@
   "transactionDetailTextLabelDate": "Date&Time",
   "@transactionDetailTextLabelDate": {
     "description": " "
+  },
+  "transactionDetailTextValueDate": "{date} {time}",
+  "@transactionDetailTextValueDate": {
+    "description": " ",
+    "placeholders": {
+      "date": {},
+      "time": {}
+    }
   },
   "settingMainMenuHistory": "History",
   "@settingMainMenuHistory": {
@@ -531,7 +558,7 @@
   "@historyDrawerSelectMonth": {
     "description": " "
   },
-  "transferHeaderTitleTransfer": "转账",
+  "transferHeaderTitleTransfer": "Transfer",
   "@transferHeaderTitleTransfer": {
     "description": " "
   },
@@ -539,9 +566,13 @@
   "@transferInputLabelAmount": {
     "description": " "
   },
-  "transferInputInfoMinimumTransfer": "You need to transfer at least 0.01 THB.",
+  "transferInputInfoMinimumTransfer": "You need to transfer at least {amount} {currency}.",
   "@transferInputInfoMinimumTransfer": {
-    "description": " "
+    "description": " ",
+    "placeholders": {
+      "amount": {},
+      "currency": {}
+    }
   },
   "transferInputLabelFrom": "From",
   "@transferInputLabelFrom": {
@@ -650,18 +681,20 @@
   "@transferDrawerDetailTotal": {
     "description": " "
   },
-  "transferDrawerDetailAmountThb": "{amount} THB",
+  "transferDrawerDetailAmountThb": "{amount} {currency}",
   "@transferDrawerDetailAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
-  "transferDrawerDetailFeeAmountThb": "Fee {amount} THB",
+  "transferDrawerDetailFeeAmountThb": "Fee {amount} {currency}",
   "@transferDrawerDetailFeeAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "transferDrawerDetailFrom": "From",
@@ -680,15 +713,43 @@
   "@transferDrawerDetailTo": {
     "description": " "
   },
+  "transferDrawerDetailToValue": "{bank}",
+  "@transferDrawerDetailToValue": {
+    "description": " ",
+    "placeholders": {
+      "bank": {}
+    }
+  },
   "transferDrawerDetailAccountName": "Account Name",
   "@transferDrawerDetailAccountName": {
     "description": " "
+  },
+  "transferDrawerDetailAccountNameValue": "{accountname}",
+  "@transferDrawerDetailAccountNameValue": {
+    "description": " ",
+    "placeholders": {
+      "accountname": {}
+    }
+  },
+  "transferDrawerDetailMobileNumberValue": "{mobilenumber}",
+  "@transferDrawerDetailMobileNumberValue": {
+    "description": " ",
+    "placeholders": {
+      "mobilenumber": {}
+    }
   },
   "transferDrawerDetailAccountNumber": "Account Number",
   "@transferDrawerDetailAccountNumber": {
     "description": " "
   },
-  "transferDrawerLabelObject": "Object",
+  "transferDrawerDetailAccountNumberValue": "{accountnumber}",
+  "@transferDrawerDetailAccountNumberValue": {
+    "description": " ",
+    "placeholders": {
+      "accountnumber": {}
+    }
+  },
+  "transferDrawerLabelObject": "Objective",
   "@transferDrawerLabelObject": {
     "description": " "
   },
@@ -772,33 +833,36 @@
   "@homeDrawerDetailTotalBalance": {
     "description": " "
   },
-  "homeDrawerDetailAmountTotalBalanceThb": "{amount} THB",
+  "homeDrawerDetailAmountTotalBalanceThb": "{amount} {currency}",
   "@homeDrawerDetailAmountTotalBalanceThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "homeDrawerDetailHoldAmount": "Hold Amount*",
   "@homeDrawerDetailHoldAmount": {
     "description": " "
   },
-  "homeDrawerDetailHoldAmountThb": "{amount} THB",
+  "homeDrawerDetailHoldAmountThb": "{amount} {currency}",
   "@homeDrawerDetailHoldAmountThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "homeDrawerDetailLedgerBalance": "Ledger Balance",
   "@homeDrawerDetailLedgerBalance": {
     "description": " "
   },
-  "homeDrawerDetailLedgerBalanceThb": "{amount} THB",
+  "homeDrawerDetailLedgerBalanceThb": "{amount} {currency}",
   "@homeDrawerDetailLedgerBalanceThb": {
     "description": " ",
     "placeholders": {
-      "amount": {}
+      "amount": {},
+      "currency": {}
     }
   },
   "homeDrawerWarningInfoHoldAmount": "*Hold Amount means they aren't immediately available for use. Please contact our customer support team for more details and to process the next steps.",
@@ -817,88 +881,20 @@
   "@historyCardListItemTitleHoldAmount": {
     "description": " "
   },
-  "appName": "Wi Wallet",
-  "@appName": {
-    "description": " "
-  },
-  "lightTheme": "浅色主题",
-  "@lightTheme": {
-    "description": " "
-  },
-  "darkTheme": "深色主题",
-  "@darkTheme": {
-    "description": " "
-  },
-  "topUp": "充值",
-  "@topUp": {
-    "description": " "
-  },
-  "announcement": "公告",
+  "announcement": "Announcement",
   "@announcement": {
     "description": " "
   },
-  "primaryButton": "主要",
+  "primaryButton": "Primary Button",
   "@primaryButton": {
     "description": " "
   },
-  "secondaryButton": "次要",
+  "secondaryButton": "Secondary Button",
   "@secondaryButton": {
     "description": " "
   },
-  "cardReviewPreviewTitle": "审查交易",
+  "cardReviewPreviewTitle": "Review Transaction",
   "@cardReviewPreviewTitle": {
-    "description": " "
-  },
-  "cardReviewTotalAmountMock": "100.00",
-  "@cardReviewTotalAmountMock": {
-    "description": " "
-  },
-  "cardReviewFeeAmountMock": "10.00",
-  "@cardReviewFeeAmountMock": {
-    "description": " "
-  },
-  "cardReviewCurrencyMock": "泰铢",
-  "@cardReviewCurrencyMock": {
-    "description": " "
-  },
-  "cardReviewFromLabel": "从",
-  "@cardReviewFromLabel": {
-    "description": " "
-  },
-  "cardReviewFromValueMock": "我的钱包",
-  "@cardReviewFromValueMock": {
-    "description": " "
-  },
-  "cardReviewMobileLabel": "手机号码",
-  "@cardReviewMobileLabel": {
-    "description": " "
-  },
-  "cardReviewMobileValueMock": "0812345678",
-  "@cardReviewMobileValueMock": {
-    "description": " "
-  },
-  "cardReviewToLabel": "至",
-  "@cardReviewToLabel": {
-    "description": " "
-  },
-  "cardReviewToValueMock": "张三",
-  "@cardReviewToValueMock": {
-    "description": " "
-  },
-  "cardReviewAccountNameLabel": "账户名称",
-  "@cardReviewAccountNameLabel": {
-    "description": " "
-  },
-  "cardReviewAccountNameValueMock": "张三",
-  "@cardReviewAccountNameValueMock": {
-    "description": " "
-  },
-  "cardReviewAccountNumberLabel": "账号",
-  "@cardReviewAccountNumberLabel": {
-    "description": " "
-  },
-  "cardReviewAccountNumberValueMock": "123-456-7890",
-  "@cardReviewAccountNumberValueMock": {
     "description": " "
   }
 }

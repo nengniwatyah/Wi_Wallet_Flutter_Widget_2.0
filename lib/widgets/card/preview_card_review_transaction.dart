@@ -5,6 +5,7 @@ import 'package:mcp_test_app/generated/intl/app_localizations.dart';
 import 'package:mcp_test_app/widgets/card/card_review_transaction.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
@@ -196,19 +197,32 @@ class CardReviewTransactionPreview extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             CardReviewTransaction(
-              totalAmount: l10n.cardReviewTotalAmountMock,
-              feeAmount: l10n.cardReviewFeeAmountMock,
-              currency: l10n.cardReviewCurrencyMock,
-              fromLabel: l10n.cardReviewFromLabel,
-              fromValue: l10n.cardReviewFromValueMock,
-              mobileLabel: l10n.cardReviewMobileLabel,
-              mobileValue: l10n.cardReviewMobileValueMock,
-              toLabel: l10n.cardReviewToLabel,
-              toValue: l10n.cardReviewToValueMock,
-              accountNameLabel: l10n.cardReviewAccountNameLabel,
-              accountNameValue: l10n.cardReviewAccountNameValueMock,
-              accountNumberLabel: l10n.cardReviewAccountNumberLabel,
-              accountNumberValue: l10n.cardReviewAccountNumberValueMock,
+              totalAmount: l10n.transactionDetailTotalAmountThb(
+                '100.00',
+                'THB',
+              ),
+              feeAmount: l10n.transactionDetailFeeAmountThb('100.00', 'THB'),
+              fromLabel: l10n.transferDrawerDetailFrom,
+              fromValue: l10n.transferDrawerDetailValueYourWallet,
+              mobileLabel: l10n.transferDrawerDetailMobileNumber,
+              mobileValue: l10n.transferDrawerDetailMobileNumberValue(
+                '081-141-6859',
+              ),
+              toLabel: l10n.transferDrawerDetailTo,
+              toValue: l10n.transferDrawerDetailToValue(l10n.valueDrawerScb),
+              accountNameLabel: l10n.transferDrawerDetailAccountName,
+              accountNameValue: l10n.transferDrawerDetailAccountNameValue(
+                'Niwat Yahuadong',
+              ),
+              accountNumberLabel: l10n.transferDrawerDetailAccountNumber,
+              accountNumberValue: l10n.transferDrawerDetailAccountNumberValue(
+                '123456789',
+              ),
+              dateLabel: l10n.transactionDetailTextLabelDate,
+              dateValue: l10n.transactionDetailTextValueDate(
+                DateFormat('dd-MM-yyyy').format(DateTime.now()),
+                DateFormat('HH:mm:ss').format(DateTime.now()),
+              ),
             ),
           ],
         ),
