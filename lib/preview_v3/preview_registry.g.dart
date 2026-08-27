@@ -24,8 +24,11 @@ import 'package:mcp_test_app/widgets/v3/navigation/preview_v3_navigation.dart'
     as p9;
 import 'package:mcp_test_app/widgets/v3/profile_header/preview_v3_profile_header.dart'
     as p10;
+import 'package:mcp_test_app/widgets/v3/receipt/preview_v3_receipt.dart' as p11;
+import 'package:mcp_test_app/widgets/v3/receipt/preview_v3_transaction_success.dart'
+    as p12;
 import 'package:mcp_test_app/widgets/v3/splash/preview_v3_splash_animation.dart'
-    as p11;
+    as p13;
 
 final List<V3PreviewDefinition> generatedV3PreviewEntries = [
   V3PreviewDefinition(
@@ -84,8 +87,18 @@ final List<V3PreviewDefinition> generatedV3PreviewEntries = [
     builder: (context) => const p10.V3ProfileHeaderPreview(),
   ),
   V3PreviewDefinition(
+    category: 'receipt',
+    widgetName: 'V3Receipt',
+    builder: (context) => const p11.V3ReceiptPreview(),
+  ),
+  V3PreviewDefinition(
+    category: 'receipt',
+    widgetName: 'V3TransactionSuccess',
+    builder: (context) => const p12.V3TransactionSuccessPreview(),
+  ),
+  V3PreviewDefinition(
     category: 'splash',
     widgetName: 'V3SplashAnimation',
-    builder: (context) => const p11.V3SplashAnimationPreview(),
+    builder: (context) => const p13.V3SplashAnimationPreview(),
   ),
 ];

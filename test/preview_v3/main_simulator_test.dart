@@ -7,8 +7,7 @@ import 'package:mcp_test_app/widgets/v3/splash/preview_v3_splash_animation.dart'
 void main() {
   group('V3SimulatorSplashLoopHost', () {
     testWidgets(
-      'plays the splash first, then shows the destination with a CTA, '
-      'then loops back to the splash when the CTA is tapped',
+      'plays the splash first, then shows the destination without overlays',
       (tester) async {
         await tester.pumpWidget(
           const MaterialApp(
@@ -28,16 +27,14 @@ void main() {
 
         expect(find.byType(V3SplashAnimationPreview), findsNothing);
         expect(find.byType(V3MiniButtonPreview), findsOneWidget);
-        final ctaFinder = find.byKey(
-          const ValueKey('v3-simulator-splash-loop-cta'),
+        expect(
+          find.byKey(const ValueKey('v3-simulator-splash-renderer-picker')),
+          findsNothing,
         );
-        expect(ctaFinder, findsOneWidget);
-
-        await tester.tap(ctaFinder);
-        await tester.pump();
-
-        expect(find.byType(V3SplashAnimationPreview), findsOneWidget);
-        expect(find.byType(V3MiniButtonPreview), findsNothing);
+        expect(
+          find.byKey(const ValueKey('v3-simulator-splash-loop-cta')),
+          findsNothing,
+        );
       },
     );
 
