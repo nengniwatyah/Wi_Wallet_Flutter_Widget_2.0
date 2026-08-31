@@ -33,6 +33,20 @@
 
 ## Source Of Truth Rules
 
+### Figma Local Variables
+
+- งานที่เกี่ยวข้องกับ Figma, Theme V3, token หรือ Widget V3 ต้องตรวจ Local Variables สดจากไฟล์ `Wi Design System` ที่ file key `mhUvPg9tOjlvQvEW6glQhJ` และ reference node `596:1097` ทุกครั้งที่ผู้ใช้สั่งตรวจสอบ โดยใช้ URL ที่ไม่มี transient query token: `https://www.figma.com/design/mhUvPg9tOjlvQvEW6glQhJ/Wi-Design-System?node-id=596-1097`
+- Snapshot การตรวจต้องเก็บรายละเอียดครบทั้ง collections, variables, modes, `resolvedType`, scopes, description, hidden state, aliases/references และค่าที่ resolve แล้วของทุก mode ไม่ใช่เพียงชื่อ token หรือค่าของ Light/Dark บางส่วน
+- ต้อง compare Figma Local Variables คู่กับ JSON design tokens ที่ import จาก Figma ใน `lib/config/themes/v3/tokens/primitive/` และ `lib/config/themes/v3/tokens/semantic/` ทุกครั้ง: primitive ตรวจ raw values ต้นทาง ส่วน semantic ตรวจ alias/reference และ resolved values ครบทุก mode รวมถึงชื่อ/path, type และ mode
+- ต้องจับ orphan token, missing token, stale import, alias/reference mismatch, mode/type mismatch, raw/resolved value mismatch และ duplicate mapping แยกผลเป็น `Figma → JSON` กับ `JSON → Figma`; ชื่อที่ตรงกันอย่างเดียวไม่ใช่หลักฐานว่า values ตรงกัน
+- หากพบ drift ให้รายงานไฟล์ JSON ที่เกี่ยวข้องและผลกระทบต่อ generated Dart/Widget V3 consumers แต่ห้ามแก้ JSON หรือ generated output อัตโนมัติจนกว่าจะได้รับคำสั่งให้ reconcile/implement
+- รายงานต้องแยก `added`, `removed`, `changed`, `unchanged` และแสดง before/after ของทุก field/value ที่เปลี่ยน หากไม่มี baseline ให้ระบุ `initial snapshot`; ห้ามสรุปว่าไม่มี changes โดยไม่มีการอ่าน Figma สด
+- หากพบ Figma Local Variables เปลี่ยน ให้รายงานทันทีในรอบงานเดียวกัน พร้อมชี้ผลกระทบต่อ `lib/config/themes/v3/tokens/**`, generator, generated output และ Widget V3 consumers ที่เกี่ยวข้อง; Figma เป็น source of truth และต้อง reconcile source ก่อนแก้ implementation เว้นแต่ผู้ใช้สั่ง implement โดยตรง
+- Snapshot/audit workflow ถูกเพิ่มไว้ใน `docs/v3/FIGMA_LOCAL_VARIABLE_SNAPSHOT_WORKFLOW.md`, exporter code อยู่ที่ `scripts/figma-local-variables-snapshot.code.js`, และ comparator อยู่ที่ `scripts/figma-token-audit.mjs` (`npm run audit:figma-tokens`). เก็บ full Figma snapshots แบบ append-only ที่ `docs/v3/figma-snapshots/Wi-Design-System/`; compare เฉพาะ selected Flutter scope ใน `primitive/` กับ `semantic/` และจัด Figma-only เป็น inventory ไม่ใช่ mismatch อัตโนมัติ
+- Prompt สั้นมาตรฐานสำหรับการตรวจครั้งถัดไปคือ “ตรวจ Token Figma”; comparator สร้าง JSON evidence และ Markdown report คู่กัน โดย Markdown สรุป matched/changed/missing/Figma-only, ชี้ before/after และไฟล์ที่ต้องแก้ให้อ่านได้ทันที
+- คู่มือ E2E สำหรับนำระบบ Figma Local Variables → Theme V3 Token Audit ไปใช้กับ repo อื่นอยู่ที่ `docs/v3/FIGMA_LOCAL_VARIABLE_TOKEN_AUDIT_E2E_CHECKLIST.md` ครอบคลุม configuration, snapshot, comparator, Markdown report, isolated worktree, scheduled automation และ acceptance checklist
+- `.codex/figma-token-audit.json` เป็น adapter ของ repo นี้ และ `scripts/figma-token-audit.mjs --config <path>` รองรับการเปลี่ยน framework/path ไปยัง Flutter, React หรือ repo อื่นโดยไม่ hardcode selected token directories
+
 ### Widget V3 Local Web Preview
 
 - `docs/v3/V3_WIDGET_PREVIEW_PUBLISHING_GUIDE.md` is the canonical operational guide for scaling beyond the pilot widget. For every new Widget V3: add `v3_<widget>.dart`, `preview_v3_<widget>.dart` with constructible `class V3<Widget>Preview`, local `V3_<WIDGET>_GUIDE.md`, and targeted tests; run and commit the generated `lib/preview_v3/preview_registry.g.dart`; verify locally; then merge to `main` so bundle CI publishes. Published Skill availability requires the existing Render service, `MCP_REMOTE_COMMIT_SHA`, MCP freshness, bundle manifest, and `previewDelivery.sourceCommit` to share the same full SHA. No per-widget Skill, launcher, router, or MCP-handler edit is required.
