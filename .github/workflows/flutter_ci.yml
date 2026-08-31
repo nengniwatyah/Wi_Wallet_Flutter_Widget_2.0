@@ -22,7 +22,7 @@ jobs:
       # legacy-skill checks are already covered by each dev PR and must not
       # reclassify historical release changes as a new V3 change.
       - name: Check V3 change boundaries
-        if: !(github.event_name == 'push' && github.ref == 'refs/heads/main') && !(github.event_name == 'pull_request' && github.base_ref == 'main')
+        if: ${{ (github.event_name == 'pull_request' && github.base_ref != 'main') || (github.event_name == 'push' && github.ref != 'refs/heads/main') }}
         env:
           V3_BOUNDARY_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: npm run check:v3-boundaries && npm run test:v3-boundaries
