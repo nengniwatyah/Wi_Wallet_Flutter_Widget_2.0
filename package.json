@@ -10,6 +10,7 @@
         "test:v3-preview-bundle": "node --test scripts/v3-preview-bundle/pack-v3-preview-bundle.test.js scripts/v3-preview-bundle/launcher-sync.test.js scripts/v3-preview-bundle/assert-latest-publishable.test.js",
         "accept:v3-preview": "node scripts/v3-preview-bundle/zero-flutter-acceptance.mjs",
         "validate:v3-skills": "node scripts/validate-v3-skills.js",
+        "audit:figma-tokens": "node scripts/figma-token-audit.mjs",
         "generate-schema": "node scripts/generate-schema.js",
         "generate-schema:watch": "nodemon --exec 'npm run generate-schema' --watch CODEBASE_CONTEXT.md --watch WIDGETS_GUIDE.md",
         "test:v3-boundaries": "node --test scripts/check-v3-boundaries.test.js"

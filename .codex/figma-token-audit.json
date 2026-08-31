@@ -1,0 +1,20 @@
+{
+  "framework": "flutter",
+  "language": "dart",
+  "packageManager": "flutter",
+  "baselineBranch": "dev",
+  "primitiveTokenPaths": [
+    "lib/config/themes/v3/tokens/primitive/"
+  ],
+  "semanticTokenPaths": [
+    "lib/config/themes/v3/tokens/semantic/"
+  ],
+  "generatedPaths": [
+    "lib/config/themes/v3/generated/"
+  ],
+  "auditCommand": "npm run audit:figma-tokens",
+  "verificationCommands": [
+    "flutter analyze",
+    "flutter test"
+  ]
+}

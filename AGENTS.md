@@ -70,6 +70,20 @@ Operational rules for agents working in this repository. This repo is a Flutter 
   4. `lib/config/themes/v3/generated/**` — derived output; never edit manually.
 - If these sources disagree, do not silently choose one, approximate a value, or fall back to legacy theme. Record the mismatch, reconcile the editable source with the verified design, regenerate, and validate Light/Dark plus affected previews/tests.
 
+### Figma Local Variables Audit Rule
+
+- สำหรับงาน Figma, Theme V3, token, หรือ Widget V3 ที่เกี่ยวข้องกับไฟล์ `Wi Design System` ให้ตรวจสอบ Local Variables จากไฟล์ Figma ต้นทางนี้ทุกครั้งที่ผู้ใช้สั่งให้ตรวจสอบ: `https://www.figma.com/design/mhUvPg9tOjlvQvEW6glQhJ/Wi-Design-System?node-id=596-1097` (file key `mhUvPg9tOjlvQhJ`, reference node `596:1097`). ห้ามสรุปจาก `DESIGN.md`, local token JSON, generated Dart หรือเอกสารเดิมแทนการอ่านค่าจาก Figma สด
+- การตรวจสอบต้องครอบคลุม Local Variable Collections ทั้งหมด, ทุก Variable, `resolvedType`, scopes, description, hidden state, collection modes และค่าของทุก mode รวมถึง alias/reference และค่าที่ resolve แล้วเมื่อมี alias; ห้ามรายงานเฉพาะชื่อหรือเฉพาะ mode เดียว
+- ต้อง compare ผลจาก Figma แบบคู่กันกับ JSON design tokens ที่ import มาจาก Figma Local Variables ใน `lib/config/themes/v3/tokens/primitive/` และ `lib/config/themes/v3/tokens/semantic/` โดยตรวจทั้งรายการ token, ชื่อ/path, ประเภท, mode, raw value, alias/reference และ resolved value ให้ครบ; primitive ต้องตรวจค่าต้นทางโดยตรง ส่วน semantic ต้องตรวจทั้ง alias ที่ชี้ไป primitive/semantic และค่าที่ resolve แล้วในแต่ละ mode
+- การ compare ต้องตรวจหา token ที่มีเฉพาะฝั่ง Figma หรือเฉพาะฝั่ง JSON, ชื่อ/path ที่ไม่ตรง, alias ที่ชี้ผิดหรือขาดหาย, mode ที่ไม่ครบ, type mismatch, value mismatch, stale import และ duplicate mapping พร้อมระบุ source ฝั่งที่เป็นต้นเหตุเมื่อทำได้; ห้ามถือว่า JSON ตรงกับ Figma เพียงเพราะชื่อ token เหมือนกัน
+- เมื่อ Figma Local Variables เปลี่ยน ต้อง compare กับ JSON ทั้ง `primitive` และ `semantic` ในการตรวจครั้งเดียวกัน แล้วรายงานผลแยกเป็น `Figma → JSON` และ `JSON → Figma` รวมถึงผลกระทบต่อ generated Dart และ consumers; หากพบ drift ให้ระบุไฟล์ JSON ที่ต้อง reconcile แต่ห้ามแก้ JSON/generated output โดยอัตโนมัติจนกว่าผู้ใช้จะสั่ง
+- ต้องเปรียบเทียบกับ snapshot/evidence ครั้งก่อนที่มีอยู่ในงานหรือ repo เพื่อระบุรายการที่เพิ่ม, ลบ, เปลี่ยนชื่อ, ย้าย collection, เปลี่ยน mode, เปลี่ยน type, scope, description, alias หรือ value ให้ครบถ้วน หากไม่มี baseline ให้ระบุว่าเป็น initial snapshot และห้ามอ้างว่าไม่มีการเปลี่ยนแปลง
+- เมื่อผู้ใช้สั่ง “ตรวจสอบ” ให้รายงานผลการเปลี่ยนแปลงกลับทันทีในรอบงานเดียวกัน โดยสรุป `added`, `removed`, `changed` และ `unchanged` พร้อมค่า before/after ของทุก field ที่เปลี่ยนและรายการ value ครบทุก mode; หากเข้าถึง Figma ไม่ได้ ต้องแจ้งข้อจำกัดและห้ามเดาค่า
+- เมื่อพบการเปลี่ยนแปลงใน Figma Local Variables ให้ถือ Figma เป็น source of truth, ระบุผลกระทบต่อ local token/generator/widget ที่เกี่ยวข้อง และรอการยืนยันก่อนแก้ implementation เว้นแต่ผู้ใช้สั่งให้ reconcile/implement โดยตรง
+- Workflow มาตรฐานอยู่ใน `docs/v3/FIGMA_LOCAL_VARIABLE_SNAPSHOT_WORKFLOW.md`: ใช้ `scripts/figma-local-variables-snapshot.code.js` สร้าง full snapshot แบบ append-only ที่ `docs/v3/figma-snapshots/Wi-Design-System/YYYY-MM-DD.json` แล้วรัน `npm run audit:figma-tokens -- --snapshot <path> --out <report-path>` เพื่อ compare เฉพาะ token ใน `primitive/` และ `semantic/`; Figma-only เป็น inventory ไม่ใช่ error อัตโนมัติ
+- คำสั่งผู้ใช้แบบสั้นที่ต้องรองรับคือ “ตรวจ Token Figma”: ต้องสร้าง snapshot วันปัจจุบัน, compare กับ JSON ใน `primitive/` และ `semantic/`, สร้างทั้ง JSON evidence และ Markdown report ที่อ่านง่าย โดย Markdown ต้องชี้จุดผิดปกติ, before/after และไฟล์ที่เกี่ยวข้องทันที
+- คู่มือ portable สำหรับการนำ workflow ไปใช้กับ Flutter, React หรือ framework อื่นคือ `docs/v3/FIGMA_LOCAL_VARIABLE_TOKEN_AUDIT_E2E_CHECKLIST.md`; comparator ต้องรับ adapter ผ่าน `--config` และห้าม hardcode token paths ของ repo นี้เมื่อใช้งานกับ repo อื่น
+
 ### Theme V3 Planning Boundary
 
 - `docs/V3_THEME_MCP_SKILLS_PLAN.md` is the architecture source of truth for the planned additive Theme V3 + Widget V3 + MCP V3 tools + Skills V3 initiative.
